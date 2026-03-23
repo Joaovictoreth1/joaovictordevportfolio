@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Victor Barros das Merces | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #05080d;
+  --bg2: #0c1018;
+  --bg3: #111827;
+  --border: rgba(255,255,255,0.08);
+  --border-accent: rgba(249,115,22,0.4);
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --accent: #f97316;
+  --accent2: #fb923c;
+  --violet: #b5b2ff;
+  --violet2: #a78bfa;
+  --glow: rgba(249,115,22,0.2);
+}
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg2: #ffffff;
+  --bg3: #f1f5f9;
+  --border: rgba(0,0,0,0.08);
+  --border-accent: rgba(37,99,235,0.4);
+  --text: #0f172a;
+  --text2: #64748b;
+  --accent: #2563eb;
+  --accent2: #3b82f6;
+  --violet: #7c3aed;
+  --violet2: #6d28d9;
+  --glow: rgba(37,99,235,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);transition:background 0.4s,color 0.4s;overflow-x:hidden;}
+
+#scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--violet));z-index:200;transition:width 0.1s;}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;}
+[data-theme="light"] #particles{opacity:0.12;}
+.bottom-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:900px;height:400px;background:radial-gradient(ellipse at 50% 100%,rgba(249,115,22,0.15) 0%,rgba(167,139,250,0.08) 40%,transparent 70%);pointer-events:none;}
+
+/* NAVBAR */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s;}
+#navbar.scrolled{background:rgba(5,8,13,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.75rem 2rem;}
+[data-theme="light"] #navbar.scrolled{background:rgba(248,250,252,0.88);}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.03em;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;font-family:'Sora',sans-serif;transition:color 0.3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{width:100%;}
+.nav-controls{display:flex;gap:0.5rem;align-items:center;}
+.control-btn{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;color:var(--text);font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:all 0.2s;font-family:'Sora',sans-serif;backdrop-filter:blur(8px);}
+.control-btn:hover{background:rgba(255,255,255,0.1);}
+[data-theme="light"] .control-btn{background:var(--bg3);}
+.control-btn svg{width:1rem;height:1rem;}
+#theme-toggle .sun-icon{display:none;}
+[data-theme="light"] #theme-toggle .sun-icon{display:block;}
+[data-theme="light"] #theme-toggle .moon-icon{display:none;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero-content{position:relative;z-index:10;width:100%;max-width:1280px;margin:0 auto;padding:6rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.gradient-title{font-family:'Sora',sans-serif;background:linear-gradient(180deg,#ffffff 0%,#c4b5fd 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.gradient-orange{background:linear-gradient(135deg,var(--accent),var(--accent2),#fbbf24);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:grad 4s ease infinite;}
+@keyframes grad{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);color:var(--text2);padding:0.4rem 1rem;border-radius:8px;font-size:0.75rem;font-weight:500;font-family:'Sora',sans-serif;letter-spacing:0.05em;margin-bottom:1.5rem;backdrop-filter:blur(8px);}
+.hero-badge::before{content:'';width:7px;height:7px;background:#56d995;border-radius:50%;box-shadow:0 0 6px #56d995;animation:pdot 2s infinite;}
+@keyframes pdot{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-title{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:800;line-height:1.1;margin-bottom:0.5rem;letter-spacing:-0.03em;}
+.hero-subtitle{font-family:'Sora',sans-serif;font-size:1.1rem;color:var(--text2);font-weight:300;margin-bottom:2rem;}
+.hero-info{display:flex;flex-direction:column;gap:0.65rem;margin-bottom:2.5rem;}
+.hero-info-item{display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.6);font-size:0.85rem;}
+[data-theme="light"] .hero-info-item{color:var(--text2);}
+.hero-info-icon{width:30px;height:30px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-info-icon svg{width:13px;height:13px;color:var(--accent2);}
+.btn-group{display:flex;gap:0.75rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.25rem;border-radius:8px;font-weight:600;font-size:0.875rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-family:'Sora',sans-serif;}
+.btn-primary{background:rgba(249,115,22,0.15);color:var(--accent2);border:1px solid rgba(249,115,22,0.4);backdrop-filter:blur(8px);}
+.btn-primary:hover{background:rgba(249,115,22,0.25);border-color:var(--accent);transform:translateY(-1px);box-shadow:0 8px 25px var(--glow);}
+.btn-outline{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(8px);}
+.btn-outline:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.25);transform:translateY(-1px);}
+[data-theme="light"] .btn-outline{color:var(--text2);border-color:var(--border);}
+[data-theme="light"] .btn-outline:hover{color:var(--text);background:var(--bg3);}
+
+/* TERMINAL */
+.terminal-window{background:rgba(5,8,13,0.8);border:1px solid rgba(249,115,22,0.25);border-radius:12px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 25px 60px rgba(0,0,0,0.6),0 0 60px rgba(249,115,22,0.04);}
+[data-theme="light"] .terminal-window{background:rgba(255,255,255,0.92);border-color:rgba(37,99,235,0.3);}
+.terminal-header{background:rgba(12,16,24,0.9);padding:0.6rem 1rem;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);}
+[data-theme="light"] .terminal-header{background:#f1f5f9;border-bottom-color:rgba(0,0,0,0.06);}
+.terminal-dots{display:flex;gap:6px;}
+.terminal-dots span{width:11px;height:11px;border-radius:50%;}
+.terminal-filename{margin-left:1rem;font-family:'Fira Code',monospace;font-size:0.72rem;color:rgba(255,255,255,0.3);}
+[data-theme="light"] .terminal-filename{color:var(--text2);}
+.terminal-body{padding:1rem 1.25rem;height:400px;overflow-y:auto;font-family:'Fira Code',monospace;font-size:0.77rem;line-height:1.8;color:#c8d3e0;}
+[data-theme="light"] .terminal-body{color:#1e293b;}
+.terminal-body::-webkit-scrollbar{width:4px;}
+.terminal-body::-webkit-scrollbar-track{background:transparent;}
+.terminal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+.token.keyword{color:#c792ea;}[data-theme="light"] .token.keyword{color:#7c3aed;}
+.token.string{color:#c3e88d;}[data-theme="light"] .token.string{color:#166534;}
+.token.property{color:#82aaff;}[data-theme="light"] .token.property{color:#1d4ed8;}
+.token.number{color:#f78c6c;}[data-theme="light"] .token.number{color:#b45309;}
+.cursor-blink{display:inline-block;width:7px;height:1em;background:var(--accent);vertical-align:text-bottom;animation:blink 1s step-end infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* SECTIONS */
+.section{padding:6rem 1.5rem;position:relative;}
+.container{max-width:1200px;margin:0 auto;}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent);}
+[data-theme="light"] .section-divider{background:linear-gradient(90deg,transparent,rgba(0,0,0,0.07),transparent);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent);font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem;}
+.section-tag::before{content:'//';opacity:0.45;}
+.section-title{font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;}
+.section-subtitle{font-size:0.95rem;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;}
+.about-image-container{position:relative;width:260px;height:260px;margin:0 auto;}
+.ring-wrap{position:absolute;inset:-8px;border-radius:50%;padding:2px;background:conic-gradient(var(--accent),var(--violet2),var(--accent2),var(--accent));animation:spin 7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.ring-inner{width:100%;height:100%;background:var(--bg);border-radius:50%;}
+.about-image-container img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:cover;border-radius:50%;z-index:1;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;margin-top:1.5rem;}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:all 0.3s;backdrop-filter:blur(8px);}
+[data-theme="light"] .stat-card{background:var(--bg3);}
+.stat-card:hover{border-color:var(--border-accent);transform:translateY(-2px);box-shadow:0 8px 24px var(--glow);}
+.stat-number{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:800;color:var(--accent);}
+.stat-label{font-size:0.7rem;color:var(--text2);margin-top:0.2rem;}
+.tag{display:inline-block;padding:0.2rem 0.7rem;background:rgba(249,115,22,0.08);color:var(--accent2);border:1px solid rgba(249,115,22,0.2);border-radius:6px;font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;}
+.about-text h3{font-family:'Sora',sans-serif;font-size:1.55rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.02em;}
+.about-text p{color:var(--text2);line-height:1.8;margin-bottom:1rem;font-size:0.92rem;}
+.alura-logo{height:28px;opacity:0.6;transition:opacity 0.3s;filter:brightness(1.5);}
+.alura-logo:hover{opacity:1;}
+[data-theme="light"] .alura-logo{filter:none;opacity:0.8;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;backdrop-filter:blur(8px);}
+[data-theme="light"] .skill-card{background:var(--bg2);}
+.skill-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(249,115,22,0.08),transparent 70%);opacity:0;transition:opacity 0.3s;}
+.skill-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.3),0 0 20px var(--glow);}
+.skill-card:hover::before{opacity:1;}
+.skill-card img{width:46px;height:46px;object-fit:contain;margin:0 auto 0.75rem;display:block;position:relative;z-index:1;}
+.skill-card h3{font-weight:600;font-size:0.85rem;position:relative;z-index:1;font-family:'Sora',sans-serif;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem;}
+.project-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;backdrop-filter:blur(8px);}
+[data-theme="light"] .project-card{background:var(--bg2);}
+.project-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3),0 0 30px var(--glow);}
+.project-header{padding:1.25rem 1.5rem;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+[data-theme="light"] .project-header{background:var(--bg3);}
+.project-icon{width:40px;height:40px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
+.project-link{width:29px;height:29px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;color:var(--text2);text-decoration:none;transition:all 0.2s;}
+.project-link:hover{color:var(--accent);border-color:var(--border-accent);}
+.project-link svg{width:13px;height:13px;}
+.project-body{padding:1.25rem 1.5rem;flex:1;}
+.project-title{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.5rem;}
+.project-desc{color:var(--text2);font-size:0.83rem;line-height:1.65;margin-bottom:0.5rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.project-tag{background:rgba(249,115,22,0.07);color:var(--accent2);border:1px solid rgba(249,115,22,0.15);padding:0.15rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600;font-family:'Sora',sans-serif;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;transition:all 0.3s;text-decoration:none;color:var(--text);width:100%;text-align:left;font-family:'Inter',sans-serif;cursor:pointer;backdrop-filter:blur(8px);}
+[data-theme="light"] .contact-card{background:var(--bg2);}
+.contact-card:hover{border-color:rgba(249,115,22,0.3);transform:translateX(4px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
+.contact-icon{width:40px;height:40px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
+.contact-icon svg{width:17px;height:17px;}
+.contact-label{font-size:0.7rem;color:var(--text2);margin-bottom:0.1rem;}
+.contact-value{font-weight:600;font-size:0.85rem;}
+.availability-card{background:rgba(255,255,255,0.02);border:1px solid rgba(249,115,22,0.2);border-radius:16px;padding:2rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(10px);}
+.availability-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(249,115,22,0.08),transparent 60%);pointer-events:none;}
+[data-theme="light"] .availability-card{background:var(--bg3);border-color:rgba(37,99,235,0.2);}
+.availability-status{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(86,217,149,0.08);border:1px solid rgba(86,217,149,0.25);color:#56d995;padding:0.35rem 1rem;border-radius:7px;font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;margin-bottom:1.25rem;}
+.availability-status::before{content:'';width:7px;height:7px;background:#56d995;border-radius:50%;box-shadow:0 0 6px #56d995;animation:pdot 2s infinite;}
+.availability-card h3{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:0.75rem;position:relative;}
+.availability-card p{color:var(--text2);line-height:1.7;margin-bottom:1.5rem;font-size:0.88rem;position:relative;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 1.5rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
+.footer-brand h3{font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;}
+.footer-brand span{color:var(--accent);}
+.footer-brand p{color:var(--text2);font-size:0.78rem;margin-top:0.2rem;}
+.footer-links{display:flex;gap:0.6rem;}
+.footer-link{width:36px;height:36px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text2);text-decoration:none;transition:all 0.2s;}
+[data-theme="light"] .footer-link{background:var(--bg3);}
+.footer-link:hover{color:var(--accent);border-color:var(--border-accent);transform:translateY(-2px);}
+.footer-link svg{width:16px;height:16px;}
+.footer-bottom{max-width:1200px;margin:1.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;color:var(--text2);font-size:0.78rem;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:300;opacity:0;visibility:hidden;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
+.modal-overlay.visible{opacity:1;visibility:visible;}
+.modal-box{background:rgba(12,16,24,0.97);border:1px solid rgba(249,115,22,0.35);border-radius:14px;padding:2rem;width:90%;max-width:370px;transform:scale(0.92);transition:transform 0.3s;text-align:center;backdrop-filter:blur(20px);}
+[data-theme="light"] .modal-box{background:var(--bg2);}
+.modal-overlay.visible .modal-box{transform:scale(1);}
+.modal-title{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;}
+.modal-subtitle{color:var(--text2);font-size:0.83rem;margin-bottom:1.25rem;}
+.modal-email{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:0.875rem;font-weight:600;font-size:0.875rem;margin-bottom:1rem;word-break:break-all;font-family:'Fira Code',monospace;}
+[data-theme="light"] .modal-email{background:var(--bg3);}
+.modal-copy{background:rgba(249,115,22,0.15);color:var(--accent2);border:1px solid rgba(249,115,22,0.4);padding:0.7rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;transition:all 0.3s;font-size:0.875rem;font-family:'Sora',sans-serif;}
+.modal-copy:hover{background:rgba(249,115,22,0.25);transform:translateY(-1px);}
+
+/* ANIMATIONS */
+.fade-in-up{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in-up.visible{opacity:1;transform:translateY(0);}
+.sec-a{background:var(--bg);}
+.sec-b{background:var(--bg2);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-content{grid-template-columns:1fr;padding-top:5rem;}
+  .terminal-window{display:none;}
+  .about-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .nav-links.mobile-open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,8,13,0.97);backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:2.5rem;z-index:99;}
+  [data-theme="light"] .nav-links.mobile-open{background:rgba(248,250,252,0.97);}
+  .nav-links.mobile-open a{font-size:1.4rem;}
+  .footer-inner{flex-direction:column;align-items:center;text-align:center;}
+  .projects-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div id="scroll-progress"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">JV<span>.</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about" data-lang="navAbout">Sobre</a></li>
+    <li><a href="#skills" data-lang="navSkills">Habilidades</a></li>
+    <li><a href="#projects" data-lang="navProjects">Projetos</a></li>
+    <li><a href="#contact" data-lang="navContact">Contato</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button id="theme-toggle" class="control-btn" aria-label="Alternar tema">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.93 7.07-1.41-1.41M6.34 6.34 4.93 4.93"/></svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    <button id="lang-toggle" class="control-btn">PT</button>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero sec-a">
+  <div class="bottom-glow" style="top:auto;bottom:-100px;"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge fade-in-up" data-lang="heroWelcome">Bem-vindo ao meu portfólio</div>
+      <h1 class="hero-title fade-in-up" style="transition-delay:100ms">
+        <span class="gradient-title">João Victor</span><br>
+        <span class="gradient-orange">Barros das Merces</span>
+      </h1>
+      <p class="hero-subtitle fade-in-up" style="transition-delay:200ms">
+        <span data-lang="heroTitle">Desenvolvedor de Software</span>
+      </p>
+      <div class="hero-info fade-in-up" style="transition-delay:300ms">
+        <div class="hero-info-item">
+          <div class="hero-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <span data-lang="heroEducation">Técnico em Informática no SENAC</span>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+          </div>
+          <span data-lang="heroEducation2">Estudante de ADS na UNICID</span>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <span data-lang="heroFocus">Foco em Programação e Inteligência Artificial</span>
+        </div>
+        <div class="hero-info-item">
+          <div class="hero-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+          </div>
+          <span data-lang="heroCourses">Cursos complementares na Alura</span>
+        </div>
+      </div>
+      <div class="btn-group fade-in-up" style="transition-delay:400ms">
+        <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <span data-lang="heroBtnGithub">Meu GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <button id="emailButton" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </button>
+      </div>
+    </div>
+    <div class="fade-in-up" style="transition-delay:500ms">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span style="background:#ef4444"></span>
+            <span style="background:#f59e0b"></span>
+            <span style="background:#22c55e"></span>
+          </div>
+          <div class="terminal-filename">jvbm_profile.js</div>
+        </div>
+        <div class="terminal-body"><code id="code-block"></code></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" class="section sec-b">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <div class="section-tag" data-lang="sectionTagAbout">Quem sou eu</div>
+      <h2 class="section-title" data-lang="aboutTitle">Sobre Mim</h2>
+      <p class="section-subtitle" data-lang="aboutSubtitle">Conheça minha jornada e paixão pela tecnologia.</p>
+    </div>
+    <div class="about-grid">
+      <div class="fade-in-up">
+        <div class="about-image-container">
+          <div class="ring-wrap"><div class="ring-inner"></div></div>
+          <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor" />
+        </div>
+        <div class="about-stats">
+          <div class="stat-card fade-in-up" style="transition-delay:100ms"><div class="stat-number">7+</div><div class="stat-label" data-lang="statTech">Tecnologias</div></div>
+          <div class="stat-card fade-in-up" style="transition-delay:200ms"><div class="stat-number">20</div><div class="stat-label" data-lang="statAge">Anos</div></div>
+          <div class="stat-card fade-in-up" style="transition-delay:300ms"><div class="stat-number">∞</div><div class="stat-label" data-lang="statCuriosity">Curiosidade</div></div>
+          <div class="stat-card fade-in-up" style="transition-delay:400ms"><div class="stat-number">100%</div><div class="stat-label" data-lang="statDedication">Dedicação</div></div>
+        </div>
+      </div>
+      <div class="about-text fade-in-up" style="transition-delay:200ms">
+        <div class="tag" data-lang="aboutTag">Desenvolvedor Iniciante</div>
+        <h3 data-lang="aboutHeadline">Transformando ideias em experiências digitais.</h3>
+        <p data-lang="aboutP1">Olá! Sou um desenvolvedor apaixonado por tecnologia. Como iniciante na área, estou focado em absorver conhecimento e aplicá-lo em projetos práticos. Minha jornada é impulsionada pela curiosidade e pelo desejo de construir soluções elegantes e funcionais.</p>
+        <p data-lang="aboutP2">Curso Técnico em Informática no SENAC e Análise e Desenvolvimento de Sistemas na UNICID — e aprimoro minhas habilidades com os cursos da:</p>
+        <a href="https://www.alura.com.br/" target="_blank" rel="noopener noreferrer">
+          <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Alura Logo" class="alura-logo" style="margin-top:0.75rem;">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="section sec-a">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <div class="section-tag" data-lang="sectionTagSkills">Tecnologias</div>
+      <h2 class="section-title" data-lang="skillsTitle">Minhas Habilidades</h2>
+      <p class="section-subtitle" data-lang="skillsSubtitle">Tecnologias que estou aprendendo e utilizando em projetos.</p>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="section sec-b">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <div class="section-tag" data-lang="sectionTagProjects">Portfólio</div>
+      <h2 class="section-title" data-lang="projectsTitle">Meus Projetos</h2>
+      <p class="section-subtitle" data-lang="projectsSubtitle">Projetos desenvolvidos durante minha jornada de aprendizado.</p>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="section sec-a" style="position:relative;overflow:hidden;">
+  <div class="bottom-glow"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-header fade-in-up">
+      <div class="section-tag" data-lang="sectionTagContact">Contato</div>
+      <h2 class="section-title" data-lang="contactTitle">Vamos Conversar</h2>
+      <p class="section-subtitle" data-lang="contactSubtitle">Estou aberto a oportunidades e colaborações.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="fade-in-up">
+        <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
+          <div><div class="contact-label">GitHub</div><div class="contact-value">Joaovictoreth1</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-value">joão-victor-68847733b</div></div>
+        </a>
+        <button id="emailButton2" class="contact-card">
+          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><div class="contact-label">Email</div><div class="contact-value">joaovictor.business2005@gmail.com</div></div>
+        </button>
+      </div>
+      <div class="availability-card fade-in-up" style="transition-delay:200ms">
+        <div class="availability-status" data-lang="availStatus">Disponível para oportunidades</div>
+        <h3 data-lang="availTitle">Pronto para novos desafios</h3>
+        <p data-lang="availDesc">Estou buscando oportunidades de estágio e projetos. Se você tem algo interessante, adoraria conversar!</p>
+        <a href="https://github.com/Joaovictoreth1" target="_blank" class="btn btn-primary" style="display:inline-flex;position:relative;z-index:1;">
+          <span data-lang="availBtn">Ver meu trabalho</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h3>João Victor<span>.</span></h3><p>joaovictor.business2005@gmail.com</p></div>
+    <div class="footer-links">
+      <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom"><p data-lang="footerRights">© 2026 João Victor Barros das Merces. Todos os direitos reservados.</p></div>
+</footer>
+
+<!-- EMAIL MODAL -->
+<div id="emailModal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <h3 class="modal-title">📧 Email</h3>
+    <p class="modal-subtitle" data-lang="modalSubtitle">Clique para copiar o endereço</p>
+    <div class="modal-email" id="emailAddress">joaovictor.business2005@gmail.com</div>
+    <button id="copyButton" class="modal-copy" data-lang="modalCopy">Copiar email</button>
+  </div>
+</div>
+
+<script>
+// PARTICLES
+(function(){
+  const canvas=document.getElementById('particles');
+  const ctx=canvas.getContext('2d');
+  let W,H,stars=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  function initStars(){
+    stars=[];
+    const n=Math.floor((W*H)/9000);
+    for(let i=0;i<n;i++) stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+0.2,a:Math.random(),speed:Math.random()*0.003+0.001,t:Math.random()*Math.PI*2});
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    stars.forEach(s=>{s.t+=s.speed;const a=(Math.sin(s.t)*0.4+0.6)*s.a;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,210,255,${a})`;ctx.fill();});
+    requestAnimationFrame(draw);
+  }
+  resize();initStars();draw();
+  window.addEventListener('resize',()=>{resize();initStars();});
+})();
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const translations={
+  pt:{
+    navAbout:"Sobre",navSkills:"Habilidades",navProjects:"Projetos",navContact:"Contato",
+    heroWelcome:"Bem-vindo ao meu portfólio",heroTitle:"Desenvolvedor de Software",
+    heroEducation:"Técnico em Informática no SENAC",heroEducation2:"Estudante de ADS na UNICID",
+    heroFocus:"Foco em Programação e Inteligência Artificial",heroCourses:"Cursos complementares na Alura",
+    heroBtnGithub:"Meu GitHub",
+    sectionTagAbout:"Quem sou eu",aboutTitle:"Sobre Mim",aboutSubtitle:"Conheça minha jornada e paixão pela tecnologia.",
+    aboutTag:"Desenvolvedor Iniciante",aboutHeadline:"Transformando ideias em experiências digitais.",
+    aboutP1:"Olá! Sou um desenvolvedor apaixonado por tecnologia. Como iniciante na área, estou focado em absorver conhecimento e aplicá-lo em projetos práticos. Minha jornada é impulsionada pela curiosidade e pelo desejo de construir soluções elegantes e funcionais.",
+    aboutP2:"Curso Técnico em Informática no SENAC e Análise e Desenvolvimento de Sistemas na UNICID — e aprimoro minhas habilidades com os cursos da:",
+    statTech:"Tecnologias",statAge:"Anos",statCuriosity:"Curiosidade",statDedication:"Dedicação",
+    sectionTagSkills:"Tecnologias",skillsTitle:"Minhas Habilidades",skillsSubtitle:"Tecnologias que estou aprendendo e utilizando em projetos.",
+    sectionTagProjects:"Portfólio",projectsTitle:"Meus Projetos",projectsSubtitle:"Projetos desenvolvidos durante minha jornada de aprendizado.",
+    sectionTagContact:"Contato",contactTitle:"Vamos Conversar",contactSubtitle:"Estou aberto a oportunidades e colaborações.",
+    availStatus:"Disponível para oportunidades",availTitle:"Pronto para novos desafios",
+    availDesc:"Estou buscando oportunidades de estágio e projetos. Se você tem algo interessante, adoraria conversar!",
+    availBtn:"Ver meu trabalho",
+    footerRights:"© 2026 João Victor Barros das Merces. Todos os direitos reservados.",
+    modalSubtitle:"Clique para copiar o endereço",modalCopy:"Copiar email"
+  },
+  en:{
+    navAbout:"About",navSkills:"Skills",navProjects:"Projects",navContact:"Contact",
+    heroWelcome:"Welcome to my portfolio",heroTitle:"Software Developer",
+    heroEducation:"IT Technician at SENAC",heroEducation2:"ADS Student at UNICID",
+    heroFocus:"Focus on Programming and Artificial Intelligence",heroCourses:"Complementary courses at Alura",
+    heroBtnGithub:"My GitHub",
+    sectionTagAbout:"Who I am",aboutTitle:"About Me",aboutSubtitle:"Get to know my journey and passion for technology.",
+    aboutTag:"Junior Developer",aboutHeadline:"Transforming ideas into digital experiences.",
+    aboutP1:"Hello! I'm a developer passionate about technology. As a beginner, I'm focused on absorbing knowledge and applying it to practical projects. My journey is driven by curiosity and the desire to build elegant solutions.",
+    aboutP2:"I'm studying IT Technician at SENAC and Systems Development at UNICID — and improving my skills with courses from:",
+    statTech:"Technologies",statAge:"Years old",statCuriosity:"Curiosity",statDedication:"Dedication",
+    sectionTagSkills:"Technologies",skillsTitle:"My Skills",skillsSubtitle:"Technologies I'm learning and using in projects.",
+    sectionTagProjects:"Portfolio",projectsTitle:"My Projects",projectsSubtitle:"Projects developed during my learning journey.",
+    sectionTagContact:"Contact",contactTitle:"Let's Talk",contactSubtitle:"I'm open to opportunities and collaborations.",
+    availStatus:"Available for opportunities",availTitle:"Ready for new challenges",
+    availDesc:"I'm actively looking for internship opportunities. If you have an interesting project, I'd love to chat!",
+    availBtn:"See my work",
+    footerRights:"© 2026 João Victor Barros das Merces. All rights reserved.",
+    modalSubtitle:"Click to copy the address",modalCopy:"Copy email"
+  }
+};
+
+const skills=[
+  {name:'JavaScript',icon:'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'},
+  {name:'Python',    icon:'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg'},
+  {name:'C#',        icon:'https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png'},
+  {name:'HTML5',     icon:'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg'},
+  {name:'CSS3',      icon:'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg'},
+  {name:'Java',      icon:'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png'},
+  {name:'Git',       icon:'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg'}
+];
+
+let currentLang=localStorage.getItem('language')||'pt';
+let currentTheme=localStorage.getItem('theme')||'dark';
+
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);currentTheme=t;localStorage.setItem('theme',t);}
+function applyLanguage(lang){
+  document.documentElement.lang=lang;currentLang=lang;
+  document.getElementById('lang-toggle').textContent=lang.toUpperCase();
+  localStorage.setItem('language',lang);
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    const k=el.getAttribute('data-lang');
+    if(translations[lang][k]!==undefined) el.textContent=translations[lang][k];
+  });
+  renderProjects();
+}
+
+function populateSkills(){
+  const g=document.getElementById('skills-grid');g.innerHTML='';
+  skills.forEach((s,i)=>{
+    const el=document.createElement('div');
+    el.className='skill-card fade-in-up';
+    el.style.transitionDelay=`${i*70}ms`;
+    el.innerHTML=`<img src="${s.icon}" alt="${s.name}" loading="lazy"><h3>${s.name}</h3>`;
+    g.appendChild(el);
+  });observeAll();
+}
+
+// PROJECTS
+function renderProjects(){
+  const projects=[
+    {
+      title:{pt:'CyberEdge Gym',en:'CyberEdge Gym'},
+      desc:{
+        pt:'Landing page para solução de Edge Computing em academias. Sistema offline-first com controle de acesso, app de treinos e gestão inteligente.',
+        en:'Landing page for an Edge Computing solution for gyms. Offline-first system with access control, workout app and smart management.'
+      },
+      features:{
+        pt:['Partículas + cubo 3D animados em Canvas API','Cursor personalizado com efeito neon','Loader com sequência de boot','Layout Bento Grid responsivo','FAQ interativo + formulário de contato'],
+        en:['Canvas API particles + animated 3D cube','Custom neon cursor effect','Boot sequence loader','Responsive Bento Grid layout','Interactive FAQ + contact form']
+      },
+      tags:['HTML5','CSS3','JavaScript','Canvas API'],
+      live:'https://cyberedgegym.shop',
+      github:'https://github.com/Joaovictoreth1',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`
+    },
+    {
+      title:{pt:'Mais projetos em breve',en:'More projects coming soon'},
+      desc:{
+        pt:'Estou trabalhando em novos projetos. Fique atento ao meu GitHub!',
+        en:"I'm working on new projects. Stay tuned to my GitHub!"
+      },
+      features:null,
+      tags:['JavaScript','Python','C#'],
+      live:null,
+      github:'https://github.com/Joaovictoreth1',
+      icon:`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
+    }
+  ];
+
+  const g=document.getElementById('projects-grid');g.innerHTML='';
+  projects.forEach((p,i)=>{
+    const el=document.createElement('div');
+    el.className='project-card fade-in-up';
+    el.style.transitionDelay=`${i*100}ms`;
+
+    const liveBtn=p.live
+      ?`<a href="${p.live}" target="_blank" rel="noopener noreferrer" class="project-link" title="Ver site ao vivo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>`:'';
+
+    const featuresHTML=p.features
+      ?`<ul style="margin-top:0.75rem;list-style:none;display:flex;flex-direction:column;gap:0.3rem;">
+          ${p.features[currentLang].map(f=>`
+            <li style="font-size:0.72rem;color:var(--text2);padding-left:14px;position:relative;">
+              <span style="position:absolute;left:0;color:var(--accent);">→</span>${f}
+            </li>`).join('')}
+        </ul>`:'';
+
+    el.innerHTML=`
+      <div class="project-header">
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+          <div class="project-icon">${p.icon}</div>
+          <div>
+            <div class="project-title" style="margin-bottom:0">${p.title[currentLang]}</div>
+            ${p.live?`<div style="font-size:0.62rem;color:#56d995;font-family:'Sora',sans-serif;letter-spacing:0.06em;margin-top:2px;">● LIVE</div>`:''}
+          </div>
+        </div>
+        <div style="display:flex;gap:0.4rem">
+          ${liveBtn}
+          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">${p.desc[currentLang]}</div>
+        ${featuresHTML}
+        <div class="project-tags" style="margin-top:1rem">${p.tags.map(x=>`<span class="project-tag">${x}</span>`).join('')}</div>
+      </div>`;
+    g.appendChild(el);
+  });observeAll();
+}
+
+// TERMINAL
+const codeLines=[
+  {v:'const joaoVictor = {',                             h:'<span class="token keyword">const</span> joaoVictor = {'},
+  {v:'  nome: "João Victor B. das Merces",',             h:'  <span class="token property">nome</span>: <span class="token string">"João Victor B. das Merces"</span>,'},
+  {v:'  idade: 20,',                                     h:'  <span class="token property">idade</span>: <span class="token number">20</span>,'},
+  {v:'  tecnico: "Informática - SENAC",',                h:'  <span class="token property">tecnico</span>: <span class="token string">"Informática - SENAC"</span>,'},
+  {v:'  faculdade: "ADS - UNICID",',                     h:'  <span class="token property">faculdade</span>: <span class="token string">"ADS - UNICID"</span>,'},
+  {v:'  foco: ["Programação", "IA"],',                   h:'  <span class="token property">foco</span>: [<span class="token string">"Programação"</span>, <span class="token string">"IA"</span>],'},
+  {v:'  habilidades: [',                                 h:'  <span class="token property">habilidades</span>: ['},
+  {v:'    "JavaScript", "Python",',                      h:'    <span class="token string">"JavaScript"</span>, <span class="token string">"Python"</span>,'},
+  {v:'    "C#", "HTML5", "Java", "Git"',                 h:'    <span class="token string">"C#"</span>, <span class="token string">"HTML5"</span>, <span class="token string">"Java"</span>, <span class="token string">"Git"</span>'},
+  {v:'  ],',                                             h:'  ],'},
+  {v:'  projetos: ["CyberEdge Gym"],',                   h:'  <span class="token property">projetos</span>: [<span class="token string">"CyberEdge Gym"</span>],'},
+  {v:'  contato: {',                                     h:'  <span class="token property">contato</span>: {'},
+  {v:'    email: "joaovictor.business2005@gmail.com",',  h:'    <span class="token property">email</span>: <span class="token string">"joaovictor.business2005@gmail.com"</span>,'},
+  {v:'    github: "Joaovictoreth1"',                     h:'    <span class="token property">github</span>: <span class="token string">"Joaovictoreth1"</span>'},
+  {v:'  }',                                              h:'  }'},
+  {v:'};',                                               h:'};'}
+];
+let li=0,ci=0;
+const cb=document.getElementById('code-block');
+function buildHTML(done,partial){
+  const lines=[];
+  for(let i=0;i<done;i++) lines.push(codeLines[i].h);
+  if(done<codeLines.length) lines.push(codeLines[done].v.substring(0,partial)+'<span class="cursor-blink"></span>');
+  return lines.join('<br>');
+}
+function typeCode(){
+  if(li>=codeLines.length){cb.innerHTML=codeLines.map(l=>l.h).join('<br>');return;}
+  if(ci<codeLines[li].v.length){ci++;cb.innerHTML=buildHTML(li,ci);setTimeout(typeCode,16);}
+  else{li++;ci=0;setTimeout(typeCode,55);}
+}
+setTimeout(typeCode,1200);
+
+// SCROLL
+const bar=document.getElementById('scroll-progress');
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  bar.style.width=p+'%';
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// OBSERVER
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+function observeAll(){document.querySelectorAll('.fade-in-up').forEach(el=>obs.observe(el));}
+
+// MODAL
+const modal=document.getElementById('emailModal');
+const copyBtn=document.getElementById('copyButton');
+const emailText=document.getElementById('emailAddress').textContent;
+function openModal(){modal.classList.add('visible');}
+document.getElementById('emailButton').addEventListener('click',openModal);
+document.getElementById('emailButton2').addEventListener('click',openModal);
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('visible');});
+copyBtn.addEventListener('click',()=>{
+  navigator.clipboard.writeText(emailText).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=emailText;
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+  });
+  const orig=copyBtn.textContent;
+  copyBtn.textContent='✓ Copiado!';
+  setTimeout(()=>{copyBtn.textContent=orig;},2000);
+});
+
+// MOBILE MENU
+const burger=document.getElementById('hamburger');
+const links=document.getElementById('nav-links');
+burger.addEventListener('click',()=>links.classList.toggle('mobile-open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('mobile-open')));
+
+// TOGGLES
+document.getElementById('theme-toggle').addEventListener('click',()=>applyTheme(currentTheme==='dark'?'light':'dark'));
+document.getElementById('lang-toggle').addEventListener('click',()=>applyLanguage(currentLang==='pt'?'en':'pt'));
+
+// INIT
+applyTheme(currentTheme);
+applyLanguage(currentLang);
+populateSkills();
+observeAll();
+});
+</script>
+</body>
+</html>
