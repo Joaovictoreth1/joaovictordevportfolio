@@ -1,727 +1,1638 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Victor Barros das Merces | Portfolio</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #05080d;
-  --bg2: #0c1018;
-  --bg3: #111827;
-  --border: rgba(255,255,255,0.08);
-  --border-accent: rgba(249,115,22,0.4);
-  --text: #f1f5f9;
-  --text2: #94a3b8;
-  --accent: #f97316;
-  --accent2: #fb923c;
-  --violet: #b5b2ff;
-  --violet2: #a78bfa;
-  --glow: rgba(249,115,22,0.2);
-}
-[data-theme="light"] {
-  --bg: #f8fafc;
-  --bg2: #ffffff;
-  --bg3: #f1f5f9;
-  --border: rgba(0,0,0,0.08);
-  --border-accent: rgba(37,99,235,0.4);
-  --text: #0f172a;
-  --text2: #64748b;
-  --accent: #2563eb;
-  --accent2: #3b82f6;
-  --violet: #7c3aed;
-  --violet2: #6d28d9;
-  --glow: rgba(37,99,235,0.15);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);transition:background 0.4s,color 0.4s;overflow-x:hidden;}
+    <!-- =======================================================================
+         1. METADADOS E CONFIGURAÇÕES DE SEO EMPRESARIAIS (ADVANCED)
+         ======================================================================= -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>João Victor Barros | Software Engineer & Arquitetura de Soluções</title>
+    
+    <meta name="description" content="Portfólio de João Victor Barros das Merces. Especialista em Engenharia de Software, JavaScript, Python, C# e ecossistemas Linux. Foco em escalabilidade e Clean Code.">
+    <meta name="keywords" content="Desenvolvedor, Programador, Full Stack, Front-end, Back-end, JavaScript, Python, C#, Node.js, Linux, Portfólio, Dev, Engenharia, API, UI/UX">
+    <meta name="author" content="João Victor Barros das Merces">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#f97316">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="JV Code">
 
-#scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--violet));z-index:200;transition:width 0.1s;}
-#particles{position:fixed;inset:0;pointer-events:none;z-index:0;}
-[data-theme="light"] #particles{opacity:0.12;}
-.bottom-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:900px;height:400px;background:radial-gradient(ellipse at 50% 100%,rgba(249,115,22,0.15) 0%,rgba(167,139,250,0.08) 40%,transparent 70%);pointer-events:none;}
+    <!-- Open Graph (Facebook, LinkedIn, Discord, etc) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="João Victor Barros | Engenharia de Software">
+    <meta property="og:description" content="Transformando lógica complexa em experiências digitais fluidas. Conheça meu portfólio completo.">
+    <meta property="og:url" content="https://joaovictor.dev.br">
+    <meta property="og:site_name" content="JV Portfolio">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/205098315?v=4">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
 
-/* NAVBAR */
-#navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s;}
-#navbar.scrolled{background:rgba(5,8,13,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0.75rem 2rem;}
-[data-theme="light"] #navbar.scrolled{background:rgba(248,250,252,0.88);}
-.nav-logo{font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none;letter-spacing:-0.03em;}
-.nav-logo span{color:var(--accent);}
-.nav-links{display:flex;gap:1.75rem;list-style:none;}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:0.875rem;font-weight:400;font-family:'Sora',sans-serif;transition:color 0.3s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a:hover::after{width:100%;}
-.nav-controls{display:flex;gap:0.5rem;align-items:center;}
-.control-btn{background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:8px;padding:0.4rem 0.75rem;cursor:pointer;color:var(--text);font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.35rem;transition:all 0.2s;font-family:'Sora',sans-serif;backdrop-filter:blur(8px);}
-.control-btn:hover{background:rgba(255,255,255,0.1);}
-[data-theme="light"] .control-btn{background:var(--bg3);}
-.control-btn svg{width:1rem;height:1rem;}
-#theme-toggle .sun-icon{display:none;}
-[data-theme="light"] #theme-toggle .sun-icon{display:block;}
-[data-theme="light"] #theme-toggle .moon-icon{display:none;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="João Victor Barros | Portfolio">
+    <meta name="twitter:description" content="Desenvolvedor Full Stack especializado em arquiteturas robustas e interfaces de alta performance.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/205098315?v=4">
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
-.hero-content{position:relative;z-index:10;width:100%;max-width:1280px;margin:0 auto;padding:6rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-.gradient-title{font-family:'Sora',sans-serif;background:linear-gradient(180deg,#ffffff 0%,#c4b5fd 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.gradient-orange{background:linear-gradient(135deg,var(--accent),var(--accent2),#fbbf24);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:grad 4s ease infinite;}
-@keyframes grad{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);color:var(--text2);padding:0.4rem 1rem;border-radius:8px;font-size:0.75rem;font-weight:500;font-family:'Sora',sans-serif;letter-spacing:0.05em;margin-bottom:1.5rem;backdrop-filter:blur(8px);}
-.hero-badge::before{content:'';width:7px;height:7px;background:#56d995;border-radius:50%;box-shadow:0 0 6px #56d995;animation:pdot 2s infinite;}
-@keyframes pdot{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.hero-title{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:800;line-height:1.1;margin-bottom:0.5rem;letter-spacing:-0.03em;}
-.hero-subtitle{font-family:'Sora',sans-serif;font-size:1.1rem;color:var(--text2);font-weight:300;margin-bottom:2rem;}
-.hero-info{display:flex;flex-direction:column;gap:0.65rem;margin-bottom:2.5rem;}
-.hero-info-item{display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.6);font-size:0.85rem;}
-[data-theme="light"] .hero-info-item{color:var(--text2);}
-.hero-info-icon{width:30px;height:30px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.hero-info-icon svg{width:13px;height:13px;color:var(--accent2);}
-.btn-group{display:flex;gap:0.75rem;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.25rem;border-radius:8px;font-weight:600;font-size:0.875rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;font-family:'Sora',sans-serif;}
-.btn-primary{background:rgba(249,115,22,0.15);color:var(--accent2);border:1px solid rgba(249,115,22,0.4);backdrop-filter:blur(8px);}
-.btn-primary:hover{background:rgba(249,115,22,0.25);border-color:var(--accent);transform:translateY(-1px);box-shadow:0 8px 25px var(--glow);}
-.btn-outline{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(8px);}
-.btn-outline:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.25);transform:translateY(-1px);}
-[data-theme="light"] .btn-outline{color:var(--text2);border-color:var(--border);}
-[data-theme="light"] .btn-outline:hover{color:var(--text);background:var(--bg3);}
+    <!-- =======================================================================
+         2. STRUCTURED DATA (JSON-LD) PARA MOTORES DE BUSCA (SEO NÍVEL MÁXIMO)
+         ======================================================================= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "João Victor Barros das Merces",
+      "jobTitle": "Software Engineer Full Stack",
+      "url": "https://joaovictor.dev.br",
+      "image": "https://avatars.githubusercontent.com/u/205098315?v=4",
+      "description": "Desenvolvedor de Software com foco em JavaScript, Python, C# e Inteligência Artificial.",
+      "sameAs": [
+        "https://github.com/Joaovictoreth1",
+        "https://www.linkedin.com/in/joão-victor-68847733b"
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Universidade Cidade de São Paulo (UNICID)"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "SENAC"
+        }
+      ],
+      "knowsAbout": [
+        "Software Engineering",
+        "JavaScript",
+        "Python",
+        "C#",
+        "Linux",
+        "Edge Computing",
+        "Web Development",
+        "Clean Architecture",
+        "System Design",
+        "DevOps"
+      ]
+    }
+    </script>
 
-/* TERMINAL */
-.terminal-window{background:rgba(5,8,13,0.8);border:1px solid rgba(249,115,22,0.25);border-radius:12px;overflow:hidden;backdrop-filter:blur(16px);box-shadow:0 25px 60px rgba(0,0,0,0.6),0 0 60px rgba(249,115,22,0.04);}
-[data-theme="light"] .terminal-window{background:rgba(255,255,255,0.92);border-color:rgba(37,99,235,0.3);}
-.terminal-header{background:rgba(12,16,24,0.9);padding:0.6rem 1rem;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);}
-[data-theme="light"] .terminal-header{background:#f1f5f9;border-bottom-color:rgba(0,0,0,0.06);}
-.terminal-dots{display:flex;gap:6px;}
-.terminal-dots span{width:11px;height:11px;border-radius:50%;}
-.terminal-filename{margin-left:1rem;font-family:'Fira Code',monospace;font-size:0.72rem;color:rgba(255,255,255,0.3);}
-[data-theme="light"] .terminal-filename{color:var(--text2);}
-.terminal-body{padding:1rem 1.25rem;height:400px;overflow-y:auto;font-family:'Fira Code',monospace;font-size:0.77rem;line-height:1.8;color:#c8d3e0;}
-[data-theme="light"] .terminal-body{color:#1e293b;}
-.terminal-body::-webkit-scrollbar{width:4px;}
-.terminal-body::-webkit-scrollbar-track{background:transparent;}
-.terminal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
-.token.keyword{color:#c792ea;}[data-theme="light"] .token.keyword{color:#7c3aed;}
-.token.string{color:#c3e88d;}[data-theme="light"] .token.string{color:#166534;}
-.token.property{color:#82aaff;}[data-theme="light"] .token.property{color:#1d4ed8;}
-.token.number{color:#f78c6c;}[data-theme="light"] .token.number{color:#b45309;}
-.cursor-blink{display:inline-block;width:7px;height:1em;background:var(--accent);vertical-align:text-bottom;animation:blink 1s step-end infinite;}
-@keyframes blink{50%{opacity:0;}}
+    <!-- =======================================================================
+         3. PRECONNECTS E FONTES (OTIMIZAÇÃO DE CARREGAMENTO)
+         ======================================================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bibliotecas Externas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-/* SECTIONS */
-.section{padding:6rem 1.5rem;position:relative;}
-.container{max-width:1200px;margin:0 auto;}
-.section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent);}
-[data-theme="light"] .section-divider{background:linear-gradient(90deg,transparent,rgba(0,0,0,0.07),transparent);}
-.section-header{text-align:center;margin-bottom:4rem;}
-.section-tag{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent);font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem;}
-.section-tag::before{content:'//';opacity:0.45;}
-.section-title{font-family:'Sora',sans-serif;font-size:clamp(1.75rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;}
-.section-subtitle{font-size:0.95rem;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.7;}
+    <!-- =======================================================================
+         4. ARQUITETURA CSS (DESIGN SYSTEM, TOKENS, KEYFRAMES E COMPONENTES)
+         ======================================================================= -->
+    <style>
+        /* ---------------------------------------------------------------------
+           4.1. DESIGN TOKENS GLOBAIS (CORE VARIABLES)
+           --------------------------------------------------------------------- */
+        :root {
+            /* Escala de Cores Base (Dark Theme Default) */
+            --bg-base: #03060a;
+            --bg-surface: #0a0f18;
+            --bg-surface-elevated: rgba(15, 20, 32, 0.65);
+            --bg-surface-solid: #111827;
+            
+            /* Escala de Bordas e Divisores */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-medium: rgba(255, 255, 255, 0.15);
+            --border-active: rgba(249, 115, 22, 0.5);
+            
+            /* Escala de Texto */
+            --text-heading: #f8fafc;
+            --text-body: #94a3b8;
+            --text-muted: #64748b;
+            
+            /* Paleta da Marca (Brand Colors) */
+            --brand-primary: #f97316;       /* Orange 500 */
+            --brand-primary-dark: #c2410c;  /* Orange 700 */
+            --brand-secondary: #8b5cf6;     /* Violet 500 */
+            --brand-accent: #10b981;        /* Emerald 500 */
+            --brand-warning: #f59e0b;       /* Amber 500 */
+            --brand-error: #ef4444;         /* Red 500 */
+            
+            /* Efeitos de Glow (Sombras luminosas) */
+            --glow-primary: rgba(249, 115, 22, 0.15);
+            --glow-primary-strong: rgba(249, 115, 22, 0.4);
+            --glow-secondary: rgba(139, 92, 246, 0.15);
+            --glow-matrix: rgba(16, 185, 129, 0.2);
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;}
-.about-image-container{position:relative;width:260px;height:260px;margin:0 auto;}
-.ring-wrap{position:absolute;inset:-8px;border-radius:50%;padding:2px;background:conic-gradient(var(--accent),var(--violet2),var(--accent2),var(--accent));animation:spin 7s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.ring-inner{width:100%;height:100%;background:var(--bg);border-radius:50%;}
-.about-image-container img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:cover;border-radius:50%;z-index:1;}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;margin-top:1.5rem;}
-.stat-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;transition:all 0.3s;backdrop-filter:blur(8px);}
-[data-theme="light"] .stat-card{background:var(--bg3);}
-.stat-card:hover{border-color:var(--border-accent);transform:translateY(-2px);box-shadow:0 8px 24px var(--glow);}
-.stat-number{font-family:'Sora',sans-serif;font-size:1.7rem;font-weight:800;color:var(--accent);}
-.stat-label{font-size:0.7rem;color:var(--text2);margin-top:0.2rem;}
-.tag{display:inline-block;padding:0.2rem 0.7rem;background:rgba(249,115,22,0.08);color:var(--accent2);border:1px solid rgba(249,115,22,0.2);border-radius:6px;font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;}
-.about-text h3{font-family:'Sora',sans-serif;font-size:1.55rem;font-weight:700;margin-bottom:1rem;letter-spacing:-0.02em;}
-.about-text p{color:var(--text2);line-height:1.8;margin-bottom:1rem;font-size:0.92rem;}
-.alura-logo{height:28px;opacity:0.6;transition:opacity 0.3s;filter:brightness(1.5);}
-.alura-logo:hover{opacity:1;}
-[data-theme="light"] .alura-logo{filter:none;opacity:0.8;}
+            /* Tipografia */
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Sora', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
 
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
-.skill-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1rem;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;backdrop-filter:blur(8px);}
-[data-theme="light"] .skill-card{background:var(--bg2);}
-.skill-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(249,115,22,0.08),transparent 70%);opacity:0;transition:opacity 0.3s;}
-.skill-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.3),0 0 20px var(--glow);}
-.skill-card:hover::before{opacity:1;}
-.skill-card img{width:46px;height:46px;object-fit:contain;margin:0 auto 0.75rem;display:block;position:relative;z-index:1;}
-.skill-card h3{font-weight:600;font-size:0.85rem;position:relative;z-index:1;font-family:'Sora',sans-serif;}
+            /* Configurações de Transição */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-/* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem;}
-.project-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;backdrop-filter:blur(8px);}
-[data-theme="light"] .project-card{background:var(--bg2);}
-.project-card:hover{border-color:rgba(249,115,22,0.3);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3),0 0 30px var(--glow);}
-.project-header{padding:1.25rem 1.5rem;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
-[data-theme="light"] .project-header{background:var(--bg3);}
-.project-icon{width:40px;height:40px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
-.project-link{width:29px;height:29px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:7px;display:flex;align-items:center;justify-content:center;color:var(--text2);text-decoration:none;transition:all 0.2s;}
-.project-link:hover{color:var(--accent);border-color:var(--border-accent);}
-.project-link svg{width:13px;height:13px;}
-.project-body{padding:1.25rem 1.5rem;flex:1;}
-.project-title{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.5rem;}
-.project-desc{color:var(--text2);font-size:0.83rem;line-height:1.65;margin-bottom:0.5rem;}
-.project-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
-.project-tag{background:rgba(249,115,22,0.07);color:var(--accent2);border:1px solid rgba(249,115,22,0.15);padding:0.15rem 0.55rem;border-radius:5px;font-size:0.7rem;font-weight:600;font-family:'Sora',sans-serif;}
+        /* ---------------------------------------------------------------------
+           4.2. LIGHT THEME OVERRIDES
+           --------------------------------------------------------------------- */
+        [data-theme="light"] {
+            --bg-base: #f1f5f9;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: rgba(255, 255, 255, 0.85);
+            --bg-surface-solid: #e2e8f0;
+            
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-medium: rgba(0, 0, 0, 0.15);
+            --border-active: rgba(37, 99, 235, 0.5);
+            
+            --text-heading: #0f172a;
+            --text-body: #334155;
+            --text-muted: #64748b;
+            
+            --brand-primary: #2563eb;       /* Blue 600 */
+            --brand-primary-dark: #1d4ed8;  /* Blue 700 */
+            --brand-secondary: #7c3aed;     /* Violet 600 */
+            
+            --glow-primary: rgba(37, 99, 235, 0.15);
+            --glow-primary-strong: rgba(37, 99, 235, 0.3);
+            --glow-secondary: rgba(124, 58, 237, 0.15);
+            --glow-matrix: rgba(37, 99, 235, 0.2);
+        }
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
-.contact-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;transition:all 0.3s;text-decoration:none;color:var(--text);width:100%;text-align:left;font-family:'Inter',sans-serif;cursor:pointer;backdrop-filter:blur(8px);}
-[data-theme="light"] .contact-card{background:var(--bg2);}
-.contact-card:hover{border-color:rgba(249,115,22,0.3);transform:translateX(4px);box-shadow:0 8px 24px rgba(0,0,0,0.15);}
-.contact-icon{width:40px;height:40px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.15);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;}
-.contact-icon svg{width:17px;height:17px;}
-.contact-label{font-size:0.7rem;color:var(--text2);margin-bottom:0.1rem;}
-.contact-value{font-weight:600;font-size:0.85rem;}
-.availability-card{background:rgba(255,255,255,0.02);border:1px solid rgba(249,115,22,0.2);border-radius:16px;padding:2rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(10px);}
-.availability-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(249,115,22,0.08),transparent 60%);pointer-events:none;}
-[data-theme="light"] .availability-card{background:var(--bg3);border-color:rgba(37,99,235,0.2);}
-.availability-status{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(86,217,149,0.08);border:1px solid rgba(86,217,149,0.25);color:#56d995;padding:0.35rem 1rem;border-radius:7px;font-size:0.72rem;font-weight:700;font-family:'Sora',sans-serif;margin-bottom:1.25rem;}
-.availability-status::before{content:'';width:7px;height:7px;background:#56d995;border-radius:50%;box-shadow:0 0 6px #56d995;animation:pdot 2s infinite;}
-.availability-card h3{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;margin-bottom:0.75rem;position:relative;}
-.availability-card p{color:var(--text2);line-height:1.7;margin-bottom:1.5rem;font-size:0.88rem;position:relative;}
+        /* ---------------------------------------------------------------------
+           4.3. RESET GLOBAL E OTIMIZAÇÕES
+           --------------------------------------------------------------------- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; 
+        }
 
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 1.5rem;}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;}
-.footer-brand h3{font-family:'Sora',sans-serif;font-weight:800;font-size:1rem;}
-.footer-brand span{color:var(--accent);}
-.footer-brand p{color:var(--text2);font-size:0.78rem;margin-top:0.2rem;}
-.footer-links{display:flex;gap:0.6rem;}
-.footer-link{width:36px;height:36px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text2);text-decoration:none;transition:all 0.2s;}
-[data-theme="light"] .footer-link{background:var(--bg3);}
-.footer-link:hover{color:var(--accent);border-color:var(--border-accent);transform:translateY(-2px);}
-.footer-link svg{width:16px;height:16px;}
-.footer-bottom{max-width:1200px;margin:1.5rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;color:var(--text2);font-size:0.78rem;}
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-size: 16px; 
+        }
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:300;opacity:0;visibility:hidden;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
-.modal-overlay.visible{opacity:1;visibility:visible;}
-.modal-box{background:rgba(12,16,24,0.97);border:1px solid rgba(249,115,22,0.35);border-radius:14px;padding:2rem;width:90%;max-width:370px;transform:scale(0.92);transition:transform 0.3s;text-align:center;backdrop-filter:blur(20px);}
-[data-theme="light"] .modal-box{background:var(--bg2);}
-.modal-overlay.visible .modal-box{transform:scale(1);}
-.modal-title{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:0.4rem;}
-.modal-subtitle{color:var(--text2);font-size:0.83rem;margin-bottom:1.25rem;}
-.modal-email{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:0.875rem;font-weight:600;font-size:0.875rem;margin-bottom:1rem;word-break:break-all;font-family:'Fira Code',monospace;}
-[data-theme="light"] .modal-email{background:var(--bg3);}
-.modal-copy{background:rgba(249,115,22,0.15);color:var(--accent2);border:1px solid rgba(249,115,22,0.4);padding:0.7rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;transition:all 0.3s;font-size:0.875rem;font-family:'Sora',sans-serif;}
-.modal-copy:hover{background:rgba(249,115,22,0.25);transform:translateY(-1px);}
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-heading);
+            transition: background-color var(--transition-smooth), color var(--transition-smooth);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-/* ANIMATIONS */
-.fade-in-up{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
-.fade-in-up.visible{opacity:1;transform:translateY(0);}
-.sec-a{background:var(--bg);}
-.sec-b{background:var(--bg2);}
+        ::selection {
+            background-color: var(--brand-primary);
+            color: #ffffff;
+        }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .hero-content{grid-template-columns:1fr;padding-top:5rem;}
-  .terminal-window{display:none;}
-  .about-grid{grid-template-columns:1fr;}
-  .contact-grid{grid-template-columns:1fr;}
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .nav-links.mobile-open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,8,13,0.97);backdrop-filter:blur(20px);justify-content:center;align-items:center;gap:2.5rem;z-index:99;}
-  [data-theme="light"] .nav-links.mobile-open{background:rgba(248,250,252,0.97);}
-  .nav-links.mobile-open a{font-size:1.4rem;}
-  .footer-inner{flex-direction:column;align-items:center;text-align:center;}
-  .projects-grid{grid-template-columns:1fr;}
-}
-</style>
+        /* Aceleração de Hardware (Otimização de Performance 1) */
+        .hw-accel {
+            transform: translateZ(0);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* ---------------------------------------------------------------------
+           4.4. EFEITOS AMBIENTAIS OTIMIZADOS
+           --------------------------------------------------------------------- */
+        .ambient-light-container {
+            position: fixed; inset: 0; overflow: hidden;
+            pointer-events: none; z-index: 0;
+        }
+
+        /* Adicionado will-change e transform3d para GPU acelerar os glows enormes */
+        .ambient-glow {
+            position: absolute; top: -20vh; left: -10vw;
+            width: 60vw; height: 60vh;
+            background: radial-gradient(circle, var(--glow-secondary) 0%, transparent 60%);
+            filter: blur(80px); 
+            animation: pulseGlow 12s ease-in-out infinite alternate;
+            will-change: transform, opacity;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .ambient-glow-2 {
+            position: absolute; bottom: -20vh; right: -10vw;
+            width: 50vw; height: 50vh;
+            background: radial-gradient(circle, var(--glow-primary) 0%, transparent 60%);
+            filter: blur(80px); 
+            animation: pulseGlow 14s ease-in-out infinite alternate-reverse;
+            will-change: transform, opacity;
+            transform: translate3d(0, 0, 0);
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.4; }
+            50% { transform: scale(1.1) translate3d(5%, 5%, 0); opacity: 0.7; }
+            100% { transform: scale(0.9) translate3d(-5%, -5%, 0); opacity: 0.4; }
+        }
+
+        /* ---------------------------------------------------------------------
+           4.5. CUSTOM CURSOR OTIMIZADO
+           --------------------------------------------------------------------- */
+        .cursor-ring {
+            position: fixed; width: 36px; height: 36px;
+            border: 2px solid var(--brand-primary); border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: width var(--transition-fast), height var(--transition-fast), 
+                        background-color var(--transition-fast), border-color var(--transition-fast);
+            mix-blend-mode: exclusion;
+            will-change: transform;
+        }
+
+        .cursor-dot {
+            position: fixed; width: 6px; height: 6px;
+            background-color: var(--brand-primary); border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+        }
+
+        .cursor-hovering {
+            width: 65px; height: 65px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: transparent; backdrop-filter: blur(4px);
+        }
+
+        .cursor-clicking {
+            width: 25px; height: 25px;
+            background-color: var(--brand-primary);
+        }
+
+        @media (max-width: 1024px) {
+            *, *::before, *::after { cursor: auto !important; }
+            .cursor-ring, .cursor-dot { display: none !important; }
+        }
+
+        /* ---------------------------------------------------------------------
+           4.6. TIPOGRAFIA E COMPONENTES DE SEÇÃO
+           --------------------------------------------------------------------- */
+        section { position: relative; padding: 8rem 5%; z-index: 10; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+
+        .tag-pill {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.4rem 1.2rem; border-radius: 50px;
+            background: var(--glow-primary); border: 1px solid rgba(249, 115, 22, 0.3);
+            color: var(--brand-primary); font-family: var(--font-heading);
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.15em; margin-bottom: 1.5rem;
+        }
+
+        .tag-pill::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background-color: var(--brand-primary); box-shadow: 0 0 10px var(--brand-primary);
+            animation: blinker 2s linear infinite;
+        }
+
+        @keyframes blinker { 50% { opacity: 0.3; } }
+
+        .heading-hero {
+            font-family: var(--font-heading); font-weight: 800;
+            font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.05;
+            margin-bottom: 1.5rem; letter-spacing: -0.03em;
+        }
+
+        .heading-section {
+            font-family: var(--font-heading); font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3rem); color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary), var(--brand-primary));
+            background-size: 200% auto; -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; animation: shineGradient 6s linear infinite;
+        }
+        @keyframes shineGradient { to { background-position: 200% center; } }
+
+        /* ---------------------------------------------------------------------
+           4.7. NAVBAR E UI BUTTONS
+           --------------------------------------------------------------------- */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1.5rem 5%; z-index: 1000; display: flex;
+            justify-content: space-between; align-items: center;
+            transition: all var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%; background: rgba(3, 6, 10, 0.85);
+            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        [data-theme="light"] nav.scrolled { 
+            background: rgba(255, 255, 255, 0.9); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-links a {
+            font-family: var(--font-heading); font-weight: 600;
+            font-size: 0.9rem; color: var(--text-body); position: relative;
+            padding: 0.5rem 0; transition: color var(--transition-fast);
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background: var(--brand-primary); 
+            transition: width var(--transition-smooth);
+        }
+        .nav-links a:hover { color: var(--text-heading); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.8rem 2rem; border-radius: 12px; font-family: var(--font-heading);
+            font-weight: 700; font-size: 0.95rem; text-decoration: none;
+            transition: all var(--transition-bounce); position: relative; overflow: hidden; z-index: 1;
+        }
+        
+        .btn-primary { background: var(--brand-primary); color: #fff; border: 1px solid transparent; }
+        .btn-primary:hover { 
+            transform: translateY(-4px) scale(1.02); 
+            box-shadow: 0 10px 25px var(--glow-primary-strong); 
+            background: var(--brand-primary-dark); 
+        }
+        
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.02); color: var(--text-heading);
+            border: 1px solid var(--border-subtle); backdrop-filter: blur(8px);
+        }
+        .btn-outline:hover { 
+            border-color: var(--brand-primary); color: var(--brand-primary); 
+            transform: translateY(-4px) scale(1.02); background: var(--glow-primary); 
+        }
+
+        /* ---------------------------------------------------------------------
+           4.8. GLASSMORPHISM CARDS E ACORDEÃO (FAQ)
+           --------------------------------------------------------------------- */
+        .glass-card {
+            background: var(--bg-surface-elevated); backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-subtle); 
+            border-radius: 24px; transition: all var(--transition-bounce); 
+            transform-style: preserve-3d; position: relative; overflow: hidden;
+            will-change: transform;
+        }
+        
+        .glass-card::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% -20%, var(--glow-primary), transparent 60%);
+            opacity: 0; transition: opacity var(--transition-smooth); pointer-events: none; z-index: 0;
+        }
+        
+        .glass-card > * { position: relative; z-index: 1; }
+
+        .glass-card:hover {
+            border-color: var(--border-active); transform: translateY(-8px) translateZ(0);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-primary);
+        }
+        [data-theme="light"] .glass-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 20px var(--glow-primary); }
+        .glass-card:hover::after { opacity: 1; }
+
+        /* Estilo para Acordeão FAQ */
+        .faq-item { border-bottom: 1px solid var(--border-subtle); padding: 1.5rem 0; }
+        .faq-question {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; text-align: left; font-family: var(--font-heading);
+            font-weight: 700; font-size: 1.1rem; color: var(--text-heading);
+            background: none; border: none; outline: none; cursor: pointer;
+        }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height var(--transition-smooth);
+            color: var(--text-body); font-size: 0.95rem; margin-top: 0;
+        }
+        .faq-item.active .faq-answer { max-height: 200px; margin-top: 1rem; }
+        .faq-item .faq-icon { transition: transform var(--transition-smooth); }
+        .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--brand-primary); }
+
+        /* ---------------------------------------------------------------------
+           4.9. FOTO RETA COM ANEL NEÓN 3D
+           --------------------------------------------------------------------- */
+        .profile-container {
+            position: relative; width: 320px; height: 320px; margin: 0 auto;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; transform: none; 
+        }
+
+        .profile-glow-ring {
+            position: absolute; width: 105%; height: 105%; border-radius: 50%;
+            background: conic-gradient(
+                var(--brand-primary) 0deg, transparent 90deg, 
+                var(--brand-secondary) 180deg, transparent 270deg, var(--brand-primary) 360deg
+            );
+            animation: rotateGlow 4s linear infinite; z-index: 1; filter: blur(10px);
+            will-change: transform;
+        }
+
+        .profile-image-mask {
+            position: relative; width: 100%; height: 100%; border-radius: 50%;
+            background-color: var(--bg-base); z-index: 2; padding: 6px;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+
+        .profile-image-mask img {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+            filter: contrast(1.1); transition: transform var(--transition-bounce);
+            transform: rotate(0deg); 
+        }
+
+        .profile-container:hover .profile-image-mask img { transform: scale(1.06) rotate(0deg); }
+        @keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* ---------------------------------------------------------------------
+           4.10. TERMINAL HACKER
+           --------------------------------------------------------------------- */
+        .hacker-terminal {
+            background: #11151c; border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            display: flex; flex-direction: column; width: 100%; height: 420px; 
+        }
+
+        .terminal-header-bar {
+            background: #0d1117; padding: 0.75rem 1rem; display: flex; align-items: center; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mac-dots { display: flex; gap: 8px; }
+        .mac-dots div { width: 12px; height: 12px; border-radius: 50%; }
+        .mac-dots .red { background-color: #ff5f56; }
+        .mac-dots .yellow { background-color: #ffbd2e; }
+        .mac-dots .green { background-color: #27c93f; }
+        .terminal-title { margin: 0 auto; color: #8b949e; font-size: 0.8rem; font-family: var(--font-sans); }
+
+        .terminal-content {
+            padding: 1.5rem; flex-grow: 1; overflow-y: auto; font-size: 0.85rem; 
+            line-height: 1.6; color: #c9d1d9; font-family: var(--font-mono);
+            white-space: pre-wrap; text-align: left;
+        }
+
+        .terminal-content::-webkit-scrollbar { width: 6px; }
+        .terminal-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+
+        /* Syntax Highlighting */
+        .term-keyword { color: #569cd6; font-weight: bold; }
+        .term-string { color: #ce9178; }
+        .term-prop { color: #9cdcfe; }
+        .term-comment { color: #6a9955; font-style: italic; }
+        .blinking-cursor { animation: blink 1s step-end infinite; background-color: #c9d1d9; width: 8px; height: 1em; display: inline-block; vertical-align: middle; }
+
+        /* ---------------------------------------------------------------------
+           4.11. TIMELINE DA TRAJETÓRIA E ESTATÍSTICAS
+           --------------------------------------------------------------------- */
+        .timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
+        .timeline-container::after {
+            content: ''; position: absolute; width: 2px; background: var(--border-subtle);
+            top: 0; bottom: 0; left: 50%; margin-left: -1px;
+        }
+        @media (max-width: 768px) { .timeline-container::after { left: 31px; } }
+
+        .stat-box {
+            text-align: center; padding: 2rem; border-radius: 20px;
+            background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);
+        }
+        .stat-number {
+            font-size: 3rem; font-weight: 800; font-family: var(--font-heading);
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* ---------------------------------------------------------------------
+           4.12. ANIMAÇÕES GERAIS E UTILITÁRIOS
+           --------------------------------------------------------------------- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .social-svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* Utilitários de Margem Expandidos (Mantendo o número de linhas elevado mas performático) */
+        .mt-1 { margin-top: 0.25rem; } .mt-2 { margin-top: 0.5rem; } .mt-3 { margin-top: 0.75rem; } .mt-4 { margin-top: 1rem; } .mt-5 { margin-top: 1.25rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; } .mt-10 { margin-top: 2.5rem; } .mt-12 { margin-top: 3rem; } .mt-16 { margin-top: 4rem; } .mt-20 { margin-top: 5rem; } .mt-24 { margin-top: 6rem; } .mt-32 { margin-top: 8rem; }
+        .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; } .mb-3 { margin-bottom: 0.75rem; } .mb-4 { margin-bottom: 1rem; } .mb-5 { margin-bottom: 1.25rem; } .mb-6 { margin-bottom: 1.5rem; } .mb-8 { margin-bottom: 2rem; } .mb-10 { margin-bottom: 2.5rem; } .mb-12 { margin-bottom: 3rem; } .mb-16 { margin-bottom: 4rem; } .mb-20 { margin-bottom: 5rem; } .mb-24 { margin-bottom: 6rem; } .mb-32 { margin-bottom: 8rem; }
+        .ml-1 { margin-left: 0.25rem; } .ml-2 { margin-left: 0.5rem; } .ml-3 { margin-left: 0.75rem; } .ml-4 { margin-left: 1rem; } .ml-5 { margin-left: 1.25rem; } .ml-6 { margin-left: 1.5rem; } .ml-8 { margin-left: 2rem; } .ml-10 { margin-left: 2.5rem; } .ml-12 { margin-left: 3rem; }
+        .mr-1 { margin-right: 0.25rem; } .mr-2 { margin-right: 0.5rem; } .mr-3 { margin-right: 0.75rem; } .mr-4 { margin-right: 1rem; } .mr-5 { margin-right: 1.25rem; } .mr-6 { margin-right: 1.5rem; } .mr-8 { margin-right: 2rem; } .mr-10 { margin-right: 2.5rem; } .mr-12 { margin-right: 3rem; }
+        .p-0 { padding: 0; } .pt-1 { padding-top: 0.25rem; } .pt-2 { padding-top: 0.5rem; } .pt-3 { padding-top: 0.75rem; } .pt-4 { padding-top: 1rem; } .pt-5 { padding-top: 1.25rem; } .pt-6 { padding-top: 1.5rem; } .pt-8 { padding-top: 2rem; } .pt-10 { padding-top: 2.5rem; } .pt-12 { padding-top: 3rem; } .pt-16 { padding-top: 4rem; } .pt-20 { padding-top: 5rem; } .pt-24 { padding-top: 6rem; } .pt-32 { padding-top: 8rem; }
+        .pb-1 { padding-bottom: 0.25rem; } .pb-2 { padding-bottom: 0.5rem; } .pb-3 { padding-bottom: 0.75rem; } .pb-4 { padding-bottom: 1rem; } .pb-5 { padding-bottom: 1.25rem; } .pb-6 { padding-bottom: 1.5rem; } .pb-8 { padding-bottom: 2rem; } .pb-10 { padding-bottom: 2.5rem; } .pb-12 { padding-bottom: 3rem; } .pb-16 { padding-bottom: 4rem; } .pb-20 { padding-bottom: 5rem; } .pb-24 { padding-bottom: 6rem; } .pb-32 { padding-bottom: 8rem; }
+        .pl-1 { padding-left: 0.25rem; } .pl-2 { padding-left: 0.5rem; } .pl-3 { padding-left: 0.75rem; } .pl-4 { padding-left: 1rem; } .pl-5 { padding-left: 1.25rem; } .pl-6 { padding-left: 1.5rem; } .pl-8 { padding-left: 2rem; } .pl-10 { padding-left: 2.5rem; } .pl-12 { padding-left: 3rem; }
+        .pr-1 { padding-right: 0.25rem; } .pr-2 { padding-right: 0.5rem; } .pr-3 { padding-right: 0.75rem; } .pr-4 { padding-right: 1rem; } .pr-5 { padding-right: 1.25rem; } .pr-6 { padding-right: 1.5rem; } .pr-8 { padding-right: 2rem; } .pr-10 { padding-right: 2.5rem; } .pr-12 { padding-right: 3rem; }
+        .text-uppercase { text-transform: uppercase; } .text-lowercase { text-transform: lowercase; } .text-capitalize { text-transform: capitalize; }
+        .font-weight-light { font-weight: 300; } .font-weight-normal { font-weight: 400; } .font-weight-medium { font-weight: 500; } .font-weight-semibold { font-weight: 600; } .font-weight-bold { font-weight: 700; } .font-weight-extrabold { font-weight: 800; }
+        .z-n1 { z-index: -1; } .z-0 { z-index: 0; } .z-10 { z-index: 10; } .z-20 { z-index: 20; } .z-30 { z-index: 30; } .z-40 { z-index: 40; } .z-50 { z-index: 50; } .z-100 { z-index: 100; } .z-auto { z-index: auto; }
+    </style>
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-<div id="scroll-progress"></div>
+    <!-- BACKGROUND ENGINES OTIMIZADAS -->
+    <div class="ambient-light-container"><div class="ambient-glow"></div><div class="ambient-glow-2"></div></div>
+    <!-- Apenas Matrix Engine para Performance - Partículas Removidas para não sobrecarregar a GPU -->
+    <canvas id="matrix-canvas" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; opacity:0.1;"></canvas>
+    
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">JV<span>.</span></a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about" data-lang="navAbout">Sobre</a></li>
-    <li><a href="#skills" data-lang="navSkills">Habilidades</a></li>
-    <li><a href="#projects" data-lang="navProjects">Projetos</a></li>
-    <li><a href="#contact" data-lang="navContact">Contato</a></li>
-  </ul>
-  <div class="nav-controls">
-    <button id="theme-toggle" class="control-btn" aria-label="Alternar tema">
-      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.93 7.07-1.41-1.41M6.34 6.34 4.93 4.93"/></svg>
-      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-    </button>
-    <button id="lang-toggle" class="control-btn">PT</button>
-    <button class="hamburger" id="hamburger" aria-label="Abrir menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero sec-a">
-  <div class="bottom-glow" style="top:auto;bottom:-100px;"></div>
-  <div class="hero-content">
-    <div>
-      <div class="hero-badge fade-in-up" data-lang="heroWelcome">Bem-vindo ao meu portfólio</div>
-      <h1 class="hero-title fade-in-up" style="transition-delay:100ms">
-        <span class="gradient-title">João Victor</span><br>
-        <span class="gradient-orange">Barros das Merces</span>
-      </h1>
-      <p class="hero-subtitle fade-in-up" style="transition-delay:200ms">
-        <span data-lang="heroTitle">Desenvolvedor de Software</span>
-      </p>
-      <div class="hero-info fade-in-up" style="transition-delay:300ms">
-        <div class="hero-info-item">
-          <div class="hero-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <span data-lang="heroEducation">Técnico em Informática no SENAC</span>
+    <!-- =======================================================================
+         5. NAVBAR COMPONENTS (MULTILÍNGUE)
+         ======================================================================= -->
+    <nav id="navbar">
+        <div class="font-sora font-extrabold text-2xl tracking-tighter text-[var(--text-heading)] interactive">
+            JV<span style="color: var(--brand-primary)">.</span>
         </div>
-        <div class="hero-info-item">
-          <div class="hero-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
-          </div>
-          <span data-lang="heroEducation2">Estudante de ADS na UNICID</span>
+        
+        <ul class="nav-links hidden lg:flex gap-8 interactive">
+            <li><a href="#inicio" data-i18n="nav_home">Início</a></li>
+            <li><a href="#sobre" data-i18n="nav_about">Perfil</a></li>
+            <li><a href="#servicos" data-i18n="nav_services">Serviços</a></li>
+            <li><a href="#trajetoria" data-i18n="nav_timeline">Trajetória</a></li>
+            <li><a href="#stack" data-i18n="nav_stack">Stack</a></li>
+            <li><a href="#projetos" data-i18n="nav_projects">Projetos</a></li>
+        </ul>
+
+        <div class="flex gap-4 interactive items-center">
+            <select id="lang-select" class="p-2 rounded-lg border border-[var(--border-subtle)] text-xs font-bold text-[var(--text-heading)] bg-transparent focus:outline-none focus:border-[var(--brand-primary)] cursor-pointer">
+                <option value="pt" class="text-black">PT</option>
+                <option value="en" class="text-black">EN</option>
+                <option value="es" class="text-black">ES</option>
+            </select>
+            
+            <button id="theme-btn" class="p-2 rounded-full border border-[var(--border-subtle)] text-[var(--text-heading)] hover:bg-[var(--border-subtle)] transition">
+                <i data-lucide="sun" id="icon-sun" class="hidden w-5 h-5"></i>
+                <i data-lucide="moon" id="icon-moon" class="w-5 h-5"></i>
+            </button>
+            <a href="#contato" class="btn btn-primary hidden md:flex">
+                <svg class="social-svg w-4 h-4 mr-2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <span data-i18n="nav_contact">Contato</span>
+            </a>
         </div>
-        <div class="hero-info-item">
-          <div class="hero-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-          </div>
-          <span data-lang="heroFocus">Foco em Programação e Inteligência Artificial</span>
+    </nav>
+
+    <!-- =======================================================================
+         6. HERO SECTION
+         ======================================================================= -->
+    <section id="inicio" class="min-h-screen flex items-center pt-28">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full relative z-10">
+            
+            <div class="reveal">
+                <div class="tag-pill" data-i18n="hero_badge">Engenheiro de Software Junior</div>
+                <h1 class="heading-hero">
+                    <span data-i18n="hero_title_1">Lógica pura,</span><br>
+                    <span class="text-gradient" data-i18n="hero_title_2">Arquitetura Sólida.</span>
+                </h1>
+                <p class="text-[var(--text-body)] text-lg mb-8 max-w-xl leading-relaxed" data-i18n="hero_desc">
+                    Especialista em construir arquiteturas robustas no <strong>Back-end</strong> (Python/C#) e interfaces dinâmicas no <strong>Front-end</strong> (JavaScript). Escrevo código limpo, escalável e centrado no usuário, dominando desde o servidor Linux até a UI.
+                </p>
+                <div class="flex flex-wrap gap-4 interactive">
+                    <a href="#projetos" class="btn btn-primary">
+                        <span data-i18n="hero_btn_projects">Ver Meus Projetos</span>
+                    </a>
+                    <a href="https://github.com/Joaovictoreth1" target="_blank" class="btn btn-outline">
+                        <svg class="social-svg w-5 h-5 mr-2" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                        <span data-i18n="hero_btn_github">Acessar GitHub</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal Hacker Emulado -->
+            <div class="reveal tilt-card interactive" style="transition-delay: 200ms;">
+                <div class="hacker-terminal">
+                    <div class="terminal-header-bar">
+                        <div class="mac-dots"><div class="red"></div><div class="yellow"></div><div class="green"></div></div>
+                        <div class="terminal-title">jvbm_profile.js</div>
+                    </div>
+                    <pre class="terminal-content" id="terminal-content"></pre>
+                </div>
+            </div>
+
         </div>
-        <div class="hero-info-item">
-          <div class="hero-info-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
-          </div>
-          <span data-lang="heroCourses">Cursos complementares na Alura</span>
+    </section>
+
+    <!-- =======================================================================
+         7. SEÇÃO SOBRE & ESTATÍSTICAS
+         ======================================================================= -->
+    <section id="sobre" class="bg-[var(--bg-surface)]">
+        <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+            
+            <!-- Foto de Perfil com Física e Anel Neón -->
+            <div class="w-full lg:w-1/3 max-w-[350px] reveal interactive">
+                <div class="profile-container tilt-card">
+                    <div class="profile-glow-ring"></div>
+                    <div class="profile-image-mask">
+                        <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor Barros">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contexto Pessoal -->
+            <div class="w-full lg:w-2/3 reveal" style="transition-delay: 200ms;">
+                <div class="tag-pill" data-i18n="about_badge">Mindset & Cultura</div>
+                <h2 class="heading-section mb-6">João Victor Barros das Merces</h2>
+                
+                <p class="text-[var(--text-body)] text-lg mb-6 leading-relaxed" data-i18n="about_p1">
+                    Sou um desenvolvedor movido pela curiosidade científica de entender <strong>como a engrenagem funciona por debaixo dos panos</strong>. Minha base abrange lógicas complexas, algoritmos pesados, manipulação de dados e engenharia de software estruturada.
+                </p>
+                <p class="text-[var(--text-body)] text-lg mb-8 leading-relaxed" data-i18n="about_p2">
+                    Atualmente curso <strong>Análise e Desenvolvimento de Sistemas (UNICID)</strong> e <strong>Técnico em Informática (SENAC)</strong>. Meu objetivo diário é resolver problemas reais de negócios combinando as melhores arquiteturas de Back-end (APIs robustas) e Front-end (Interfaces Imersivas).
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+                    <div class="stat-box">
+                        <div class="stat-number counter" data-target="15">0</div>
+                        <div class="text-sm font-bold text-[var(--text-muted)] uppercase mt-2" data-i18n="stat_1">Tecnologias</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number counter" data-target="20">0</div>
+                        <div class="text-sm font-bold text-[var(--text-muted)] uppercase mt-2" data-i18n="stat_2">Anos de Idade</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number counter" data-target="100">0</div>
+                        <div class="text-sm font-bold text-[var(--text-muted)] uppercase mt-2" data-i18n="stat_3">% Clean Code</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">∞</div>
+                        <div class="text-sm font-bold text-[var(--text-muted)] uppercase mt-2" data-i18n="stat_4">Curiosidade</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="btn-group fade-in-up" style="transition-delay:400ms">
-        <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          <span data-lang="heroBtnGithub">Meu GitHub</span>
-        </a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-        <button id="emailButton" class="btn btn-outline">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          Email
-        </button>
-      </div>
-    </div>
-    <div class="fade-in-up" style="transition-delay:500ms">
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span style="background:#ef4444"></span>
-            <span style="background:#f59e0b"></span>
-            <span style="background:#22c55e"></span>
-          </div>
-          <div class="terminal-filename">jvbm_profile.js</div>
+    </section>
+
+    <!-- =======================================================================
+         8. SEÇÃO SERVIÇOS
+         ======================================================================= -->
+    <section id="servicos" class="bg-[var(--bg-base)]">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="section-header reveal">
+                <div class="tag-pill" data-i18n="services_badge">Minhas Soluções</div>
+                <h2 class="heading-section" data-i18n="services_title">O que eu posso fazer por você</h2>
+            </div>
+            
+            <div id="services-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Javascript irá renderizar os serviços aqui usando o DB e i18n -->
+            </div>
         </div>
-        <div class="terminal-body"><code id="code-block"></code></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div class="section-divider"></div>
-
-<!-- ABOUT -->
-<section id="about" class="section sec-b">
-  <div class="container">
-    <div class="section-header fade-in-up">
-      <div class="section-tag" data-lang="sectionTagAbout">Quem sou eu</div>
-      <h2 class="section-title" data-lang="aboutTitle">Sobre Mim</h2>
-      <p class="section-subtitle" data-lang="aboutSubtitle">Conheça minha jornada e paixão pela tecnologia.</p>
-    </div>
-    <div class="about-grid">
-      <div class="fade-in-up">
-        <div class="about-image-container">
-          <div class="ring-wrap"><div class="ring-inner"></div></div>
-          <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor" />
+    <!-- =======================================================================
+         9. SEÇÃO TRAJETÓRIA (TIMELINE)
+         ======================================================================= -->
+    <section id="trajetoria" class="bg-[var(--bg-surface)]">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="section-header reveal">
+                <div class="tag-pill" data-i18n="timeline_badge">Histórico</div>
+                <h2 class="heading-section" data-i18n="timeline_title">Trajetória Acadêmica e Técnica</h2>
+            </div>
+            
+            <div class="timeline-container" id="timeline-container">
+                <!-- Javascript injetará a linha do tempo aqui via MOCK_DB -->
+            </div>
         </div>
-        <div class="about-stats">
-          <div class="stat-card fade-in-up" style="transition-delay:100ms"><div class="stat-number">7+</div><div class="stat-label" data-lang="statTech">Tecnologias</div></div>
-          <div class="stat-card fade-in-up" style="transition-delay:200ms"><div class="stat-number">20</div><div class="stat-label" data-lang="statAge">Anos</div></div>
-          <div class="stat-card fade-in-up" style="transition-delay:300ms"><div class="stat-number">∞</div><div class="stat-label" data-lang="statCuriosity">Curiosidade</div></div>
-          <div class="stat-card fade-in-up" style="transition-delay:400ms"><div class="stat-number">100%</div><div class="stat-label" data-lang="statDedication">Dedicação</div></div>
+    </section>
+
+    <!-- =======================================================================
+         10. TECH STACK (RADAR CHART ENGINE OTIMIZADA)
+         ======================================================================= -->
+    <section id="stack" class="bg-[var(--bg-base)]">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="section-header reveal">
+                <div class="tag-pill" data-i18n="stack_badge">Ecossistema</div>
+                <h2 class="heading-section" data-i18n="stack_title">Ferramentas e Tecnologias</h2>
+            </div>
+            
+            <!-- Layout Híbrido: Gráfico de Radar em Canvas + Cards -->
+            <div class="grid lg:grid-cols-3 gap-12 items-center">
+                
+                <!-- Engine de Gráfico de Radar em Canvas (Construído do Zero) -->
+                <div class="lg:col-span-1 glass-card p-6 reveal flex flex-col items-center justify-center min-h-[350px]">
+                    <h3 class="font-sora font-bold text-[var(--text-heading)] mb-4 text-center">Competency Radar</h3>
+                    <canvas id="radar-chart" width="300" height="300" class="max-w-full"></canvas>
+                </div>
+
+                <!-- Grid de Cards de Tecnologias -->
+                <div id="skills-container" class="lg:col-span-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <!-- Javascript continuará a injetar os cards aqui -->
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="about-text fade-in-up" style="transition-delay:200ms">
-        <div class="tag" data-lang="aboutTag">Desenvolvedor Iniciante</div>
-        <h3 data-lang="aboutHeadline">Transformando ideias em experiências digitais.</h3>
-        <p data-lang="aboutP1">Olá! Sou um desenvolvedor apaixonado por tecnologia. Como iniciante na área, estou focado em absorver conhecimento e aplicá-lo em projetos práticos. Minha jornada é impulsionada pela curiosidade e pelo desejo de construir soluções elegantes e funcionais.</p>
-        <p data-lang="aboutP2">Curso Técnico em Informática no SENAC e Análise e Desenvolvimento de Sistemas na UNICID — e aprimoro minhas habilidades com os cursos da:</p>
-        <a href="https://www.alura.com.br/" target="_blank" rel="noopener noreferrer">
-          <img src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="Alura Logo" class="alura-logo" style="margin-top:0.75rem;">
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div class="section-divider"></div>
+    <!-- =======================================================================
+         11. PROJETOS E PORTFÓLIO
+         ======================================================================= -->
+    <section id="projetos" class="bg-[var(--bg-surface)]">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="section-header reveal">
+                <div class="tag-pill" data-i18n="projects_badge">Deployments</div>
+                <h2 class="heading-section" data-i18n="projects_title">Sistemas em Produção</h2>
+            </div>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript -->
+            </div>
+        </div>
+    </section>
 
-<!-- SKILLS -->
-<section id="skills" class="section sec-a">
-  <div class="container">
-    <div class="section-header fade-in-up">
-      <div class="section-tag" data-lang="sectionTagSkills">Tecnologias</div>
-      <h2 class="section-title" data-lang="skillsTitle">Minhas Habilidades</h2>
-      <p class="section-subtitle" data-lang="skillsSubtitle">Tecnologias que estou aprendendo e utilizando em projetos.</p>
-    </div>
-    <div class="skills-grid" id="skills-grid"></div>
-  </div>
-</section>
+    <!-- =======================================================================
+         12. FAQ (PERGUNTAS FREQUENTES - NOVO RECURSO)
+         ======================================================================= -->
+    <section id="faq" class="bg-[var(--bg-base)]">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="section-header reveal">
+                <div class="tag-pill" data-i18n="faq_badge">Dúvidas</div>
+                <h2 class="heading-section" data-i18n="faq_title">Perguntas Frequentes</h2>
+            </div>
+            
+            <div class="glass-card p-8 reveal" id="faq-container">
+                <!-- Injetado por JS para aplicar traduções facilmente -->
+            </div>
+        </div>
+    </section>
 
-<div class="section-divider"></div>
+    <!-- =======================================================================
+         13. CONTATO E INTEGRAÇÃO (REST API SIMULADA)
+         ======================================================================= -->
+    <section id="contato" class="bg-[var(--bg-surface)]">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 relative z-10">
+            
+            <!-- Info Redes -->
+            <div class="reveal">
+                <div class="tag-pill" data-i18n="contact_badge">Networking</div>
+                <h2 class="heading-section mb-6" data-i18n="contact_title">Iniciar Conexão</h2>
+                <p class="text-[var(--text-body)] text-lg mb-10" data-i18n="contact_desc">Estou aberto a novas propostas de estágio, desenvolvimento de sistemas complexos e arquiteturas cloud. Conecte-se comigo diretamente:</p>
+                
+                <div class="flex flex-col gap-4 interactive">
+                    <div class="glass-card p-6 flex items-center gap-6 hover:bg-[rgba(255,255,255,0.02)] transition">
+                        <div class="w-14 h-14 rounded-xl bg-[var(--glow-primary)] text-[var(--brand-primary)] flex justify-center items-center shrink-0">
+                            <svg class="social-svg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-[var(--text-muted)] font-bold tracking-widest uppercase mb-1" data-i18n="contact_email">Email Principal</p>
+                            <p class="text-[var(--text-heading)] font-mono text-sm sm:text-base break-all">joaovictor.business2005@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" class="glass-card p-6 flex items-center gap-6 hover:bg-[rgba(255,255,255,0.02)] transition">
+                        <div class="w-14 h-14 rounded-xl bg-[var(--glow-secondary)] text-[var(--brand-secondary)] flex justify-center items-center shrink-0">
+                            <svg class="social-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-[var(--text-muted)] font-bold tracking-widest uppercase mb-1" data-i18n="contact_linkedin">Rede Profissional</p>
+                            <p class="text-[var(--text-heading)] font-mono text-sm sm:text-base">LinkedIn Profile</p>
+                        </div>
+                    </a>
 
-<!-- PROJECTS -->
-<section id="projects" class="section sec-b">
-  <div class="container">
-    <div class="section-header fade-in-up">
-      <div class="section-tag" data-lang="sectionTagProjects">Portfólio</div>
-      <h2 class="section-title" data-lang="projectsTitle">Meus Projetos</h2>
-      <p class="section-subtitle" data-lang="projectsSubtitle">Projetos desenvolvidos durante minha jornada de aprendizado.</p>
-    </div>
-    <div class="projects-grid" id="projects-grid"></div>
-  </div>
-</section>
+                    <a href="https://github.com/Joaovictoreth1" target="_blank" class="glass-card p-6 flex items-center gap-6 hover:bg-[rgba(255,255,255,0.02)] transition">
+                        <div class="w-14 h-14 rounded-xl bg-[var(--glow-matrix)] text-[var(--brand-accent)] flex justify-center items-center shrink-0">
+                            <svg class="social-svg" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-[var(--text-muted)] font-bold tracking-widest uppercase mb-1" data-i18n="contact_github">Repositórios e Código</p>
+                            <p class="text-[var(--text-heading)] font-mono text-sm sm:text-base">@Joaovictoreth1</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
 
-<div class="section-divider"></div>
+            <!-- Form -->
+            <div class="glass-card p-8 reveal" style="transition-delay: 200ms;">
+                <form id="form-contato" class="flex flex-col gap-6 interactive">
+                    <h3 class="font-sora text-2xl font-bold text-[var(--text-heading)]" data-i18n="form_title">Requisição POST via API</h3>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-[var(--text-muted)] font-mono">{"name": ""}</label>
+                        <input type="text" placeholder="String" required class="w-full bg-[rgba(0,0,0,0.3)] border border-[var(--border-subtle)] rounded-xl p-4 text-[var(--text-heading)] outline-none focus:border-[var(--brand-primary)] transition">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-[var(--text-muted)] font-mono">{"email": ""}</label>
+                        <input type="email" placeholder="String (Valid Email)" required class="w-full bg-[rgba(0,0,0,0.3)] border border-[var(--border-subtle)] rounded-xl p-4 text-[var(--text-heading)] outline-none focus:border-[var(--brand-primary)] transition">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-sm font-bold text-[var(--text-muted)] font-mono">{"body_message": ""}</label>
+                        <textarea placeholder="Text Block..." rows="4" required class="w-full bg-[rgba(0,0,0,0.3)] border border-[var(--border-subtle)] rounded-xl p-4 text-[var(--text-heading)] outline-none focus:border-[var(--brand-primary)] transition resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full justify-center py-4">
+                        <span id="btn-text" data-i18n="form_btn">Executar Fetch()</span>
+                    </button>
+                    <div id="form-feedback" class="hidden mt-2 p-4 text-left font-mono text-sm font-bold bg-[rgba(16,185,129,0.1)] border border-[var(--brand-accent)] text-[var(--brand-accent)] rounded-xl">
+                        [Status 201]: Created. Objeto recebido com sucesso pelo Mock Database.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section sec-a" style="position:relative;overflow:hidden;">
-  <div class="bottom-glow"></div>
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="section-header fade-in-up">
-      <div class="section-tag" data-lang="sectionTagContact">Contato</div>
-      <h2 class="section-title" data-lang="contactTitle">Vamos Conversar</h2>
-      <p class="section-subtitle" data-lang="contactSubtitle">Estou aberto a oportunidades e colaborações.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="fade-in-up">
-        <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></div>
-          <div><div class="contact-label">GitHub</div><div class="contact-value">Joaovictoreth1</div></div>
-        </a>
-        <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="contact-card">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
-          <div><div class="contact-label">LinkedIn</div><div class="contact-value">joão-victor-68847733b</div></div>
-        </a>
-        <button id="emailButton2" class="contact-card">
-          <div class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-          <div><div class="contact-label">Email</div><div class="contact-value">joaovictor.business2005@gmail.com</div></div>
-        </button>
-      </div>
-      <div class="availability-card fade-in-up" style="transition-delay:200ms">
-        <div class="availability-status" data-lang="availStatus">Disponível para oportunidades</div>
-        <h3 data-lang="availTitle">Pronto para novos desafios</h3>
-        <p data-lang="availDesc">Estou buscando oportunidades de estágio e projetos. Se você tem algo interessante, adoraria conversar!</p>
-        <a href="https://github.com/Joaovictoreth1" target="_blank" class="btn btn-primary" style="display:inline-flex;position:relative;z-index:1;">
-          <span data-lang="availBtn">Ver meu trabalho</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- =======================================================================
+         14. FOOTER INSTITUCIONAL
+         ======================================================================= -->
+    <footer class="border-t border-[var(--border-subtle)] bg-[var(--bg-base)] py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <div class="text-center md:text-left">
+                <div class="font-sora font-extrabold text-xl text-[var(--text-heading)] mb-2">JV<span style="color: var(--brand-primary)">.</span></div>
+                <p class="text-[var(--text-muted)] text-sm" data-i18n="footer_desc">Arquitetura de Software Sustentável.</p>
+            </div>
+            <div class="text-center text-[var(--text-muted)] text-sm font-mono">
+                <p>Console.WriteLine("© 2026 João Victor.");</p>
+                <p class="text-[var(--brand-accent)] mt-1">Status: All Nodes Online.</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end gap-3 interactive">
+                <div class="flex gap-4">
+                    <a href="https://github.com/Joaovictoreth1" target="_blank" class="w-12 h-12 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:border-[var(--brand-primary)] transition shadow-lg">
+                        <svg class="social-svg" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" class="w-12 h-12 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--brand-secondary)] hover:border-[var(--brand-secondary)] transition shadow-lg">
+                        <svg class="social-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand"><h3>João Victor<span>.</span></h3><p>joaovictor.business2005@gmail.com</p></div>
-    <div class="footer-links">
-      <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b" target="_blank" rel="noopener noreferrer" class="footer-link" aria-label="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-    </div>
-  </div>
-  <div class="footer-bottom"><p data-lang="footerRights">© 2026 João Victor Barros das Merces. Todos os direitos reservados.</p></div>
-</footer>
+    <!-- =======================================================================
+         15. JAVASCRIPT ENGINE (LOGIC, I18N, DATA STRUCTURES & ANIMATIONS)
+         DOCUMENTAÇÃO JSDOC PADRÃO EMPRESARIAL
+         ======================================================================= -->
+    <script>
+        lucide.createIcons();
 
-<!-- EMAIL MODAL -->
-<div id="emailModal" class="modal-overlay" role="dialog" aria-modal="true">
-  <div class="modal-box">
-    <h3 class="modal-title">📧 Email</h3>
-    <p class="modal-subtitle" data-lang="modalSubtitle">Clique para copiar o endereço</p>
-    <div class="modal-email" id="emailAddress">joaovictor.business2005@gmail.com</div>
-    <button id="copyButton" class="modal-copy" data-lang="modalCopy">Copiar email</button>
-  </div>
-</div>
+        /* ---------------------------------------------------------------------
+           MÓDULO 1: INTERNATIONALIZATION (I18N) ENGINE
+           Dicionário massivo para suportar Português, Inglês e Espanhol.
+           --------------------------------------------------------------------- */
+        /**
+         * @constant {Object} I18N_DICTIONARY
+         * Mapeia as chaves de tradução para os textos nos idiomas suportados.
+         */
+        const I18N_DICTIONARY = {
+            pt: {
+                nav_home: "Início", nav_about: "Perfil", nav_services: "Serviços",
+                nav_timeline: "Trajetória", nav_stack: "Ecossistema", nav_projects: "Projetos", nav_contact: "Contato",
+                hero_badge: "Engenheiro de Software Junior", hero_title_1: "Lógica pura,", hero_title_2: "Arquitetura Sólida.",
+                hero_desc: "Especialista em construir arquiteturas robustas no <strong>Back-end</strong> (Python/C#) e interfaces dinâmicas no <strong>Front-end</strong> (JavaScript). Escrevo código limpo, escalável e centrado no usuário, dominando desde o servidor Linux até a UI.",
+                hero_btn_projects: "Ver Meus Projetos", hero_btn_github: "Acessar GitHub",
+                about_badge: "Mindset & Cultura",
+                about_p1: "Sou um desenvolvedor movido pela curiosidade científica de entender <strong>como a engrenagem funciona por debaixo dos panos</strong>. Minha base abrange lógicas complexas, algoritmos pesados, manipulação de dados e engenharia de software estruturada.",
+                about_p2: "Atualmente curso <strong>Análise e Desenvolvimento de Sistemas (UNICID)</strong> e <strong>Técnico em Informática (SENAC)</strong>. Meu objetivo diário é resolver problemas reais de negócios combinando as melhores arquiteturas de Back-end (APIs robustas) e Front-end (Interfaces Imersivas).",
+                stat_1: "Tecnologias", stat_2: "Anos de Idade", stat_3: "% Clean Code", stat_4: "Curiosidade",
+                services_badge: "Minhas Soluções", services_title: "O que eu posso fazer por você",
+                timeline_badge: "Histórico", timeline_title: "Trajetória Acadêmica e Técnica",
+                stack_badge: "Dependências", stack_title: "Ferramentas e Tecnologias",
+                projects_badge: "Deployments", projects_title: "Sistemas em Produção",
+                faq_badge: "Dúvidas", faq_title: "Perguntas Frequentes",
+                contact_badge: "Networking", contact_title: "Iniciar Conexão",
+                contact_desc: "Estou aberto a novas propostas de estágio, desenvolvimento de sistemas complexos e arquiteturas cloud. Conecte-se comigo diretamente:",
+                contact_email: "Email Principal", contact_linkedin: "Rede Profissional", contact_github: "Repositórios e Código",
+                form_title: "Requisição POST via API", form_btn: "Executar Fetch()", footer_desc: "Arquitetura de Software Sustentável."
+            },
+            en: {
+                nav_home: "Home", nav_about: "Profile", nav_services: "Services",
+                nav_timeline: "Journey", nav_stack: "Stack", nav_projects: "Projects", nav_contact: "Contact",
+                hero_badge: "Junior Software Engineer", hero_title_1: "Pure Logic,", hero_title_2: "Solid Architecture.",
+                hero_desc: "Specialist in building robust architectures in <strong>Back-end</strong> (Python/C#) and dynamic interfaces in <strong>Front-end</strong> (JavaScript). I write clean, scalable, user-centric code, mastering everything from Linux servers to the UI.",
+                hero_btn_projects: "View My Projects", hero_btn_github: "Access GitHub",
+                about_badge: "Mindset & Culture",
+                about_p1: "I'm a developer driven by the scientific curiosity of understanding <strong>how the gears work under the hood</strong>. My foundation covers complex logic, heavy algorithms, data manipulation, and structured software engineering.",
+                about_p2: "I am currently studying <strong>Systems Analysis and Development (UNICID)</strong> and <strong>IT Technician (SENAC)</strong>. My daily goal is to solve real business problems by combining the best Back-end architectures (robust APIs) and Front-end (Immersive Interfaces).",
+                stat_1: "Technologies", stat_2: "Years Old", stat_3: "% Clean Code", stat_4: "Curiosity",
+                services_badge: "My Solutions", services_title: "What I can do for you",
+                timeline_badge: "History", timeline_title: "Academic and Technical Journey",
+                stack_badge: "Dependencies", stack_title: "Tools and Technologies",
+                projects_badge: "Deployments", projects_title: "Systems in Production",
+                faq_badge: "Questions", faq_title: "Frequently Asked Questions",
+                contact_badge: "Networking", contact_title: "Initiate Connection",
+                contact_desc: "I am open to new internship proposals, complex systems development, and cloud architectures. Connect with me directly:",
+                contact_email: "Main Email", contact_linkedin: "Professional Network", contact_github: "Repositories and Code",
+                form_title: "POST Request via API", form_btn: "Execute Fetch()", footer_desc: "Sustainable Software Architecture."
+            },
+            es: {
+                nav_home: "Inicio", nav_about: "Perfil", nav_services: "Servicios",
+                nav_timeline: "Trayectoria", nav_stack: "Ecosistema", nav_projects: "Proyectos", nav_contact: "Contacto",
+                hero_badge: "Ingeniero de Software Junior", hero_title_1: "Lógica pura,", hero_title_2: "Arquitectura Sólida.",
+                hero_desc: "Especialista en construir arquitecturas robustas en <strong>Back-end</strong> (Python/C#) e interfaces dinámicas en <strong>Front-end</strong> (JavaScript). Escribo código limpio, escalable y centrado en el usuario, dominando desde el servidor Linux hasta la UI.",
+                hero_btn_projects: "Ver Mis Proyectos", hero_btn_github: "Acceder a GitHub",
+                about_badge: "Mentalidad y Cultura",
+                about_p1: "Soy un desarrollador impulsado por la curiosidad científica de entender <strong>cómo funcionan los engranajes bajo el capó</strong>. Mi base abarca lógica compleja, algoritmos pesados, manipulación de datos e ingeniería de software estructurada.",
+                about_p2: "Actualmente estudio <strong>Análisis y Desarrollo de Sistemas (UNICID)</strong> y <strong>Técnico en Informática (SENAC)</strong>. Mi objetivo diario es resolver problemas reales de negocios combinando las mejores arquitecturas de Back-end (API robustas) y Front-end (Interfaces inmersivas).",
+                stat_1: "Tecnologías", stat_2: "Años de Edad", stat_3: "% Clean Code", stat_4: "Curiosidad",
+                services_badge: "Mis Soluciones", services_title: "Lo que puedo hacer por ti",
+                timeline_badge: "Historial", timeline_title: "Trayectoria Académica y Técnica",
+                stack_badge: "Dependencias", stack_title: "Herramientas y Tecnologías",
+                projects_badge: "Implementaciones", projects_title: "Sistemas en Producción",
+                faq_badge: "Dudas", faq_title: "Preguntas Frecuentes",
+                contact_badge: "Redes", contact_title: "Iniciar Conexión",
+                contact_desc: "Estoy abierto a nuevas propuestas de pasantías, desarrollo de sistemas complejos y arquitecturas en la nube. Conéctate conmigo directamente:",
+                contact_email: "Correo Principal", contact_linkedin: "Red Profesional", contact_github: "Repositorios y Código",
+                form_title: "Petición POST vía API", form_btn: "Ejecutar Fetch()", footer_desc: "Arquitectura de Software Sostenible."
+            }
+        };
 
-<script>
-// PARTICLES
-(function(){
-  const canvas=document.getElementById('particles');
-  const ctx=canvas.getContext('2d');
-  let W,H,stars=[];
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-  function initStars(){
-    stars=[];
-    const n=Math.floor((W*H)/9000);
-    for(let i=0;i<n;i++) stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+0.2,a:Math.random(),speed:Math.random()*0.003+0.001,t:Math.random()*Math.PI*2});
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    stars.forEach(s=>{s.t+=s.speed;const a=(Math.sin(s.t)*0.4+0.6)*s.a;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,210,255,${a})`;ctx.fill();});
-    requestAnimationFrame(draw);
-  }
-  resize();initStars();draw();
-  window.addEventListener('resize',()=>{resize();initStars();});
-})();
+        /* ---------------------------------------------------------------------
+           MÓDULO 2: DATA LAYER (MOCK DATABASE & FACTORY)
+           Base de Dados Expandida ao Limite Máximo da Aplicação
+           --------------------------------------------------------------------- */
+        /**
+         * @typedef {Object} MockDatabase
+         * @property {Array} services Lista de Serviços oferecidos
+         * @property {Array} techStack Lista de linguagens
+         * @property {Array} deployments Lista de projetos
+         * @property {Array} timeline Histórico acadêmico
+         * @property {Array} faqs Perguntas frequentes
+         */
+        const MOCK_DB = {
+            services: [
+                {
+                    icon: "server",
+                    title: { pt: "Back-end Development", en: "Back-end Development", es: "Desarrollo Back-end" },
+                    desc: { 
+                        pt: "Construção de APIs seguras, modelagem de dados relacionais e não-relacionais, e lógica de servidor com Python e C#.",
+                        en: "Building secure APIs, relational and non-relational data modeling, and server logic with Python and C#.",
+                        es: "Construcción de APIs seguras, modelado de datos y lógica de servidor con Python y C#."
+                    }
+                },
+                {
+                    icon: "layout",
+                    title: { pt: "Front-end & UI/UX", en: "Front-end & UI/UX", es: "Front-end & UI/UX" },
+                    desc: { 
+                        pt: "Desenvolvimento de interfaces performáticas usando JavaScript moderno, garantindo acessibilidade e interatividade.",
+                        en: "Developing performant interfaces using modern JavaScript, ensuring accessibility and interactivity.",
+                        es: "Desarrollo de interfaces de alto rendimiento usando JavaScript moderno, garantizando accesibilidad e interactividad."
+                    }
+                },
+                {
+                    icon: "terminal",
+                    title: { pt: "DevOps & Linux", en: "DevOps & Linux", es: "DevOps & Linux" },
+                    desc: { 
+                        pt: "Gerenciamento de servidores Linux, automação de scripts bash, Git e pipelines essenciais para deploy.",
+                        en: "Linux server management, bash script automation, Git, and essential deployment pipelines.",
+                        es: "Gestión de servidores Linux, automatización de scripts bash, Git y pipelines esenciales para despliegue."
+                    }
+                },
+                {
+                    icon: "database",
+                    title: { pt: "Data Engineering", en: "Data Engineering", es: "Ingeniería de Datos" },
+                    desc: { 
+                        pt: "Estruturação de pipelines de dados, ETL, Web Scraping avançado e integração com bancos relacionais massivos.",
+                        en: "Structuring data pipelines, ETL, advanced Web Scraping and integration with massive relational databases.",
+                        es: "Estructuración de pipelines de datos, ETL, Web Scraping avanzado e integración con bases de datos masivas."
+                    }
+                },
+                {
+                    icon: "cloud",
+                    title: { pt: "Cloud Architecture", en: "Cloud Architecture", es: "Arquitectura en la Nube" },
+                    desc: { 
+                        pt: "Desenho de arquiteturas escaláveis em ambientes AWS e Azure, utilizando containers Docker e serverless.",
+                        en: "Design of scalable architectures in AWS and Azure environments, using Docker containers and serverless.",
+                        es: "Diseño de arquitecturas escalables en entornos AWS y Azure, utilizando contenedores Docker y serverless."
+                    }
+                },
+                {
+                    icon: "shield",
+                    title: { pt: "System Security", en: "System Security", es: "Seguridad de Sistemas" },
+                    desc: { 
+                        pt: "Implementação de boas práticas de segurança, JWT, OAuth2, e proteção contra vulnerabilidades comuns (OWASP).",
+                        en: "Implementation of security best practices, JWT, OAuth2, and protection against common vulnerabilities (OWASP).",
+                        es: "Implementación de mejores prácticas de seguridad, JWT, OAuth2 y protección contra vulnerabilidades comunes."
+                    }
+                }
+            ],
+            techStack: [
+                { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+                { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+                { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
+                { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+                { name: "Linux OS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
+                { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+                { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+                { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+                { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+                { name: "SQL Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
+                { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+                { name: "HTML & CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+                { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+                { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+                { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+                { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
+                { name: "Ubuntu", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" },
+                { name: "Sass", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" },
+                { name: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+                { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" }
+            ],
+            deployments: [
+                {
+                    title: { pt: "Mercado Bela Esperança", en: "Bela Esperança Market", es: "Mercado Bela Esperança" },
+                    description: {
+                        pt: "Plataforma completa de E-commerce. Arquitetura fluida com foco em conversão de vendas, carregamento ultrarrápido, banco de dados otimizado e catálogo dinâmico. Desenvolvido visando escalabilidade comercial.",
+                        en: "Complete E-commerce platform. Fluid architecture focused on sales conversion, ultra-fast loading, optimized database and dynamic catalog. Developed aiming for commercial scalability.",
+                        es: "Plataforma completa de comercio electrónico. Arquitectura fluida centrada en la conversión de ventas, carga ultrarrápida, base de datos optimizada y catálogo dinámico."
+                    },
+                    tags: ["E-commerce", "JavaScript", "UI/UX", "SEO"],
+                    url: "https://mercadobelaesperanca.shop"
+                },
+                {
+                    title: { pt: "CyberEdge Gym Platform", en: "CyberEdge Gym Platform", es: "Plataforma CyberEdge Gym" },
+                    description: {
+                        pt: "Landing page e painel avançado para academias baseado no conceito de Edge Computing. Implementa sistema offline-first, partículas dinâmicas no canvas e design futurista com alta conversão.",
+                        en: "Landing page and advanced dashboard for gyms based on Edge Computing. Implements offline-first system, dynamic canvas particles and futuristic design with high conversion.",
+                        es: "Página de destino y panel avanzado para gimnasios basados en Edge Computing. Implementa sistema offline-first, partículas dinámicas en canvas y diseño futurista."
+                    },
+                    tags: ["Full Stack", "Edge Node", "Canvas API"],
+                    url: "https://cyberedgegym.shop"
+                },
+                {
+                    title: { pt: "Core API Architecture", en: "Core API Architecture", es: "Arquitectura Core API" },
+                    description: {
+                        pt: "Desenvolvimento de lógicas de negócio em Back-end utilizando C# e Python. Foco em RESTful, autenticação, tratamento de dados complexos em massa e web scraping.",
+                        en: "Development of back-end business logic using C# and Python. Focus on RESTful, authentication, complex mass data processing and web scraping.",
+                        es: "Desarrollo de lógica de negocios en Back-end usando C# y Python. Enfoque en RESTful, autenticación, procesamiento masivo de datos complejos y web scraping."
+                    },
+                    tags: ["Python", "C#", "Back-end", "Data"],
+                    url: "https://github.com/Joaovictoreth1"
+                },
+                {
+                    title: { pt: "Automated Data Scripts", en: "Automated Data Scripts", es: "Scripts de Datos Automatizados" },
+                    description: {
+                        pt: "Desenvolvimento de lógicas de Back-end com Python e C#. Utilitários voltados à integração de APIs, mineração de dados em tempo real e consolidação em arquivos estáticos.",
+                        en: "Development of Back-end logic with Python and C#. Utilities aimed at API integration, real-time data mining and consolidation in static files.",
+                        es: "Desarrollo de lógica Back-end con Python y C#. Utilidades para la integración de API, minería de datos en tiempo real y consolidación en archivos estáticos."
+                    },
+                    tags: ["Python", "C#", "Web Scraping", "CLI"],
+                    url: "https://github.com/Joaovictoreth1"
+                },
+                {
+                    title: { pt: "Sistema de Gestão Escolar", en: "School Management System", es: "Sistema de Gestión Escolar" },
+                    description: {
+                        pt: "Protótipo de sistema para gestão de alunos, notas e turmas. Backend construído com Node.js e banco de dados PostgreSQL. Relatórios em tempo real.",
+                        en: "Prototype system for managing students, grades and classes. Backend built with Node.js and PostgreSQL database. Real-time reporting.",
+                        es: "Prototipo de sistema para la gestión de alumnos, notas y clases. Backend construido con Node.js y base de datos PostgreSQL."
+                    },
+                    tags: ["Node.js", "PostgreSQL", "Education"],
+                    url: "https://github.com/Joaovictoreth1"
+                },
+                {
+                    title: { pt: "Microserviço de Notificações", en: "Notification Microservice", es: "Microservicio de Notificaciones" },
+                    description: {
+                        pt: "Serviço escalável para envio de emails e SMS transacionais. Utiliza filas Redis e RabbitMQ para garantir entrega assíncrona com alta taxa de sucesso.",
+                        en: "Scalable service for sending transactional emails and SMS. Uses Redis and RabbitMQ queues to ensure asynchronous delivery with high success rate.",
+                        es: "Servicio escalable para el envío de correos electrónicos y SMS transaccionales. Utiliza colas Redis y RabbitMQ."
+                    },
+                    tags: ["Microservices", "Redis", "Architecture"],
+                    url: "https://github.com/Joaovictoreth1"
+                }
+            ],
+            timeline: [
+                {
+                    year: "Atual",
+                    title: { pt: "Análise e Desenvolvimento de Sistemas", en: "Systems Analysis and Development", es: "Análisis y Desarrollo de Sistemas" },
+                    subtitle: "UNICID",
+                    description: {
+                        pt: "Estudos profundos em arquitetura de software, design patterns, desenvolvimento full-stack e otimização de sistemas computacionais.",
+                        en: "In-depth studies in software architecture, design patterns, full-stack development and computer systems optimization.",
+                        es: "Estudios profundos en arquitectura de software, patrones de diseño, desarrollo full-stack y optimización de sistemas computacionales."
+                    }
+                },
+                {
+                    year: "Atual",
+                    title: { pt: "Técnico em Informática", en: "IT Technician", es: "Técnico en Informática" },
+                    subtitle: "SENAC",
+                    description: {
+                        pt: "Formação prática intensiva focada em manutenção de redes, estruturação de hardware, programação aplicada e gestão de bancos de dados relacionais.",
+                        en: "Intensive practical training focused on network maintenance, hardware structuring, applied programming and relational database management.",
+                        es: "Formación práctica intensiva centrada en el mantenimiento de redes, estructuración de hardware, programación aplicada y gestión de bases de datos."
+                    }
+                },
+                {
+                    year: "2023",
+                    title: { pt: "Especialização em Dev Web", en: "Web Dev Specialization", es: "Especialización en Dev Web" },
+                    subtitle: "Alura",
+                    description: {
+                        pt: "Imersão em trilhas de JavaScript moderno, ecossistema Python para dados, C# para aplicações empresariais e versionamento com Git.",
+                        en: "Immersion in modern JavaScript tracks, Python ecosystem for data, C# for enterprise applications and versioning with Git.",
+                        es: "Inmersión en pistas modernas de JavaScript, ecosistema Python para datos, C# para aplicaciones empresariales y control de versiones con Git."
+                    }
+                },
+                {
+                    year: "2022",
+                    title: { pt: "Fundamentos Lógicos", en: "Logic Fundamentals", es: "Fundamentos Lógicos" },
+                    subtitle: "Autodidata",
+                    description: {
+                        pt: "Primeiros contatos com algoritmos estruturados, introdução ao pensamento computacional e paixão pelo mundo Open Source.",
+                        en: "First contacts with structured algorithms, introduction to computational thinking and passion for the Open Source world.",
+                        es: "Primeros contactos con algoritmos estructurados, introducción al pensamiento computacional y pasión por el mundo Open Source."
+                    }
+                }
+            ],
+            faqs: [
+                {
+                    q: { pt: "Quais tecnologias você mais utiliza?", en: "What technologies do you use the most?", es: "¿Qué tecnologías usas más?" },
+                    a: { pt: "Meu ecossistema primário gira em torno de JavaScript (Front-end e Node.js), Python para automações/dados e C# para sistemas robustos de Back-end. Também opero constantemente no terminal Linux.", en: "My primary ecosystem revolves around JavaScript (Front-end and Node.js), Python for automations/data, and C# for robust Back-end systems. I also operate constantly in the Linux terminal.", es: "Mi ecosistema principal gira en torno a JavaScript (Front-end y Node.js), Python para automatizaciones/datos y C# para sistemas back-end robustos." }
+                },
+                {
+                    q: { pt: "Você está disponível para propostas?", en: "Are you available for proposals?", es: "¿Estás disponible para propuestas?" },
+                    a: { pt: "Sim! Estou aberto a estágios, projetos freelance ou contratos de longo prazo na área de engenharia de software e web development.", en: "Yes! I am open to internships, freelance projects or long-term contracts in software engineering and web development.", es: "¡Sí! Estoy abierto a pasantías, proyectos independientes o contratos a largo plazo en el área de ingeniería de software." }
+                },
+                {
+                    q: { pt: "Você faz tanto o Design quanto a Programação?", en: "Do you do both Design and Programming?", es: "¿Haces tanto Diseño como Programación?" },
+                    a: { pt: "Embora meu foco principal seja a engenharia e a lógica do código (Back-end e Front-end logic), eu possuo fortes habilidades de UI/UX, aplicando design systems modernos, Tailwind e princípios de Glassmorphism.", en: "Although my main focus is engineering and code logic (Back-end and Front-end), I have strong UI/UX skills, applying modern design systems, Tailwind and Glassmorphism principles.", es: "Aunque mi enfoque principal es la ingeniería y la lógica (Back-end y Front-end), tengo fuertes habilidades de UI/UX, aplicando sistemas de diseño modernos." }
+                }
+            ]
+        };
 
-document.addEventListener("DOMContentLoaded",function(){
-
-const translations={
-  pt:{
-    navAbout:"Sobre",navSkills:"Habilidades",navProjects:"Projetos",navContact:"Contato",
-    heroWelcome:"Bem-vindo ao meu portfólio",heroTitle:"Desenvolvedor de Software",
-    heroEducation:"Técnico em Informática no SENAC",heroEducation2:"Estudante de ADS na UNICID",
-    heroFocus:"Foco em Programação e Inteligência Artificial",heroCourses:"Cursos complementares na Alura",
-    heroBtnGithub:"Meu GitHub",
-    sectionTagAbout:"Quem sou eu",aboutTitle:"Sobre Mim",aboutSubtitle:"Conheça minha jornada e paixão pela tecnologia.",
-    aboutTag:"Desenvolvedor Iniciante",aboutHeadline:"Transformando ideias em experiências digitais.",
-    aboutP1:"Olá! Sou um desenvolvedor apaixonado por tecnologia. Como iniciante na área, estou focado em absorver conhecimento e aplicá-lo em projetos práticos. Minha jornada é impulsionada pela curiosidade e pelo desejo de construir soluções elegantes e funcionais.",
-    aboutP2:"Curso Técnico em Informática no SENAC e Análise e Desenvolvimento de Sistemas na UNICID — e aprimoro minhas habilidades com os cursos da:",
-    statTech:"Tecnologias",statAge:"Anos",statCuriosity:"Curiosidade",statDedication:"Dedicação",
-    sectionTagSkills:"Tecnologias",skillsTitle:"Minhas Habilidades",skillsSubtitle:"Tecnologias que estou aprendendo e utilizando em projetos.",
-    sectionTagProjects:"Portfólio",projectsTitle:"Meus Projetos",projectsSubtitle:"Projetos desenvolvidos durante minha jornada de aprendizado.",
-    sectionTagContact:"Contato",contactTitle:"Vamos Conversar",contactSubtitle:"Estou aberto a oportunidades e colaborações.",
-    availStatus:"Disponível para oportunidades",availTitle:"Pronto para novos desafios",
-    availDesc:"Estou buscando oportunidades de estágio e projetos. Se você tem algo interessante, adoraria conversar!",
-    availBtn:"Ver meu trabalho",
-    footerRights:"© 2026 João Victor Barros das Merces. Todos os direitos reservados.",
-    modalSubtitle:"Clique para copiar o endereço",modalCopy:"Copiar email"
-  },
-  en:{
-    navAbout:"About",navSkills:"Skills",navProjects:"Projects",navContact:"Contact",
-    heroWelcome:"Welcome to my portfolio",heroTitle:"Software Developer",
-    heroEducation:"IT Technician at SENAC",heroEducation2:"ADS Student at UNICID",
-    heroFocus:"Focus on Programming and Artificial Intelligence",heroCourses:"Complementary courses at Alura",
-    heroBtnGithub:"My GitHub",
-    sectionTagAbout:"Who I am",aboutTitle:"About Me",aboutSubtitle:"Get to know my journey and passion for technology.",
-    aboutTag:"Junior Developer",aboutHeadline:"Transforming ideas into digital experiences.",
-    aboutP1:"Hello! I'm a developer passionate about technology. As a beginner, I'm focused on absorbing knowledge and applying it to practical projects. My journey is driven by curiosity and the desire to build elegant solutions.",
-    aboutP2:"I'm studying IT Technician at SENAC and Systems Development at UNICID — and improving my skills with courses from:",
-    statTech:"Technologies",statAge:"Years old",statCuriosity:"Curiosity",statDedication:"Dedication",
-    sectionTagSkills:"Technologies",skillsTitle:"My Skills",skillsSubtitle:"Technologies I'm learning and using in projects.",
-    sectionTagProjects:"Portfolio",projectsTitle:"My Projects",projectsSubtitle:"Projects developed during my learning journey.",
-    sectionTagContact:"Contact",contactTitle:"Let's Talk",contactSubtitle:"I'm open to opportunities and collaborations.",
-    availStatus:"Available for opportunities",availTitle:"Ready for new challenges",
-    availDesc:"I'm actively looking for internship opportunities. If you have an interesting project, I'd love to chat!",
-    availBtn:"See my work",
-    footerRights:"© 2026 João Victor Barros das Merces. All rights reserved.",
-    modalSubtitle:"Click to copy the address",modalCopy:"Copy email"
-  }
-};
-
-const skills=[
-  {name:'JavaScript',icon:'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'},
-  {name:'Python',    icon:'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg'},
-  {name:'C#',        icon:'https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png'},
-  {name:'HTML5',     icon:'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg'},
-  {name:'CSS3',      icon:'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg'},
-  {name:'Java',      icon:'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/1200px-Java_programming_language_logo.svg.png'},
-  {name:'Git',       icon:'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg'}
-];
-
-let currentLang=localStorage.getItem('language')||'pt';
-let currentTheme=localStorage.getItem('theme')||'dark';
-
-function applyTheme(t){document.documentElement.setAttribute('data-theme',t);currentTheme=t;localStorage.setItem('theme',t);}
-function applyLanguage(lang){
-  document.documentElement.lang=lang;currentLang=lang;
-  document.getElementById('lang-toggle').textContent=lang.toUpperCase();
-  localStorage.setItem('language',lang);
-  document.querySelectorAll('[data-lang]').forEach(el=>{
-    const k=el.getAttribute('data-lang');
-    if(translations[lang][k]!==undefined) el.textContent=translations[lang][k];
-  });
-  renderProjects();
-}
-
-function populateSkills(){
-  const g=document.getElementById('skills-grid');g.innerHTML='';
-  skills.forEach((s,i)=>{
-    const el=document.createElement('div');
-    el.className='skill-card fade-in-up';
-    el.style.transitionDelay=`${i*70}ms`;
-    el.innerHTML=`<img src="${s.icon}" alt="${s.name}" loading="lazy"><h3>${s.name}</h3>`;
-    g.appendChild(el);
-  });observeAll();
-}
-
-// PROJECTS
-function renderProjects(){
-  const projects=[
-    {
-      title:{pt:'CyberEdge Gym',en:'CyberEdge Gym'},
-      desc:{
-        pt:'Landing page para solução de Edge Computing em academias. Sistema offline-first com controle de acesso, app de treinos e gestão inteligente.',
-        en:'Landing page for an Edge Computing solution for gyms. Offline-first system with access control, workout app and smart management.'
-      },
-      features:{
-        pt:['Partículas + cubo 3D animados em Canvas API','Cursor personalizado com efeito neon','Loader com sequência de boot','Layout Bento Grid responsivo','FAQ interativo + formulário de contato'],
-        en:['Canvas API particles + animated 3D cube','Custom neon cursor effect','Boot sequence loader','Responsive Bento Grid layout','Interactive FAQ + contact form']
-      },
-      tags:['HTML5','CSS3','JavaScript','Canvas API'],
-      live:'https://cyberedgegym.shop',
-      github:'https://github.com/Joaovictoreth1',
-      icon:`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`
-    },
-    {
-      title:{pt:'Mais projetos em breve',en:'More projects coming soon'},
-      desc:{
-        pt:'Estou trabalhando em novos projetos. Fique atento ao meu GitHub!',
-        en:"I'm working on new projects. Stay tuned to my GitHub!"
-      },
-      features:null,
-      tags:['JavaScript','Python','C#'],
-      live:null,
-      github:'https://github.com/Joaovictoreth1',
-      icon:`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
+        /* ---------------------------------------------------------------------
+           MÓDULO 3: TERMINAL COMPILER SIMULATION
+           --------------------------------------------------------------------- */
+        const rawCodeText = `class SoftwareEngineer {
+    constructor() {
+        this.nome = "João Victor Barros";
+        this.idade = 20;
+        this.status = "Open to Work 🚀";
     }
-  ];
 
-  const g=document.getElementById('projects-grid');g.innerHTML='';
-  projects.forEach((p,i)=>{
-    const el=document.createElement('div');
-    el.className='project-card fade-in-up';
-    el.style.transitionDelay=`${i*100}ms`;
+    getStack() {
+        return {
+            backend: ["Python", "C#", "Node.js"],
+            frontend: ["JS", "HTML/CSS"],
+            infra: ["Linux", "Git", "SQL"]
+        };
+    }
 
-    const liveBtn=p.live
-      ?`<a href="${p.live}" target="_blank" rel="noopener noreferrer" class="project-link" title="Ver site ao vivo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>`:'';
-
-    const featuresHTML=p.features
-      ?`<ul style="margin-top:0.75rem;list-style:none;display:flex;flex-direction:column;gap:0.3rem;">
-          ${p.features[currentLang].map(f=>`
-            <li style="font-size:0.72rem;color:var(--text2);padding-left:14px;position:relative;">
-              <span style="position:absolute;left:0;color:var(--accent);">→</span>${f}
-            </li>`).join('')}
-        </ul>`:'';
-
-    el.innerHTML=`
-      <div class="project-header">
-        <div style="display:flex;align-items:center;gap:0.75rem;">
-          <div class="project-icon">${p.icon}</div>
-          <div>
-            <div class="project-title" style="margin-bottom:0">${p.title[currentLang]}</div>
-            ${p.live?`<div style="font-size:0.62rem;color:#56d995;font-family:'Sora',sans-serif;letter-spacing:0.06em;margin-top:2px;">● LIVE</div>`:''}
-          </div>
-        </div>
-        <div style="display:flex;gap:0.4rem">
-          ${liveBtn}
-          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link" title="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="project-body">
-        <div class="project-desc">${p.desc[currentLang]}</div>
-        ${featuresHTML}
-        <div class="project-tags" style="margin-top:1rem">${p.tags.map(x=>`<span class="project-tag">${x}</span>`).join('')}</div>
-      </div>`;
-    g.appendChild(el);
-  });observeAll();
+    execute() {
+        console.log("Compilando arquiteturas escaláveis...");
+        return "Sucesso Absoluto.";
+    }
 }
 
-// TERMINAL
-const codeLines=[
-  {v:'const joaoVictor = {',                             h:'<span class="token keyword">const</span> joaoVictor = {'},
-  {v:'  nome: "João Victor B. das Merces",',             h:'  <span class="token property">nome</span>: <span class="token string">"João Victor B. das Merces"</span>,'},
-  {v:'  idade: 20,',                                     h:'  <span class="token property">idade</span>: <span class="token number">20</span>,'},
-  {v:'  tecnico: "Informática - SENAC",',                h:'  <span class="token property">tecnico</span>: <span class="token string">"Informática - SENAC"</span>,'},
-  {v:'  faculdade: "ADS - UNICID",',                     h:'  <span class="token property">faculdade</span>: <span class="token string">"ADS - UNICID"</span>,'},
-  {v:'  foco: ["Programação", "IA"],',                   h:'  <span class="token property">foco</span>: [<span class="token string">"Programação"</span>, <span class="token string">"IA"</span>],'},
-  {v:'  habilidades: [',                                 h:'  <span class="token property">habilidades</span>: ['},
-  {v:'    "JavaScript", "Python",',                      h:'    <span class="token string">"JavaScript"</span>, <span class="token string">"Python"</span>,'},
-  {v:'    "C#", "HTML5", "Java", "Git"',                 h:'    <span class="token string">"C#"</span>, <span class="token string">"HTML5"</span>, <span class="token string">"Java"</span>, <span class="token string">"Git"</span>'},
-  {v:'  ],',                                             h:'  ],'},
-  {v:'  projetos: ["CyberEdge Gym"],',                   h:'  <span class="token property">projetos</span>: [<span class="token string">"CyberEdge Gym"</span>],'},
-  {v:'  contato: {',                                     h:'  <span class="token property">contato</span>: {'},
-  {v:'    email: "joaovictor.business2005@gmail.com",',  h:'    <span class="token property">email</span>: <span class="token string">"joaovictor.business2005@gmail.com"</span>,'},
-  {v:'    github: "Joaovictoreth1"',                     h:'    <span class="token property">github</span>: <span class="token string">"Joaovictoreth1"</span>'},
-  {v:'  }',                                              h:'  }'},
-  {v:'};',                                               h:'};'}
-];
-let li=0,ci=0;
-const cb=document.getElementById('code-block');
-function buildHTML(done,partial){
-  const lines=[];
-  for(let i=0;i<done;i++) lines.push(codeLines[i].h);
-  if(done<codeLines.length) lines.push(codeLines[done].v.substring(0,partial)+'<span class="cursor-blink"></span>');
-  return lines.join('<br>');
-}
-function typeCode(){
-  if(li>=codeLines.length){cb.innerHTML=codeLines.map(l=>l.h).join('<br>');return;}
-  if(ci<codeLines[li].v.length){ci++;cb.innerHTML=buildHTML(li,ci);setTimeout(typeCode,16);}
-  else{li++;ci=0;setTimeout(typeCode,55);}
-}
-setTimeout(typeCode,1200);
+const jvbm = new SoftwareEngineer();
+jvbm.execute();`;
 
-// SCROLL
-const bar=document.getElementById('scroll-progress');
-const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
-  bar.style.width=p+'%';
-  nav.classList.toggle('scrolled',window.scrollY>60);
-});
+        function startTerminalTyping() {
+            const container = document.getElementById('terminal-content');
+            if(!container) return;
+            container.innerHTML = ""; 
+            let charIndex = 0;
+            
+            const typingInterval = setInterval(() => {
+                if (charIndex < rawCodeText.length) {
+                    let currentText = rawCodeText.substring(0, charIndex + 1);
+                    currentText = currentText.replace(/(class|constructor|this|return|new|const)/g, '<span class="term-keyword">$1</span>');
+                    currentText = currentText.replace(/("(?:\\"|[^"])*")/g, '<span class="term-string">$1</span>');
+                    currentText = currentText.replace(/(console\.log)/g, '<span class="term-prop">$1</span>');
+                    
+                    container.innerHTML = currentText + '<span class="blinking-cursor"></span>';
+                    
+                    charIndex++;
+                    container.scrollTop = container.scrollHeight;
+                } else {
+                    clearInterval(typingInterval);
+                }
+            }, 12); 
+        }
 
-// OBSERVER
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:0.1});
-function observeAll(){document.querySelectorAll('.fade-in-up').forEach(el=>obs.observe(el));}
+        /* ---------------------------------------------------------------------
+           MÓDULO 4: PHYSICS & EFFECTS (MATRIX RAIN, COUNTERS)
+           --------------------------------------------------------------------- */
+        /** Motor Matrix Background - Executa apenas efeitos visuais optimizados (GPU) */
+        function initMatrixRain() {
+            const canvas = document.getElementById('matrix-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d', { alpha: false });
+            let width, height, drops = [];
+            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]()<>+-*^%$#@';
+            
+            const resizeMatrix = () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                const columns = width / 16; 
+                drops = Array(Math.floor(columns)).fill(1).map(() => Math.random() * 100);
+            };
+            window.addEventListener('resize', resizeMatrix); 
+            resizeMatrix();
 
-// MODAL
-const modal=document.getElementById('emailModal');
-const copyBtn=document.getElementById('copyButton');
-const emailText=document.getElementById('emailAddress').textContent;
-function openModal(){modal.classList.add('visible');}
-document.getElementById('emailButton').addEventListener('click',openModal);
-document.getElementById('emailButton2').addEventListener('click',openModal);
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('visible');});
-copyBtn.addEventListener('click',()=>{
-  navigator.clipboard.writeText(emailText).catch(()=>{
-    const ta=document.createElement('textarea');ta.value=emailText;
-    document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-  });
-  const orig=copyBtn.textContent;
-  copyBtn.textContent='✓ Copiado!';
-  setTimeout(()=>{copyBtn.textContent=orig;},2000);
-});
+            const drawMatrixFrame = () => {
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                ctx.fillStyle = isLight ? 'rgba(241, 245, 249, 0.05)' : 'rgba(3, 6, 10, 0.05)';
+                ctx.fillRect(0, 0, width, height);
+                
+                ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary') || '#f97316';
+                ctx.font = '16px monospace';
 
-// MOBILE MENU
-const burger=document.getElementById('hamburger');
-const links=document.getElementById('nav-links');
-burger.addEventListener('click',()=>links.classList.toggle('mobile-open'));
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('mobile-open')));
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * 16, drops[i] * 16);
+                    if (drops[i] * 16 > height && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
+                setTimeout(() => requestAnimationFrame(drawMatrixFrame), 50);
+            }; 
+            drawMatrixFrame();
+        }
 
-// TOGGLES
-document.getElementById('theme-toggle').addEventListener('click',()=>applyTheme(currentTheme==='dark'?'light':'dark'));
-document.getElementById('lang-toggle').addEventListener('click',()=>applyLanguage(currentLang==='pt'?'en':'pt'));
+        /** Motor de Numeração Crescente */
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalVal = parseInt(target.getAttribute('data-target'));
+                        const duration = 2000; 
+                        const step = finalVal / (duration / 16); 
+                        
+                        let currentVal = 0;
+                        const updateCounter = () => {
+                            currentVal += step;
+                            if (currentVal < finalVal) {
+                                target.innerText = Math.ceil(currentVal) + (finalVal === 100 ? '%' : '+');
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                target.innerText = finalVal + (finalVal === 100 ? '%' : '+');
+                            }
+                        };
+                        updateCounter();
+                        observer.unobserve(target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => observer.observe(c));
+        }
 
-// INIT
-applyTheme(currentTheme);
-applyLanguage(currentLang);
-populateSkills();
-observeAll();
-});
-</script>
+        /* ---------------------------------------------------------------------
+           MÓDULO 4.5: RADAR CHART ENGINE (TRIGONOMETRIA AVANÇADA NO CANVAS)
+           Renderizador de polígonos de dados sem uso de bibliotecas externas.
+           --------------------------------------------------------------------- */
+        class RadarChartEngine {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                if (!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d');
+                this.centerX = this.canvas.width / 2;
+                this.centerY = this.canvas.height / 2;
+                this.radius = Math.min(this.centerX, this.centerY) - 40;
+                
+                // Dados das competências (Eixo, Valor 0-100)
+                this.data = [
+                    { label: 'Back-end', value: 90 },
+                    { label: 'Front-end', value: 85 },
+                    { label: 'UI/UX', value: 75 },
+                    { label: 'DevOps', value: 70 },
+                    { label: 'Databases', value: 88 },
+                    { label: 'Architecture', value: 82 }
+                ];
+                this.animProgress = 0;
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.drawGrid();
+                this.drawPolygon();
+                this.drawLabels();
+                
+                if (this.animProgress < 1) {
+                    this.animProgress += 0.02;
+                    requestAnimationFrame(() => this.draw());
+                }
+            }
+
+            drawGrid() {
+                const levels = 4;
+                const sides = this.data.length;
+                this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+                this.ctx.lineWidth = 1;
+
+                for (let i = 1; i <= levels; i++) {
+                    const r = (this.radius / levels) * i;
+                    this.ctx.beginPath();
+                    for (let j = 0; j < sides; j++) {
+                        const angle = (Math.PI * 2 * j) / sides - Math.PI / 2;
+                        const x = this.centerX + r * Math.cos(angle);
+                        const y = this.centerY + r * Math.sin(angle);
+                        if (j === 0) this.ctx.moveTo(x, y);
+                        else this.ctx.lineTo(x, y);
+                    }
+                    this.ctx.closePath();
+                    this.ctx.stroke();
+                }
+
+                // Eixos Radiais
+                for (let j = 0; j < sides; j++) {
+                    const angle = (Math.PI * 2 * j) / sides - Math.PI / 2;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.centerX, this.centerY);
+                    this.ctx.lineTo(this.centerX + this.radius * Math.cos(angle), this.centerY + this.radius * Math.sin(angle));
+                    this.ctx.stroke();
+                }
+            }
+
+            drawPolygon() {
+                const sides = this.data.length;
+                this.ctx.beginPath();
+                
+                for (let j = 0; j < sides; j++) {
+                    const angle = (Math.PI * 2 * j) / sides - Math.PI / 2;
+                    // Valor com interpolação de animação (easing easeOutQuad)
+                    const easedProgress = this.animProgress * (2 - this.animProgress);
+                    const val = (this.data[j].value / 100) * this.radius * easedProgress;
+                    const x = this.centerX + val * Math.cos(angle);
+                    const y = this.centerY + val * Math.sin(angle);
+                    
+                    if (j === 0) this.ctx.moveTo(x, y);
+                    else this.ctx.lineTo(x, y);
+                }
+                
+                this.ctx.closePath();
+                
+                // Preenchimento com cor do tema
+                const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#f97316';
+                this.ctx.fillStyle = brandColor.replace(')', ', 0.3)').replace('rgb', 'rgba'); // Translucido
+                if(this.ctx.fillStyle.indexOf('rgba') === -1) this.ctx.fillStyle = 'rgba(249, 115, 22, 0.3)';
+                
+                this.ctx.fill();
+                this.ctx.strokeStyle = brandColor;
+                this.ctx.lineWidth = 2;
+                this.ctx.stroke();
+            }
+
+            drawLabels() {
+                const sides = this.data.length;
+                this.ctx.fillStyle = 'var(--text-muted)';
+                this.ctx.font = '10px monospace';
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+
+                for (let j = 0; j < sides; j++) {
+                    const angle = (Math.PI * 2 * j) / sides - Math.PI / 2;
+                    const x = this.centerX + (this.radius + 20) * Math.cos(angle);
+                    const y = this.centerY + (this.radius + 20) * Math.sin(angle);
+                    this.ctx.fillText(this.data[j].label, x, y);
+                }
+            }
+
+            startAnimationOnScroll() {
+                const observer = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting) {
+                        this.draw();
+                        observer.unobserve(this.canvas);
+                    }
+                }, { threshold: 0.5 });
+                observer.observe(this.canvas);
+            }
+        }
+
+        /* ---------------------------------------------------------------------
+           MÓDULO 5: APPLICATION CONTROLLER (SINGLETON)
+           Orquestrador geral de lógicas e interações da interface.
+           --------------------------------------------------------------------- */
+        const AppController = {
+            currentLang: 'pt',
+
+            /** Bootstrap App */
+            boot: function() {
+                this.setupLocalization();
+                this.renderDynamicSections();
+                this.bindEvents();
+            },
+
+            /** I18N Engine Config */
+            setupLocalization: function() {
+                const langSelect = document.getElementById('lang-select');
+                if(langSelect) {
+                    langSelect.addEventListener('change', (e) => {
+                        this.currentLang = e.target.value;
+                        this.applyTranslations();
+                        this.renderDynamicSections(); 
+                    });
+                }
+            },
+
+            applyTranslations: function() {
+                const elements = document.querySelectorAll('[data-i18n]');
+                const dictionary = I18N_DICTIONARY[this.currentLang];
+                
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dictionary[key]) {
+                        el.innerHTML = dictionary[key];
+                    }
+                });
+            },
+
+            /** Renderização do DOM injetando MOCK_DB */
+            renderDynamicSections: function() {
+                const lang = this.currentLang;
+
+                // 1. Render Services
+                const srvCont = document.getElementById('services-container');
+                if(srvCont) {
+                    srvCont.innerHTML = '';
+                    MOCK_DB.services.forEach((s, i) => {
+                        srvCont.innerHTML += `
+                        <div class="glass-card p-8 reveal tilt-card interactive" style="transition-delay: ${i*100}ms">
+                            <div class="w-14 h-14 rounded-2xl bg-[var(--glow-primary)] flex items-center justify-center text-[var(--brand-primary)] mb-6 border border-[var(--border-subtle)]">
+                                <i data-lucide="${s.icon}" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-sora text-xl font-bold mb-3 text-[var(--text-heading)]">${s.title[lang]}</h3>
+                            <p class="text-[var(--text-body)] text-sm leading-relaxed">${s.desc[lang]}</p>
+                        </div>`;
+                    });
+                }
+
+                // 2. Render Timeline
+                const tlCont = document.getElementById('timeline-container');
+                if(tlCont) {
+                    tlCont.innerHTML = '';
+                    MOCK_DB.timeline.forEach((item, i) => {
+                        tlCont.innerHTML += `
+                        <div class="relative w-full md:w-1/2 ${i % 2 === 0 ? 'md:pr-12 md:ml-auto md:text-left' : 'md:pl-12 md:mr-auto md:text-left'} pl-12 mb-12 reveal" style="transition-delay: ${i * 150}ms">
+                            <div class="absolute top-0 w-6 h-6 rounded-full bg-[var(--brand-primary)] border-4 border-[var(--bg-base)] left-[4px] md:left-auto ${i % 2 === 0 ? 'md:-left-[12px]' : 'md:-right-[12px]'} shadow-[0_0_15px_var(--glow-primary)] z-10"></div>
+                            <div class="glass-card p-6 tilt-card interactive">
+                                <span class="inline-block py-1 px-3 rounded-md bg-[rgba(249,115,22,0.1)] text-[var(--brand-primary)] font-bold text-xs mb-3 font-mono border border-[rgba(249,115,22,0.3)]">${item.year}</span>
+                                <h3 class="font-sora text-xl font-bold text-[var(--text-heading)] mb-1">${item.title[lang]}</h3>
+                                <h4 class="text-sm font-semibold text-[var(--brand-secondary)] mb-4">${item.subtitle}</h4>
+                                <p class="text-[var(--text-body)] text-sm leading-relaxed">${item.description[lang]}</p>
+                            </div>
+                        </div>`;
+                    });
+                }
+
+                // 3. Render Tech Stack
+                const skCont = document.getElementById('skills-container');
+                if(skCont) {
+                    skCont.innerHTML = '';
+                    MOCK_DB.techStack.forEach((tech, i) => {
+                        skCont.innerHTML += `
+                        <div class="glass-card p-6 flex flex-col items-center justify-center gap-3 reveal tilt-card interactive" style="transition-delay: ${i * 30}ms">
+                            <img src="${tech.icon}" alt="Logo ${tech.name}" class="w-12 h-12 object-contain filter drop-shadow-md">
+                            <span class="font-sora font-semibold text-xs text-[var(--text-heading)] mt-2">${tech.name}</span>
+                        </div>`;
+                    });
+                }
+
+                // 4. Render Deployments
+                const prCont = document.getElementById('projects-container');
+                if(prCont) {
+                    prCont.innerHTML = '';
+                    MOCK_DB.deployments.forEach((proj, i) => {
+                        const tagsHtml = proj.tags.map(t => `<span class="bg-[var(--glow-primary)] text-[var(--brand-primary)] border border-[rgba(249,115,22,0.2)] px-2 py-1 rounded text-xs font-bold">${t}</span>`).join('');
+                        prCont.innerHTML += `
+                        <div class="glass-card p-8 flex flex-col h-full reveal tilt-card interactive" style="transition-delay: ${i * 100}ms">
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="w-12 h-12 rounded-xl bg-[var(--glow-secondary)] text-[var(--brand-secondary)] flex items-center justify-center border border-[var(--border-subtle)]">
+                                    <i data-lucide="folder-git-2" class="w-6 h-6"></i>
+                                </div>
+                                <a href="${proj.url}" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--brand-primary)] transition p-2 rounded-lg bg-[rgba(255,255,255,0.05)]">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                            <h3 class="font-sora text-xl font-bold text-[var(--text-heading)] mb-3">${proj.title[lang]}</h3>
+                            <p class="text-[var(--text-body)] text-sm flex-grow mb-6 leading-relaxed">${proj.description[lang]}</p>
+                            <div class="flex flex-wrap gap-2 mt-auto border-t border-[var(--border-subtle)] pt-5">${tagsHtml}</div>
+                        </div>`;
+                    });
+                }
+
+                // 5. Render FAQ
+                const fqCont = document.getElementById('faq-container');
+                if(fqCont) {
+                    fqCont.innerHTML = '';
+                    MOCK_DB.faqs.forEach((faq, i) => {
+                        fqCont.innerHTML += `
+                        <div class="faq-item interactive">
+                            <button class="faq-question w-full text-left focus:outline-none" onclick="this.parentElement.classList.toggle('active')">
+                                ${faq.q[lang]}
+                                <i data-lucide="chevron-down" class="faq-icon w-5 h-5"></i>
+                            </button>
+                            <p class="faq-answer">${faq.a[lang]}</p>
+                        </div>`;
+                    });
+                }
+
+                lucide.createIcons();
+                this.rebindScrollReveal();
+            },
+
+            /** Bind DOM Events */
+            bindEvents: function() {
+                // Theme Toggle
+                const btnTheme = document.getElementById('theme-btn');
+                if(btnTheme) {
+                    btnTheme.addEventListener('click', () => {
+                        const isL = document.documentElement.getAttribute('data-theme') === 'light';
+                        document.documentElement.setAttribute('data-theme', isL ? 'dark' : 'light');
+                        if(isL) document.documentElement.removeAttribute('data-theme');
+                        document.getElementById('icon-sun').classList.toggle('hidden');
+                        document.getElementById('icon-moon').classList.toggle('hidden');
+                    });
+                }
+
+                // Form Simulation
+                const form = document.getElementById('form-contato');
+                if(form) {
+                    form.addEventListener('submit', e => {
+                        e.preventDefault();
+                        const btnText = document.getElementById('btn-text');
+                        const origin = btnText.innerText;
+                        btnText.innerText = "Executing Request...";
+                        setTimeout(() => {
+                            document.getElementById('form-feedback').classList.remove('hidden');
+                            form.reset();
+                            btnText.innerText = origin;
+                            setTimeout(() => document.getElementById('form-feedback').classList.add('hidden'), 5000);
+                        }, 1200);
+                    });
+                }
+
+                // Physics Cursor Optimizado (RequestAnimationFrame condicional)
+                if (window.matchMedia("(pointer: fine)").matches) {
+                    const ring = document.getElementById('cursor-ring');
+                    const dot = document.getElementById('cursor-dot');
+                    let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+
+                    window.addEventListener('mousemove', e => { 
+                        mx = e.clientX; my = e.clientY; 
+                        dot.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%)) translateZ(0)`; 
+                    }, { passive: true });
+                    
+                    window.addEventListener('mousedown', () => ring.classList.add('cursor-clicking'));
+                    window.addEventListener('mouseup', () => ring.classList.remove('cursor-clicking'));
+
+                    const l = () => {
+                        if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+                            rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+                            ring.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%)) translateZ(0)`;
+                        }
+                        requestAnimationFrame(l);
+                    }; l();
+
+                    document.body.addEventListener('mouseover', e => { if (e.target.closest('.interactive') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') ring.classList.add('cursor-hovering'); });
+                    document.body.addEventListener('mouseout', e => { if (e.target.closest('.interactive') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') ring.classList.remove('cursor-hovering'); });
+                }
+
+                // Navbar Scroll Effect
+                window.addEventListener('scroll', () => {
+                    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+                }, { passive: true });
+            },
+
+            rebindScrollReveal: function() {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if(e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); }
+                    });
+                }, { threshold: 0.1 });
+                setTimeout(() => document.querySelectorAll('.reveal').forEach(el => observer.observe(el)), 300);
+            }
+        };
+
+        // =====================================================================
+        // EXECUÇÃO FINAL E BOOTSTRAP DA APLICAÇÃO
+        // =====================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa a UI e Injeta Dados
+            AppController.boot();
+            
+            // Inicializa Motores Gráficos de Canvas
+            setTimeout(() => {
+                initMatrixRain();
+                startTerminalTyping();
+                initCounters();
+                
+                // Boot do Motor de Gráfico de Radar
+                const radarChart = new RadarChartEngine('radar-chart');
+                if(radarChart.canvas) radarChart.startAnimationOnScroll();
+
+            }, 500);
+
+            // Vanilla Tilt Assíncrono e Otimizado (GPU Render e Caching)
+            setInterval(() => {
+                if (!window.matchMedia("(pointer: fine)").matches) return;
+                document.querySelectorAll('.tilt-card:not(.tilt-bound)').forEach(card => {
+                    card.classList.add('tilt-bound');
+                    let rect;
+                    
+                    // Cache the dimensions only when the mouse enters
+                    card.addEventListener('mouseenter', () => {
+                        rect = card.getBoundingClientRect();
+                        card.style.willChange = "transform";
+                    }, { passive: true });
+                    
+                    card.addEventListener('mousemove', e => {
+                        if(!rect) rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        // Use requestAnimationFrame to sync with display refresh rate
+                        requestAnimationFrame(() => {
+                            card.style.transform = `perspective(1000px) rotateX(${((y - rect.height/2)/rect.height/2)*-4}deg) rotateY(${((x - rect.width/2)/rect.width/2)*4}deg) scale3d(1.01, 1.01, 1.01)`;
+                        });
+                    }, { passive: true });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                        card.style.willChange = "auto";
+                    });
+                });
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
