@@ -1,2125 +1,1409 @@
 
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-BR" class="dark scroll-smooth" data-theme="dark">
 <head>
-    <!-- 
-    =======================================================================
-    1. METADADOS E CONFIGURAÇÕES DE SEO EMPRESARIAIS
-    ======================================================================= 
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>João Victor Barros das Merces | Software Engineer</title>
-    
-    <meta name="description" content="Portfólio de João Victor Barros das Merces. Desenvolvedor de Software com foco em JavaScript, Python, C# e Inteligência Artificial.">
-    <meta name="keywords" content="João Victor, Desenvolvedor, Front-end, Back-end, Portfólio, Programador, JavaScript, React, Python, C#, Full Stack">
+    <!-- SEO & Identity -->
+    <title>João Victor Barros | Software Architect & Engineer</title>
+    <meta name="description" content="Portfólio de João Victor Barros das Merces. Engenharia de Software, Arquiteturas Escaláveis, Edge Computing, Python, C# e JavaScript.">
+    <meta name="keywords" content="Software Engineer, Backend, Frontend, Fullstack, Python, C#, JavaScript, React, Node.js, Edge Computing, SQL, MongoDB">
     <meta name="author" content="João Victor Barros das Merces">
-    <meta name="theme-color" content="#f97316">
+    <meta name="theme-color" content="#ea580c">
 
-    <!-- Open Graph / Redes Sociais -->
+    <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="João Victor Barros das Merces | Portfolio">
-    <meta property="og:description" content="Desenvolvedor de Software construindo soluções modernas, fluidas e inteligentes.">
-    <meta property="og:url" content="https://joaovictor.dev.br">
+    <meta property="og:title" content="João Victor Barros | Portfolio Ultimate">
+    <meta property="og:description" content="Engenharia orientada a soluções. Construindo arquiteturas resilientes e interfaces de alta performance.">
+    <meta property="og:url" content="https://joaovictor.dev">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/205098315?v=4">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="João Victor Barros das Merces | Portfolio">
-    <meta name="twitter:description" content="Desenvolvedor de Software construindo soluções modernas, fluidas e inteligentes.">
-    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/205098315?v=4">
 
-    <!-- JSON-LD: SEO Estruturado -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "João Victor Barros das Merces",
       "jobTitle": "Software Engineer",
-      "url": "https://joaovictor.dev.br",
+      "url": "https://joaovictor.dev",
       "image": "https://avatars.githubusercontent.com/u/205098315?v=4",
-      "sameAs": [
-        "https://github.com/Joaovictoreth1",
-        "https://www.linkedin.com/in/joão-victor-68847733b"
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "UNICID" },
+        { "@type": "EducationalOrganization", "name": "SENAC" }
       ],
-      "knowsAbout": ["JavaScript", "Python", "C#", "Linux", "Web Development"]
+      "knowsAbout": ["Software Architecture", "Python", "C#", "JavaScript", "React", "Node.js", "SQL", "Edge Computing"]
     }
     </script>
 
-    <!-- 
-    =======================================================================
-    2. RECURSOS EXTERNOS E FONTES (PRECONNECT PARA PERFORMANCE)
-    ======================================================================= 
-    -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (via CDN) -->
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Vendor Libraries -->
+    <!-- GSAP for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Three.js for 3D WebGL Rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- 
-    =======================================================================
-    3. ARQUITETURA CSS (DESIGN SYSTEM E HARDWARE ACCELERATION)
-    ======================================================================= 
-    -->
+    <!-- Tailwind Deep Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                        brand: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            400: '#fb923c',
+                            500: '#f97316', // Core Orange
+                            600: '#ea580c',
+                            900: '#7c2d12',
+                            accent: '#8b5cf6', // Violet
+                            accentDark: '#5b21b6',
+                            success: '#10b981',
+                            error: '#ef4444',
+                        },
+                        surface: {
+                            DEFAULT: 'rgba(15, 23, 42, 0.6)',
+                            hover: 'rgba(30, 41, 59, 0.8)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            light: '#ffffff'
+                        },
+                        base: {
+                            900: '#020617', // Slate 950
+                            950: '#000000',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'blob-reverse': 'blob-reverse 10s infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glitch': 'glitch 2s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        'blob-reverse': {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(-30px, 50px) scale(1.2)' },
+                            '66%': { transform: 'translate(20px, -20px) scale(0.8)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* ---------------------------------------------------------------------
-           VARIÁVEIS DE TEMA GLOBAIS (DARK MODE DEFAULT)
-           --------------------------------------------------------------------- */
+        /* CSS Custom Properties para controle em tempo real via JS */
         :root {
-            /* Cores de Fundo */
-            --bg: #05080d;
-            --bg2: #0c1018;
-            --bg3: #111827;
-            
-            /* Bordas */
-            --border: rgba(255, 255, 255, 0.08);
-            --border-accent: rgba(249, 115, 22, 0.4);
-            
-            /* Tipografia */
-            --text: #f1f5f9;
-            --text2: #94a3b8;
-            
-            /* Cores de Marca (Laranja/Roxo) */
-            --accent: #f97316;
-            --accent2: #fb923c;
-            --violet: #b5b2ff;
-            --violet2: #a78bfa;
-            
-            /* Efeitos de Brilho */
-            --glow: rgba(249, 115, 22, 0.2);
-            --glow-strong: rgba(249, 115, 22, 0.4);
-            
-            /* Utilitários */
-            --cursor-size: 32px;
-            --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --cursor-x: 50vw;
+            --cursor-y: 50vh;
+            --scroll-y: 0;
+            --glass-bg: rgba(15, 23, 42, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow-color: rgba(249, 115, 22, 0.15);
         }
 
-        /* ---------------------------------------------------------------------
-           VARIÁVEIS DE TEMA (LIGHT MODE OVERRIDE)
-           --------------------------------------------------------------------- */
-        [data-theme="light"] {
-            --bg: #f8fafc;
-            --bg2: #ffffff;
-            --bg3: #f1f5f9;
-            
-            --border: rgba(0, 0, 0, 0.08);
-            --border-accent: rgba(37, 99, 235, 0.4);
-            
-            --text: #0f172a;
-            --text2: #64748b;
-            
-            --accent: #2563eb;
-            --accent2: #3b82f6;
-            --violet: #7c3aed;
-            --violet2: #6d28d9;
-            
-            --glow: rgba(37, 99, 235, 0.15);
-            --glow-strong: rgba(37, 99, 235, 0.3);
-        }
-
-        /* ---------------------------------------------------------------------
-           RESET E OTIMIZAÇÕES GLOBAIS
-           --------------------------------------------------------------------- */
+        /* Resets e Otimizações de Renderização */
         * {
-            margin: 0;
-            padding: 0;
+            cursor: none !important; /* Cursor customizado absoluto */
             box-sizing: border-box;
-            cursor: none; /* Esconde cursor padrão do SO */
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: background-color var(--transition-smooth), color var(--transition-smooth);
-            overflow-x: hidden;
-        }
-
-        /* Otimização de GPU (Aceleração de Hardware) */
-        .gpu-accelerated {
-            transform: translateZ(0);
-            will-change: transform, opacity;
-            backface-visibility: hidden;
-        }
-
-        /* ---------------------------------------------------------------------
-           CUSTOM CURSOR FÍSICO (ALTA PERFORMANCE)
-           --------------------------------------------------------------------- */
-        .custom-cursor-ring {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: var(--cursor-size);
-            height: var(--cursor-size);
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            /* margin negativa centra o cursor sem causar reflows de transform via CSS */
-            margin-left: calc(var(--cursor-size) / -2);
-            margin-top: calc(var(--cursor-size) / -2);
-            transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-            mix-blend-mode: exclusion;
-            will-change: transform;
-        }
-
-        .custom-cursor-dot {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            margin-left: -3px;
-            margin-top: -3px;
-            will-change: transform;
-        }
-
-        .cursor-hovering {
-            width: 60px;
-            height: 60px;
-            margin-left: -30px;
-            margin-top: -30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: transparent;
-            backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
         }
 
         @media (max-width: 1024px) {
             * { cursor: auto !important; }
-            .custom-cursor-ring, .custom-cursor-dot { display: none !important; }
         }
 
-        /* ---------------------------------------------------------------------
-           EFEITOS AMBIENTAIS E CANVAS
-           --------------------------------------------------------------------- */
-        #scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--violet));
-            z-index: 200;
-            width: 0%;
-            will-change: width;
-        }
-
-        #particles-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-            will-change: transform;
-        }
-
-        [data-theme="light"] #particles-canvas {
-            opacity: 0.15;
-        }
-
-        .bottom-glow {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) translateZ(0);
-            width: 100vw;
-            max-width: 900px;
-            height: 400px;
-            background: radial-gradient(ellipse at 50% 100%, rgba(249, 115, 22, 0.12) 0%, rgba(167, 139, 250, 0.05) 40%, transparent 70%);
-            pointer-events: none;
-            will-change: opacity;
-        }
-
-        [data-theme="light"] .bottom-glow {
-            background: radial-gradient(ellipse at 50% 100%, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-        }
-
-        /* ---------------------------------------------------------------------
-           NAVBAR (HEADER)
-           --------------------------------------------------------------------- */
-        #navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: padding 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
-            will-change: padding, background-color;
-        }
-
-        #navbar.scrolled {
-            background-color: rgba(5, 8, 13, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 5%;
-        }
-
-        [data-theme="light"] #navbar.scrolled {
-            background-color: rgba(248, 250, 252, 0.9);
-        }
-
-        .nav-logo {
-            font-family: 'Sora', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--text);
-            text-decoration: none;
-            letter-spacing: -0.03em;
-        }
-
-        .nav-logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text2);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            font-family: 'Sora', sans-serif;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--text);
-        }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-controls {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-        }
-
-        .control-btn {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.5rem;
-            cursor: none;
-            color: var(--text);
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            transition: all 0.2s ease;
-            font-family: 'Sora', sans-serif;
-            backdrop-filter: blur(8px);
-        }
-
-        .control-btn.lang-btn {
-            width: auto;
-            padding: 0.5rem 1rem;
-        }
-
-        .control-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        [data-theme="light"] .control-btn {
-            background-color: var(--bg3);
-        }
-
-        #theme-toggle .sun-icon { display: none; }
-        [data-theme="light"] #theme-toggle .sun-icon { display: block; }
-        [data-theme="light"] #theme-toggle .moon-icon { display: none; }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
-            background: none;
-            border: none;
-            padding: 0;
-            z-index: 105;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background-color: var(--text);
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-        /* ---------------------------------------------------------------------
-           HERO SECTION
-           --------------------------------------------------------------------- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 4rem 5%;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: var(--text2);
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            font-family: 'Sora', sans-serif;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(8px);
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background-color: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-
-        .gradient-title {
-            font-family: 'Sora', sans-serif;
-            background: linear-gradient(180deg, var(--text) 0%, var(--text2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .gradient-orange {
-            background: linear-gradient(135deg, var(--accent), var(--accent2), #fbbf24);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: grad-shift 5s ease infinite;
-        }
-
-        @keyframes grad-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-subtitle {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: var(--text2);
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            max-width: 550px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.8rem 1.8rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: none;
-            border: none;
-            font-family: 'Sora', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #fff;
-            box-shadow: 0 4px 15px var(--glow);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent2);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--glow-strong);
-        }
-
-        .btn-outline {
-            background-color: rgba(255, 255, 255, 0.02);
-            color: var(--text);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(8px);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* ---------------------------------------------------------------------
-           TERMINAL HACKER (ALINHADO COM <PRE>)
-           --------------------------------------------------------------------- */
-        .terminal-window {
-            background-color: rgba(12, 16, 24, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-            display: flex;
-            flex-direction: column;
-            height: 450px;
-        }
-
-        [data-theme="light"] .terminal-window {
-            background-color: #1e293b; /* Mantém escuro por estética do código */
-            border-color: rgba(0,0,0,0.2);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-
-        .terminal-header {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 0.8rem 1.2rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            user-select: none;
-        }
-
-        .terminal-dots { display: flex; gap: 8px; }
-        .terminal-dots span { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-dots span:nth-child(1) { background-color: #ff5f56; }
-        .terminal-dots span:nth-child(2) { background-color: #ffbd2e; }
-        .terminal-dots span:nth-child(3) { background-color: #27c93f; }
-
-        .terminal-filename {
-            margin: 0 auto;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            transform: translateX(-24px);
-        }
-
-        /* Usamos <pre> para garantir que o espaçamento seja preservado do Javascript */
-        .terminal-body {
-            padding: 1.5rem;
-            flex-grow: 1;
-            overflow-y: auto;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #e2e8f0;
-            white-space: pre-wrap; /* Crucial para o alinhamento correto */
+        html {
             scrollbar-width: thin;
-            scrollbar-color: rgba(255,255,255,0.2) transparent;
-            text-align: left;
+            scrollbar-color: #475569 #020617;
         }
 
-        .terminal-body::-webkit-scrollbar { width: 6px; }
-        .terminal-body::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; }
-
-        /* Cores de Sintaxe (VS Code Dark+ Style) */
-        .term-keyword { color: #c678dd; font-weight: bold; }
-        .term-string { color: #98c379; }
-        .term-prop { color: #e06c75; }
-        .term-comment { color: #7f848e; font-style: italic; }
-        .term-func { color: #61afef; }
-        .term-number { color: #d19a66; }
-
-        .cursor-blink {
-            display: inline-block;
-            width: 8px;
-            height: 1.2em;
-            background-color: var(--accent);
-            vertical-align: text-bottom;
-            animation: blink 1s step-end infinite;
-            margin-left: 4px;
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        @keyframes blink { 50% { opacity: 0; } }
+        /* Custom Webkit Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; border: 2px solid #020617; }
+        ::-webkit-scrollbar-thumb:hover { background: #f97316; }
 
-        /* ---------------------------------------------------------------------
-           SEÇÕES GENÉRICAS
-           --------------------------------------------------------------------- */
-        .section { padding: 8rem 5%; position: relative; }
-        .container { max-width: 1280px; margin: 0 auto; }
-        
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-            margin: 0 auto;
-            max-width: 1000px;
+        /* Preloader System Boot */
+        #preloader {
+            position: fixed; inset: 0; z-index: 999999;
+            background-color: #000; color: #10b981;
+            font-family: 'Fira Code', monospace;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 2rem; overflow: hidden;
+            transition: opacity 1s ease-in-out;
         }
+        .boot-line { margin: 2px 0; font-size: 0.9rem; opacity: 0; }
+        .boot-line.visible { opacity: 1; }
 
-        .section-header { text-align: center; margin-bottom: 5rem; }
-        
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 700;
-            font-family: 'Sora', sans-serif;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            background-color: rgba(249, 115, 22, 0.1);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            border: 1px solid rgba(249, 115, 22, 0.2);
-        }
-
-        .section-title {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text2);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ---------------------------------------------------------------------
-           SOBRE E FOTO DE PERFIL COM NEON 3D
-           --------------------------------------------------------------------- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .profile-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            aspect-ratio: 1/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* O anel giratório */
-        .profile-glow-ring {
-            position: absolute;
-            width: 104%;
-            height: 104%;
-            border-radius: 50%;
-            background: conic-gradient(
-                from 0deg,
-                var(--accent) 0deg,
-                transparent 90deg,
-                var(--violet2) 180deg,
-                transparent 270deg,
-                var(--accent) 360deg
-            );
-            animation: spin-ring 5s linear infinite;
-            z-index: 1;
-            /* Filtro otimizado */
-            filter: blur(12px);
-            opacity: 0.8;
+        /* Hardware Accelerated Canvas */
+        #webgl-canvas {
+            position: fixed; inset: 0; z-index: -2;
+            pointer-events: none;
+            transform: translateZ(0);
             will-change: transform;
         }
 
-        @keyframes spin-ring { 100% { transform: rotate(360deg); } }
-
-        /* Container da imagem que oculta o centro do gradiente e mantém a foto reta */
-        .profile-image-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: var(--bg);
-            z-index: 2;
-            padding: 6px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--border);
+        /* Advanced Custom Cursor Physics */
+        .cursor-dot {
+            position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+            background-color: #f97316; border-radius: 50%;
+            pointer-events: none; z-index: 99999;
+            transform: translate3d(calc(var(--cursor-x) - 3px), calc(var(--cursor-y) - 3px), 0);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            mix-blend-mode: difference;
+        }
+        .cursor-ring {
+            position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+            border: 1px solid rgba(249, 115, 22, 0.5); border-radius: 50%;
+            pointer-events: none; z-index: 99998;
+            transition: transform 0.15s cubic-bezier(0.165, 0.84, 0.44, 1), width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        .cursor-hover .cursor-ring {
+            width: 80px; height: 80px;
+            background-color: rgba(249, 115, 22, 0.1);
+            border-color: transparent; backdrop-filter: blur(2px);
+        }
+        .cursor-click .cursor-ring {
+            transform: scale(0.8); background-color: rgba(249, 115, 22, 0.3);
         }
 
-        .profile-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            filter: contrast(1.1) grayscale(10%);
-            transition: transform 0.5s ease, filter 0.5s ease;
-            transform: rotate(0deg) scale(1); /* FOTO RETA */
+        /* Enterprise Glassmorphism (Bento Box Elements) */
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative; overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
         }
-
-        .profile-wrapper:hover .profile-image-container img {
-            transform: scale(1.08) rotate(0deg);
-            filter: contrast(1) grayscale(0%);
+        .glass-panel::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            opacity: 0.5;
         }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2.5rem;
-        }
-
-        .stat-card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        [data-theme="light"] .stat-card { background-color: var(--bg2); }
-
-        .stat-card:hover {
-            border-color: var(--border-accent);
+        .glass-panel:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 20px var(--glow);
-            background-color: rgba(249, 115, 22, 0.03);
+            z-index: 10;
         }
 
-        .stat-number {
-            font-family: 'Sora', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.2rem;
+        /* Typography & Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #f97316, #fb923c, #8b5cf6, #f97316);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-size: 300% auto;
+            animation: textShine 6s linear infinite;
+        }
+        @keyframes textShine { to { background-position: 300% center; } }
+
+        .glitch-text { position: relative; }
+        .glitch-text::before, .glitch-text::after {
+            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617;
+        }
+        .glitch-text::before {
+            left: 2px; text-shadow: -1px 0 #ef4444; clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px; text-shadow: -1px 0 #3b82f6; clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(20px, 9999px, 94px, 0); }
+            20% { clip: rect(62px, 9999px, 12px, 0); }
+            40% { clip: rect(10px, 9999px, 54px, 0); }
+            60% { clip: rect(88px, 9999px, 71px, 0); }
+            80% { clip: rect(41px, 9999px, 33px, 0); }
+            100% { clip: rect(9px, 9999px, 86px, 0); }
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text2);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        /* Terminal Window Concept */
+        .terminal-header {
+            background: rgba(0,0,0,0.6); padding: 10px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 8px; align-items: center;
         }
+        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yel { background: #ffbd2e; }
+        .dot-grn { background: #27c93f; }
 
-        /* ---------------------------------------------------------------------
-           HABILIDADES E PROJETOS (GLASSMORPHISM CARDS)
-           --------------------------------------------------------------------- */
-        .skills-grid {
+        /* Bento Grid Architecture */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(120px, auto);
             gap: 1.5rem;
         }
-
-        .skill-card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transform-style: preserve-3d;
-        }
-
-        [data-theme="light"] .skill-card { background-color: var(--bg2); }
-
-        .skill-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 0%, var(--glow), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .skill-card:hover {
-            border-color: var(--border-accent);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2), 0 0 20px var(--glow);
-        }
-
-        .skill-card:hover::after { opacity: 1; }
-
-        .skill-card img {
-            width: 55px;
-            height: 55px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover img {
-            transform: scale(1.15) translateY(-5px);
-        }
-
-        .skill-card h3 {
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-            z-index: 1;
-            font-family: 'Sora', sans-serif;
-        }
-
-        /* Projetos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(10px);
-            height: 100%;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        [data-theme="light"] .project-card { background-color: var(--bg2); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        .project-card:hover {
-            border-color: var(--border-accent);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px var(--glow);
-        }
-
-        .project-header {
-            padding: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            z-index: 2;
-        }
-
-        [data-theme="light"] .project-header { background-color: var(--bg3); }
-
-        .project-icon {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(249, 115, 22, 0.1);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-icon {
-            transform: scale(1.1) rotate(5deg);
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .project-link {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text2);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .project-link:hover {
-            color: white;
-            background-color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .project-body {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-title {
-            font-family: 'Sora', sans-serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--text);
-        }
-
-        .project-desc {
-            color: var(--text2);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            flex: 1;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .project-tag {
-            background-color: rgba(249, 115, 22, 0.08);
-            color: var(--accent2);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'Sora', sans-serif;
-        }
-
-        /* ---------------------------------------------------------------------
-           CONTATO E FORMULÁRIO
-           --------------------------------------------------------------------- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text);
-            width: 100%;
-            text-align: left;
-            backdrop-filter: blur(10px);
-        }
-
-        [data-theme="light"] .contact-card { background-color: var(--bg2); }
-
-        .contact-card:hover {
-            border-color: var(--border-accent);
-            transform: translateX(10px);
-            background-color: rgba(255, 255, 255, 0.05);
-            box-shadow: inset 4px 0 0 var(--accent);
-        }
-
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(249, 115, 22, 0.1);
-            border: 1px solid rgba(249, 115, 22, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover .contact-icon {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        /* Força a cor nativa dos SVGs hardcoded */
-        .svg-native {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
+        .bento-col-4 { grid-column: span 4; }
+        .bento-col-6 { grid-column: span 6; }
+        .bento-col-8 { grid-column: span 8; }
+        .bento-col-12 { grid-column: span 12; }
+        .bento-row-2 { grid-row: span 2; }
         
-        .svg-native-stroke {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        @media (max-width: 1024px) {
+            .bento-col-4, .bento-col-6, .bento-col-8 { grid-column: span 12; }
+            .bento-row-2 { grid-row: span 1; }
         }
 
-        .contact-label {
-            font-size: 0.8rem;
-            color: var(--text2);
-            margin-bottom: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-            font-family: 'Sora', sans-serif;
+        /* Timeline Specifics */
+        .timeline-container { position: relative; padding-left: 3rem; }
+        .timeline-container::before {
+            content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, var(--glow-color), #f97316, var(--glow-color));
+        }
+        .timeline-dot {
+            position: absolute; left: -3rem; top: 0.5rem; width: 24px; height: 24px;
+            background: #020617; border: 2px solid #f97316; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 0 15px rgba(249,115,22,0.5); z-index: 2;
+        }
+        .timeline-dot::after {
+            content: ''; width: 8px; height: 8px; background: #f97316; border-radius: 50%;
         }
 
-        .contact-value {
-            font-weight: 500;
-            font-size: 1rem;
-            word-break: break-all;
+        /* Filter Buttons */
+        .filter-btn {
+            background: transparent; border: 1px solid var(--glass-border);
+            color: #94a3b8; padding: 0.5rem 1.5rem; border-radius: 9999px;
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500;
+            transition: all 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #f97316; color: white; border-color: #f97316;
+            box-shadow: 0 4px 15px rgba(249,115,22,0.3);
         }
 
-        .form-container {
-            background-color: rgba(12, 16, 24, 0.6);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            backdrop-filter: blur(20px);
-        }
-
-        [data-theme="light"] .form-container {
-            background-color: var(--bg2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .form-control {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-            margin-bottom: 1.5rem;
-        }
-
-        [data-theme="light"] .form-control {
-            background-color: var(--bg3);
-            border-color: rgba(0,0,0,0.1);
-        }
-
-        .form-control:focus {
-            border-color: var(--accent);
-            background-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
-        }
-
-        /* ---------------------------------------------------------------------
-           ANIMAÇÕES CORE (REVEAL)
-           --------------------------------------------------------------------- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-            will-change: opacity, transform;
-        }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .sec-a { background-color: var(--bg); }
-        .sec-b { background-color: var(--bg2); }
-
-        /* ---------------------------------------------------------------------
-           MEDIA QUERIES (RESPONSIVO)
-           --------------------------------------------------------------------- */
-        @media(max-width:1024px){
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero-badge { margin: 0 auto 1.5rem; }
-            .btn-group { justify-content: center; }
-            .terminal-window { max-width: 800px; margin: 0 auto; }
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .contact-grid { grid-template-columns: 1fr; }
-        }
-
-        @media(max-width:768px){
-            .section { padding: 6rem 1.5rem; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .nav-links.mobile-open {
-                display: flex; flex-direction: column; position: fixed;
-                top: 0; left: 0; right: 0; height: 100vh;
-                background-color: rgba(5,8,13,0.98); backdrop-filter: blur(20px);
-                justify-content: center; align-items: center; gap: 2.5rem; z-index: 99;
-            }
-            [data-theme="light"] .nav-links.mobile-open { background-color: rgba(248,250,252,0.98); }
-            .nav-links.mobile-open a { font-size: 1.5rem; font-weight: 700; }
+        /* Utils */
+        .magnetic-wrap { display: inline-block; position: relative; }
+        .interactive { cursor: none; }
+        
+        /* Progress Bar */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: #f97316;
+            width: 0%; z-index: 1000; transition: width 0.1s ease;
+            box-shadow: 0 0 10px #f97316;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-brand-500 selection:text-white relative">
 
-    <!-- FÍSICA E EFEITOS DE FUNDO (OTIMIZADOS PARA GPU) -->
-    <div class="ambient-light-container">
-        <div class="ambient-glow"></div>
-        <div class="ambient-glow-2"></div>
+    <div id="preloader">
+        <!-- JS will inject boot lines here -->
     </div>
+
+    <!-- ProgressBar -->
+    <div id="progress-bar"></div>
+
+    <!-- 3D Environment (ThreeJS Canvas) -->
+    <canvas id="webgl-canvas"></canvas>
     
-    <!-- Canvas Pausa automaticamente quando fora da viewport -->
-    <canvas id="particles-canvas"></canvas>
-    
-    <!-- Progresso de Scroll no Topo -->
-    <div id="scroll-progress"></div>
+    <!-- Aesthetic Ambient Blurs (CSS Painted) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-600/10 mix-blend-screen filter blur-[120px] animate-blob"></div>
+        <div class="absolute top-[30%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-accent/10 mix-blend-screen filter blur-[120px] animate-blob-reverse"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-blue-600/5 mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 2s;"></div>
+        <!-- Grid overlay -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
 
-    <!-- Cursors -->
-    <div class="custom-cursor-ring" id="cursor-ring"></div>
-    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden lg:block" id="cursor-dot"></div>
+    <div class="cursor-ring hidden lg:block" id="cursor-ring"></div>
 
-    <!-- =======================================================================
-         NAVBAR E CONTROLES (I18N)
-         ======================================================================= -->
-    <nav id="navbar">
-        <a href="#" class="nav-logo hover-target">JV<span>.</span>Code</a>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#about" class="hover-target" data-lang="navAbout">Sobre</a></li>
-            <li><a href="#skills" class="hover-target" data-lang="navSkills">Habilidades</a></li>
-            <li><a href="#projects" class="hover-target" data-lang="navProjects">Projetos</a></li>
-            <li><a href="#contact" class="hover-target" data-lang="navContact">Contato</a></li>
-        </ul>
-        
-        <div class="nav-controls">
-            <!-- Tradutor Multinacional -->
-            <select id="lang-selector" class="control-btn lang-btn hover-target bg-transparent outline-none appearance-none font-bold">
-                <option value="pt" class="text-black">PT</option>
-                <option value="en" class="text-black">EN</option>
-                <option value="es" class="text-black">ES</option>
-            </select>
-
-            <button id="theme-toggle" class="control-btn hover-target" aria-label="Alternar tema">
-                <i data-lucide="sun" class="sun-icon w-4 h-4"></i>
-                <i data-lucide="moon" class="moon-icon w-4 h-4"></i>
-            </button>
+    <header class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent" id="navbar">
+        <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
             
-            <button class="hamburger hover-target" id="hamburger" aria-label="Abrir menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- =======================================================================
-         HERO SECTION (COM TERMINAL <PRE>)
-         ======================================================================= -->
-    <section class="hero sec-a" id="home">
-        <div class="bottom-glow"></div>
-        <div class="hero-content">
-            
-            <div class="fade-in-up">
-                <div class="hero-badge" data-lang="heroWelcome">Engenheiro de Software Junior</div>
-                <h1 class="hero-title">
-                    <span data-lang="heroTitle1">Lógica pura,</span><br>
-                    <span class="gradient-orange" data-lang="heroTitle2">Arquitetura Sólida.</span>
-                </h1>
-                <p class="hero-subtitle" data-lang="heroDesc">
-                    Especialista em construir arquiteturas robustas no <strong>Back-end</strong> (Python/C#) e interfaces de alta performance no <strong>Front-end</strong> (JavaScript). Código limpo, sistemas escaláveis.
-                </p>
-                
-                <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary hover-target">
-                        <i data-lucide="terminal" class="w-4 h-4"></i>
-                        <span data-lang="heroBtnWork">Ver Meus Projetos</span>
-                    </a>
-                    <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="btn btn-outline hover-target">
-                        <!-- SVG Nativo do GitHub garantindo renderização -->
-                        <svg class="svg-native w-4 h-4" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        GitHub
-                    </a>
+            <!-- Logo -->
+            <a href="#" class="font-brand font-extrabold text-2xl tracking-tighter interactive magnetic-wrap group" data-lang="logo">
+                <div class="transition-transform group-hover:scale-110">
+                    JV<span class="text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]">.</span>Arch
                 </div>
-            </div>
-
-            <!-- Terminal Hacker Emulado usando <pre> para manter identação perfeita -->
-            <div class="fade-in-up tilt-card hover-target gpu-accelerated" style="transition-delay: 200ms;">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-dots"><span></span><span></span><span></span></div>
-                        <div class="terminal-filename">jvbm_profile.js</div>
-                    </div>
-                    <pre class="terminal-body" id="terminal-content"></pre>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- =======================================================================
-         SOBRE MIM (FOTO RETA COM ANEL NEON GIRATÓRIO)
-         ======================================================================= -->
-    <section id="about" class="section sec-b">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <div class="section-tag" data-lang="sectionTagAbout">Quem sou eu</div>
-                <h2 class="section-title" data-lang="aboutTitle">Sobre Mim</h2>
-                <p class="section-subtitle" data-lang="aboutSubtitle">Conheça a minha jornada e a base metodológica do meu código.</p>
-            </div>
+            </a>
             
-            <div class="about-grid">
-                
-                <!-- Container da Foto Protegido contra distorções -->
-                <div class="fade-in-up tilt-card hover-target gpu-accelerated">
-                    <div class="profile-wrapper">
-                        <!-- Anel Neon -->
-                        <div class="profile-glow-ring"></div>
-                        <!-- Máscara da Imagem Reta -->
-                        <div class="profile-image-container">
-                            <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor Barros">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Textos e Estatísticas Pessoais -->
-                <div class="fade-in-up" style="transition-delay: 200ms;">
-                    <div class="tag-pill mb-4 font-mono text-xs">System.out.println("Hello World!");</div>
-                    <h3 class="font-sora text-2xl font-bold mb-4 text-[var(--text)]" data-lang="aboutHeadline">Construindo o futuro digital.</h3>
-                    
-                    <p class="text-[var(--text2)] text-[1rem] leading-relaxed mb-4" data-lang="aboutP1">
-                        Sou um desenvolvedor apaixonado por tecnologia. O meu foco é absorver conhecimentos em arquiteturas complexas e aplicá-los na construção de soluções de software elegantes, eficientes e escaláveis.
-                    </p>
-                    <p class="text-[var(--text2)] text-[1rem] leading-relaxed mb-8" data-lang="aboutP2">
-                        Estudo Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). Combino o rigor do Back-end com a fluidez do Front-end para entregar produtos completos.
-                    </p>
-
-                    <!-- Estatísticas Animadas -->
-                    <div class="about-stats">
-                        <div class="stat-card hover-target">
-                            <div class="stat-number stat-counter" data-target="15">0</div>
-                            <div class="stat-label" data-lang="statTech">Tecnologias</div>
-                        </div>
-                        <div class="stat-card hover-target">
-                            <div class="stat-number stat-counter" data-target="20">0</div>
-                            <div class="stat-label" data-lang="statAge">Anos de Idade</div>
-                        </div>
-                        <div class="stat-card hover-target">
-                            <div class="stat-number stat-counter" data-target="100">0</div>
-                            <div class="stat-label" data-lang="statDedication">% Clean Code</div>
-                        </div>
-                        <div class="stat-card hover-target">
-                            <div class="stat-number text-blue-500">∞</div>
-                            <div class="stat-label" data-lang="statCuriosity">Lógica</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- =======================================================================
-         TECH STACK (ALIMENTADO PELO MOCK DB COM ÍCONES OFICIAIS CDN)
-         ======================================================================= -->
-    <section id="skills" class="section sec-a">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <div class="section-tag" data-lang="sectionTagSkills">Dependencies</div>
-                <h2 class="section-title" data-lang="skillsTitle">Ecossistema de Domínio</h2>
-                <p class="section-subtitle" data-lang="skillsSubtitle">Linguagens, frameworks e ferramentas que utilizo no desenvolvimento diário.</p>
-            </div>
-            
-            <div class="skills-grid" id="skills-grid">
-                <!-- Javascript injeta os cards com os logos oficiais Devicons (Java, Linux, Git, etc) -->
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- =======================================================================
-         PROJETOS / PORTFÓLIO (INCLUINDO MERCADO BELA ESPERANÇA)
-         ======================================================================= -->
-    <section id="projects" class="section sec-b">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <div class="section-tag" data-lang="sectionTagProjects">Deployments</div>
-                <h2 class="section-title" data-lang="projectsTitle">Sistemas em Produção</h2>
-                <p class="section-subtitle" data-lang="projectsSubtitle">Aplicações reais, desenhadas com foco em arquitetura, performance e experiência de uso.</p>
-            </div>
-            
-            <div class="projects-grid" id="projects-grid">
-                <!-- Javascript injeta os projetos do Mock DB -->
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- =======================================================================
-         CONTATO E FORMULÁRIO (COM SVGS NATIVOS)
-         ======================================================================= -->
-    <section id="contact" class="section sec-a">
-        <div class="bottom-glow" style="transform: translateX(-50%) rotate(180deg); top:0; bottom:auto;"></div>
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <div class="section-tag" data-lang="sectionTagContact">Networking</div>
-                <h2 class="section-title" data-lang="contactTitle">Estabelecer Conexão</h2>
-                <p class="section-subtitle" data-lang="contactSubtitle">Aberto a propostas de estágio, projetos de arquitetura e desenvolvimento full-stack.</p>
-            </div>
-            
-            <div class="contact-grid">
-                
-                <!-- Informações e Redes -->
-                <div class="fade-in-up">
-                    <!-- Email -->
-                    <button class="contact-card hover-target" id="emailButtonBox" style="border:none; text-align:left;">
-                        <div class="contact-icon">
-                            <svg class="svg-native-stroke" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                        </div>
-                        <div>
-                            <div class="contact-label" data-lang="contactEmail">Email Principal</div>
-                            <div class="contact-value" style="font-family: var(--font-mono); font-size:0.9rem;">joaovictor.business2005@gmail.com</div>
-                        </div>
-                    </button>
-                    
-                    <!-- LinkedIn Oficial -->
-                    <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" rel="noopener noreferrer" class="contact-card hover-target">
-                        <div class="contact-icon" style="color: #0a66c2; background: rgba(10,102,194,0.1); border-color: rgba(10,102,194,0.2);">
-                            <svg class="svg-native" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        </div>
-                        <div>
-                            <div class="contact-label" data-lang="contactLinkedIn">Rede Profissional</div>
-                            <div class="contact-value font-mono">LinkedIn Profile</div>
-                        </div>
-                    </a>
-
-                    <!-- GitHub Oficial -->
-                    <a href="https://github.com/Joaovictoreth1" target="_blank" rel="noopener noreferrer" class="contact-card hover-target">
-                        <div class="contact-icon" style="color: #fff; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
-                            <svg class="svg-native" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                        </div>
-                        <div>
-                            <div class="contact-label" data-lang="contactGithub">Repositórios e Código</div>
-                            <div class="contact-value font-mono">@Joaovictoreth1</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Formulário UI -->
-                <div class="form-container fade-in-up hover-target gpu-accelerated" style="transition-delay: 200ms;">
-                    <h3 class="font-sora text-xl font-bold mb-6 text-[var(--text)]" data-lang="formTitle">Requisição POST de Contato</h3>
-                    <form id="contactForm">
-                        <div class="mb-4">
-                            <label class="block text-sm font-bold text-[var(--text2)] font-mono mb-2">{"nome": ""}</label>
-                            <input type="text" required placeholder="Seu Nome..." class="form-control hover-target font-mono">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-bold text-[var(--text2)] font-mono mb-2">{"email": ""}</label>
-                            <input type="email" required placeholder="dev@empresa.com" class="form-control hover-target font-mono">
-                        </div>
-                        <div class="mb-6">
-                            <label class="block text-sm font-bold text-[var(--text2)] font-mono mb-2">{"mensagem": ""}</label>
-                            <textarea required rows="4" placeholder="Descrição do projeto ou vaga..." class="form-control hover-target font-mono resize-none"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full justify-center py-4">
-                            <span id="submit-btn-text" data-lang="formBtn">Executar Fetch()</span>
-                            <i data-lucide="send" id="submit-btn-icon" class="w-4 h-4 ml-2"></i>
-                        </button>
-                        <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl text-left font-mono text-sm border bg-[rgba(86,217,149,0.1)] text-[var(--success)] border-[var(--success)]">
-                            [Status 201]: Criado com sucesso.
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- =======================================================================
-         FOOTER INSTITUCIONAL
-         ======================================================================= -->
-    <footer>
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-6">
-            <div class="text-center md:text-left">
-                <div class="font-sora font-extrabold text-xl text-[var(--text)] mb-2">JV<span class="text-[var(--accent)]">.</span>Code</div>
-                <p class="text-[var(--text2)] text-sm" data-lang="footerDesc">Arquitetura de Software Sustentável.</p>
-            </div>
-            
-            <div class="text-center text-[var(--text2)] text-xs font-mono">
-                <p>System.out.println("© 2026 João Victor. Todos os direitos reservados.");</p>
-                <p class="text-[var(--success)] mt-1">Status: All Nodes Operational.</p>
-            </div>
-            
-            <!-- Redes Sociais Footer -->
-            <div class="flex gap-4 interactive">
-                <a href="https://github.com/Joaovictoreth1" target="_blank" aria-label="GitHub" class="w-10 h-10 rounded-full border border-[var(--border)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-[var(--text2)] hover:text-white hover:border-white transition-all">
-                    <svg class="svg-native w-4 h-4" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-8 items-center bg-surface border border-surface-border px-8 py-3 rounded-full backdrop-blur-md shadow-lg">
+                <a href="#about" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navAbout">
+                    <span>Sobre</span>
                 </a>
-                <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full border border-[var(--border)] bg-[rgba(255,255,255,0.03)] flex items-center justify-center text-[var(--text2)] hover:text-[#0a66c2] hover:border-[#0a66c2] transition-all">
-                    <svg class="svg-native w-4 h-4" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="#experience" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navExp">
+                    <span>Jornada</span>
                 </a>
+                <a href="#skills" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navSkills">
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navProjects">
+                    <span>Projetos</span>
+                </a>
+            </nav>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden lg:flex interactive bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-full font-medium transition-colors items-center gap-2 text-sm shadow-[0_0_15px_rgba(249,115,22,0.3)] magnetic-wrap">
+                    <span data-lang="navContact">Deploy Contact</span>
+                    <i data-lucide="terminal" class="w-4 h-4"></i>
+                </a>
+
+                <!-- Language Selector -->
+                <div class="relative group interactive">
+                    <select id="lang-selector" class="bg-surface border border-surface-border text-xs font-mono font-bold text-slate-300 hover:text-white rounded-lg px-3 py-2 cursor-none outline-none appearance-none transition-colors">
+                        <option value="pt" class="bg-slate-900">PT-BR</option>
+                        <option value="en" class="bg-slate-900">EN-US</option>
+                    </select>
+                    <i data-lucide="globe" class="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"></i>
+                </div>
+
+                <!-- Mobile Menu Btn -->
+                <button class="md:hidden interactive text-slate-300 bg-surface p-2 rounded-lg border border-surface-border" id="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="min-h-screen flex items-center relative pt-20 px-6 overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left: Typography & CTA (Spans 7 cols) -->
+                <div class="lg:col-span-7 z-10 gs-reveal mt-10 lg:mt-0">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-xs font-mono text-brand-400 mb-8 backdrop-blur-sm">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                        </span>
+                        <span data-lang="heroBadge">System Status: Online | Available for Work</span>
+                    </div>
+                    
+                    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
+                        <span class="block text-slate-100" data-lang="heroTitle1">Engenharia</span>
+                        <span class="block text-slate-300" data-lang="heroTitle2">Orientada a</span>
+                        <span class="text-gradient block glitch-text" data-text="Soluções." data-lang="heroTitle3">Soluções.</span>
+                    </h1>
+                    
+                    <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mb-10 font-light leading-relaxed" data-lang="heroDesc">
+                        Desenvolvedor de Software Especialista. Construindo arquiteturas resilientes e complexas no <strong class="text-slate-200 font-medium">Back-end</strong> (Python/C#) e interfaces dinâmicas de alta performance no <strong class="text-slate-200 font-medium">Front-end</strong> (JavaScript).
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-5">
+                        <div class="magnetic-wrap">
+                            <a href="#projects" class="interactive bg-white hover:bg-slate-200 text-slate-950 px-8 py-4 rounded-xl font-bold transition-colors flex items-center gap-2">
+                                <span data-lang="heroBtn">Analisar Projetos</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="https://github.com/Joaovictoreth1" target="_blank" class="interactive bg-surface border border-surface-border hover:border-brand-500 text-slate-200 px-8 py-4 rounded-xl font-medium transition-all flex items-center gap-3 group">
+                                <i data-lucide="github" class="w-5 h-5 group-hover:text-brand-500 transition-colors"></i>
+                                <span>GitHub Repos</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Advanced Terminal Emulator (Spans 5 cols) -->
+                <div class="lg:col-span-5 z-10 w-full mx-auto gs-reveal-right hidden md:block">
+                    <div class="glass-panel rounded-2xl border-t border-t-slate-500/30 shadow-2xl shadow-brand-500/10 transform perspective-1000 rotate-y-[-10deg] rotate-x-[5deg] transition-transform duration-700 hover:rotate-0">
+                        <div class="terminal-header">
+                            <div class="terminal-dot dot-red"></div>
+                            <div class="terminal-dot dot-yel"></div>
+                            <div class="terminal-dot dot-grn"></div>
+                            <div class="ml-4 font-mono text-xs text-slate-400 flex-1 text-center pr-12">~/workspace/jvbm_core.js</div>
+                        </div>
+                        <div class="p-6 font-mono text-sm leading-relaxed text-slate-300 h-[400px] overflow-hidden bg-[#0d1117]" id="terminal-container">
+                            <!-- JS Inject -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-float pointer-events-none">
+                <span class="text-xs font-mono text-slate-400 tracking-widest uppercase" data-lang="scrollDown">Scroll</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-brand-500 to-transparent"></div>
+            </div>
+        </section>
+
+        <section id="about" class="py-32 px-6 relative z-10">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-20 gs-reveal text-center md:text-left">
+                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">System.Identity()</div>
+                    <h2 class="font-display text-4xl md:text-6xl font-extrabold" data-lang="aboutTitle">Mente Analítica.</h2>
+                </div>
+
+                <div class="bento-grid">
+                    
+                    <!-- Main Bio (Col 8, Row 2) -->
+                    <div class="glass-panel rounded-[2rem] p-10 bento-col-8 bento-row-2 gs-reveal flex flex-col justify-center relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-500/20 transition-colors duration-700"></div>
+                        <i data-lucide="cpu" class="w-12 h-12 text-brand-500 mb-8"></i>
+                        <h3 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white" data-lang="aboutHeadline">A lógica por trás do código.</h3>
+                        <p class="text-slate-300 text-lg leading-relaxed mb-6 font-light" data-lang="aboutP1">
+                            Com 20 anos, minha jornada na programação não é apenas sobre escrever sintaxe, mas sobre <strong>resolver problemas arquiteturais complexos</strong>. Sou fascinado por entender a engrenagem profunda dos sistemas, otimizando bancos de dados e criando APIs resilientes.
+                        </p>
+                        <p class="text-slate-400 text-base leading-relaxed font-light" data-lang="aboutP2">
+                            Estudante de Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). Minha assinatura é combinar o rigor e a segurança do Back-end (C#/Python) com a fluidez do Front-end moderno (JS/React).
+                        </p>
+                    </div>
+
+                    <!-- Profile Avatar (Col 4, Row 1) -->
+                    <div class="glass-panel rounded-[2rem] p-2 bento-col-4 gs-reveal flex items-center justify-center overflow-hidden group relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-500/30 to-brand-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                        <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor" class="w-full h-full object-cover rounded-[1.5rem] filter grayscale-[50%] contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                    </div>
+
+                    <!-- Clean Code Stat (Col 4, Row 1) -->
+                    <div class="glass-panel rounded-[2rem] p-8 bento-col-4 gs-reveal flex flex-col justify-between items-center text-center group">
+                        <div class="w-full flex justify-between items-start text-slate-500 group-hover:text-brand-500 transition-colors">
+                            <i data-lucide="code-2"></i>
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="my-4">
+                            <div class="font-display text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500 tracking-tighter">100<span class="text-3xl text-brand-500">%</span></div>
+                        </div>
+                        <div class="text-sm font-mono text-slate-400 uppercase tracking-widest" data-lang="statClean">Foco em Clean Code</div>
+                    </div>
+
+                    <!-- Location & Availability (Col 6, Row 1) -->
+                    <div class="glass-panel rounded-[2rem] p-8 bento-col-6 gs-reveal flex gap-6 items-center bg-gradient-to-r from-surface to-slate-900/50">
+                        <div class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="map-pin" class="text-brand-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-xl text-white mb-1" data-lang="locTitle">São Paulo, Brasil</div>
+                            <div class="flex items-center gap-2 text-sm text-green-400 font-mono">
+                                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                                <span data-lang="locStatus">Remote / Híbrido Available</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Age & Logic (Col 6, Row 1) -->
+                    <div class="glass-panel rounded-[2rem] p-8 bento-col-6 gs-reveal flex flex-col justify-center">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <div class="text-5xl font-display font-bold text-white mb-2">20 <span class="text-2xl text-slate-500 font-normal" data-lang="years">anos</span></div>
+                                <div class="text-sm text-slate-400 font-mono" data-lang="logicTxt">Algoritmos & Lógica Pura</div>
+                            </div>
+                            <i data-lucide="brain-circuit" class="w-12 h-12 text-slate-700"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-32 px-6 relative z-10 bg-black/20 backdrop-blur-sm border-y border-surface-border">
+            <div class="max-w-screen-xl mx-auto">
+                <div class="mb-20 gs-reveal text-center">
+                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">Career.History</div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold" data-lang="expTitle">Jornada Profissional</h2>
+                </div>
+
+                <div class="timeline-container ml-4 md:ml-12" id="timeline-wrapper">
+                    <!-- Injected via JS based on MOCK_DB -->
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-32 px-6 relative z-10 overflow-hidden">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16 gs-reveal flex flex-col md:flex-row justify-between items-end gap-6">
+                    <div>
+                        <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">Tech_Stack.json</div>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold" data-lang="skillsTitle">Arsenal Tecnológico</h2>
+                    </div>
+                    <p class="text-slate-400 max-w-md text-right hidden md:block" data-lang="skillsSub">Linguagens e infraestrutura utilizadas para construir sistemas robustos e escaláveis.</p>
+                </div>
+
+                <!-- Categorized Skills via CSS Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 gs-reveal" id="tech-grid">
+                    <!-- Injected via JS -->
+                </div>
+                
+                <!-- Continuous Marquee for smaller tools -->
+                <div class="mt-16 overflow-hidden relative border-y border-surface-border py-6 bg-surface/30">
+                    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10"></div>
+                    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10"></div>
+                    <div class="flex whitespace-nowrap animate-[scroll_30s_linear_infinite] gap-12 items-center opacity-50 hover:opacity-100 transition-opacity">
+                        <!-- Cloned content for smooth loop -->
+                        <div class="flex gap-12 font-mono text-xl font-bold text-slate-300">
+                            <span>DOCKER</span> <span>*</span> <span>AWS</span> <span>*</span> <span>LINUX</span> <span>*</span> <span>GIT</span> <span>*</span> <span>RESTful APIs</span> <span>*</span> <span>WEB SCRAPING</span> <span>*</span> <span>SOLID</span> <span>*</span> <span>CLEAN ARCHITECTURE</span> <span>*</span>
+                            <span>DOCKER</span> <span>*</span> <span>AWS</span> <span>*</span> <span>LINUX</span> <span>*</span> <span>GIT</span> <span>*</span> <span>RESTful APIs</span> <span>*</span> <span>WEB SCRAPING</span> <span>*</span> <span>SOLID</span> <span>*</span> <span>CLEAN ARCHITECTURE</span> <span>*</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+            </style>
+        </section>
+
+        <section id="projects" class="py-32 px-6 relative z-10">
+            <div class="max-w-screen-2xl mx-auto">
+                <div class="mb-16 gs-reveal text-center">
+                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">System.Outputs</div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-8" data-lang="projectsTitle">Projetos em Destaque</h2>
+                    
+                    <!-- Filters -->
+                    <div class="flex flex-wrap justify-center gap-4" id="project-filters">
+                        <button class="filter-btn interactive active" data-filter="all">All Systems</button>
+                        <button class="filter-btn interactive" data-filter="backend">Back-end</button>
+                        <button class="filter-btn interactive" data-filter="fullstack">Full-Stack</button>
+                        <button class="filter-btn interactive" data-filter="edge">Edge Computing</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                    <!-- Injected via JS -->
+                </div>
+                
+                <div class="mt-16 text-center gs-reveal">
+                    <a href="https://github.com/Joaovictoreth1" target="_blank" class="interactive inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 transition-colors font-mono text-sm border-b border-brand-500/50 pb-1">
+                        <span data-lang="viewGithub">Explorar todos os repositórios no GitHub</span> <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32 px-6 relative z-10">
+            <div class="max-w-screen-xl mx-auto">
+                <div class="glass-panel rounded-[3rem] p-8 md:p-16 border border-brand-500/20 shadow-[0_0_80px_rgba(249,115,22,0.05)] gs-reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        
+                        <!-- Contact Info -->
+                        <div>
+                            <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 text-white" data-lang="contactTitle">Vamos construir algo <span class="text-brand-500">épico.</span></h2>
+                            <p class="text-slate-400 text-lg mb-12 font-light leading-relaxed" data-lang="contactSub">
+                                Pronto para novos desafios de engenharia. Aberto a propostas para Full-Stack, desenvolvimento Backend e arquitetura de sistemas.
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <a href="mailto:joaovictor.business2005@gmail.com" class="interactive flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface border border-transparent hover:border-surface-border transition-all">
+                                    <div class="w-14 h-14 rounded-full bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                                        <i data-lucide="mail"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-500 font-mono mb-1 uppercase tracking-wider">Email Direct</div>
+                                        <div class="text-slate-200 group-hover:text-brand-400 transition-colors font-medium break-all text-lg">joaovictor.business2005@gmail.com</div>
+                                    </div>
+                                </a>
+                                <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" class="interactive flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface border border-transparent hover:border-surface-border transition-all">
+                                    <div class="w-14 h-14 rounded-full bg-[#0a66c2]/10 border border-[#0a66c2]/30 flex items-center justify-center text-[#0a66c2] group-hover:bg-[#0a66c2] group-hover:text-white transition-all shadow-[0_0_15px_rgba(10,102,194,0.2)]">
+                                        <!-- Replaced Lucide icon with image -->
+                                        <img src="watermarked_img_18003946814113796823.jpg" alt="LinkedIn Logo" class="w-10 h-10 object-cover rounded-full mix-blend-screen group-hover:brightness-0 group-hover:invert transition-all">
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-slate-500 font-mono mb-1 uppercase tracking-wider">Network</div>
+                                        <div class="text-slate-200 group-hover:text-[#0a66c2] transition-colors font-medium text-lg">João Victor Barros</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- RESTful Styled Form UI -->
+                        <div class="bg-[#050914] rounded-3xl p-8 md:p-10 border border-surface-border relative overflow-hidden group shadow-2xl shadow-black">
+                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                            
+                            <div class="flex items-center justify-between mb-8 pb-4 border-b border-surface-border/50">
+                                <div class="flex items-center gap-3 font-mono text-sm text-slate-400">
+                                    <span class="text-green-400 font-bold bg-green-400/10 px-2 py-0.5 rounded">POST</span> 
+                                    <span>/api/v1/contact</span>
+                                </div>
+                                <div class="flex gap-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+                                </div>
+                            </div>
+                            
+                            <form id="contactForm" class="space-y-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-mono text-slate-500">payload.name</label>
+                                    <input type="text" id="frmName" required placeholder="String" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-mono text-slate-500">payload.email</label>
+                                    <input type="email" id="frmEmail" required placeholder="String (Format: Email)" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-mono text-slate-500">payload.message</label>
+                                    <textarea required id="frmMsg" rows="4" placeholder="String (Max: 1000 chars)" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600 resize-none"></textarea>
+                                </div>
+                                <button type="submit" class="interactive magnetic-wrap w-full mt-4">
+                                    <div class="w-full bg-white hover:bg-slate-200 text-slate-950 font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 group">
+                                        <span id="btn-text">await sendRequest()</span>
+                                        <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform" id="btn-icon"></i>
+                                    </div>
+                                </button>
+                                <!-- Form Feedback Terminal -->
+                                <div id="form-feedback" class="h-0 overflow-hidden opacity-0 transition-all duration-300 rounded-xl bg-[#0d1117] border border-green-500/30 p-0 font-mono text-xs">
+                                    <div class="p-3 text-green-400">
+                                        > <span class="text-slate-400">Status 200 OK</span><br>
+                                        > <span id="feedback-msg">Response: Mensagem recebida. Retornarei em breve.</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-surface-border py-12 px-6 relative z-10 bg-[#020617]">
+        <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col items-center md:items-start">
+                <div class="font-brand font-bold text-2xl tracking-tighter text-white">JV<span class="text-brand-500">.</span>Arch</div>
+                <div class="text-sm font-mono text-slate-500 mt-2">© 2026 João Victor Barros.</div>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="#about" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Sobre</a>
+                <a href="#projects" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Projetos</a>
+                <a href="#contact" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Contato</a>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs font-mono text-green-400 bg-green-400/10 px-3 py-1.5 rounded-full border border-green-400/20">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> 
+                <span data-lang="footerStatus">All Systems Operational</span>
             </div>
         </div>
     </footer>
 
-    <!-- MODAL EMAIL (COPY TO CLIPBOARD) -->
-    <div id="emailModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[1000] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center">
-        <div class="bg-[var(--bg2)] border border-[var(--border-accent)] rounded-2xl p-8 max-w-sm w-[90%] text-center transform scale-95 transition-transform duration-300 shadow-2xl">
-            <div class="w-16 h-16 bg-[var(--glow)] text-[var(--accent)] rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="mail" class="w-8 h-8"></i>
-            </div>
-            <h3 class="font-sora text-xl font-bold mb-2">Contato Direto</h3>
-            <p class="text-[var(--text2)] text-sm mb-6" data-lang="modalSubtitle">Copie o endereço corporativo abaixo:</p>
-            <div class="bg-[rgba(0,0,0,0.2)] border border-[var(--border)] rounded-lg p-3 font-mono text-[var(--accent2)] text-sm mb-6 select-all" id="modalEmailText">
-                joaovictor.business2005@gmail.com
-            </div>
-            <div class="flex gap-3">
-                <button class="btn btn-outline w-1/2 justify-center py-2 text-sm" id="closeModalBtn">Fechar</button>
-                <button class="btn btn-primary w-1/2 justify-center py-2 text-sm" id="copyEmailBtn">Copiar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 
-    =======================================================================
-    JAVASCRIPT CORE ENGINE (ARQUITETURA, DADOS E PERFORMANCE)
-    ======================================================================= 
-    -->
     <script>
-        /** Inicializa ícones vetoriais auxiliares */
-        lucide.createIcons();
+        /**
+         * @fileoverview Enterprise Portfolio Core Engine
+         * @author João Victor Barros
+         * @description Modular, object-oriented JavaScript driving the portfolio. Includes custom WebGL, GSAP integrations, and state management.
+         */
 
-        /* ====================================================================
-           1. INTERNATIONALIZATION (I18N) - DICIONÁRIO CORPORATIVO
-           ==================================================================== */
-        const I18N = {
-            pt: {
-                navAbout: "Perfil", navSkills: "Ecossistema", navProjects: "Projetos", navContact: "Contato",
-                heroWelcome: "Software Engineer Junior", heroTitle1: "Lógica pura,", heroTitle2: "Arquitetura Sólida.",
-                heroDesc: "Especialista em construir arquiteturas robustas no Back-end (Python/C#) e interfaces de alta performance no Front-end (JavaScript). Código limpo, sistemas escaláveis.",
-                heroBtnWork: "Ver Meus Projetos",
-                sectionTagAbout: "Identidade", aboutTitle: "Sobre Mim", aboutSubtitle: "Conheça a base metodológica do meu código.",
-                aboutHeadline: "Engenharia orientada a soluções.",
-                aboutP1: "Sou movido pela curiosidade científica de entender como a engrenagem funciona por debaixo dos panos. Construo com base em lógicas complexas e padrões de projeto.",
-                aboutP2: "A cursar Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). O meu foco é resolver problemas combinando Back-end resiliente e Front-end otimizado.",
-                statTech: "Tecnologias", statAge: "Anos de Idade", statDedication: "% Clean Code", statCuriosity: "Lógica Absoluta",
-                sectionTagSkills: "Dependencies", skillsTitle: "Ferramentas de Domínio", skillsSubtitle: "As linguagens e frameworks que compõem meu stack principal.",
-                sectionTagProjects: "Deployments", projectsTitle: "Sistemas em Produção", projectsSubtitle: "Aplicações arquitetadas para performance e conversão.",
-                sectionTagContact: "Networking", contactTitle: "Estabelecer Conexão", contactSubtitle: "Aberto a projetos de arquitetura e desenvolvimento full-stack.",
-                contactEmail: "Email Principal", contactLinkedIn: "Rede Profissional", contactGithub: "Repositórios e Código",
-                formTitle: "Requisição POST", formBtn: "Executar Fetch()",
-                footerDesc: "Arquitetura de Software Sustentável.", modalSubtitle: "Copie o endereço corporativo abaixo:"
-            },
-            en: {
-                navAbout: "Profile", navSkills: "Ecosystem", navProjects: "Deployments", navContact: "Contact",
-                heroWelcome: "Junior Software Engineer", heroTitle1: "Pure Logic,", heroTitle2: "Solid Architecture.",
-                heroDesc: "Specialist in building robust Back-end (Python/C#) architectures and high-performance Front-end (JavaScript) interfaces. Clean code, scalable systems.",
-                heroBtnWork: "View My Projects",
-                sectionTagAbout: "Identity", aboutTitle: "About Me", aboutSubtitle: "Get to know the methodological basis of my code.",
-                aboutHeadline: "Solutions-oriented engineering.",
-                aboutP1: "I'm driven by the scientific curiosity of understanding how the gears work under the hood. I build based on complex logic and design patterns.",
-                aboutP2: "Studying Systems Analysis and Development (UNICID) and IT Technician (SENAC). My focus is solving problems combining resilient Back-end and optimized Front-end.",
-                statTech: "Technologies", statAge: "Years Old", statDedication: "% Clean Code", statCuriosity: "Absolute Logic",
-                sectionTagSkills: "Dependencies", skillsTitle: "Domain Tools", skillsSubtitle: "The languages and frameworks that make up my main stack.",
-                sectionTagProjects: "Deployments", projectsTitle: "Systems in Production", projectsSubtitle: "Applications architected for performance and conversion.",
-                sectionTagContact: "Networking", contactTitle: "Establish Connection", contactSubtitle: "Open to architecture projects and full-stack development.",
-                contactEmail: "Main Email", contactLinkedIn: "Professional Network", contactGithub: "Repositories & Code",
-                formTitle: "POST Request", formBtn: "Execute Fetch()",
-                footerDesc: "Sustainable Software Architecture.", modalSubtitle: "Copy the corporate address below:"
-            },
-            es: {
-                navAbout: "Perfil", navSkills: "Ecosistema", navProjects: "Proyectos", navContact: "Contacto",
-                heroWelcome: "Ingeniero de Software Junior", heroTitle1: "Lógica pura,", heroTitle2: "Arquitectura Sólida.",
-                heroDesc: "Especialista en construir arquitecturas robustas en Back-end (Python/C#) e interfaces de alto rendimiento en Front-end (JavaScript). Código limpio, sistemas escalables.",
-                heroBtnWork: "Ver Mis Proyectos",
-                sectionTagAbout: "Identidad", aboutTitle: "Sobre Mí", aboutSubtitle: "Conozca la base metodológica de mi código.",
-                aboutHeadline: "Ingeniería orientada a soluciones.",
-                aboutP1: "Me impulsa la curiosidad científica de entender cómo funcionan los engranajes bajo el capó. Construyo en base a lógicas complejas y patrones de diseño.",
-                aboutP2: "Estudiando Análisis y Desarrollo de Sistemas (UNICID) y Técnico en Informática (SENAC). Mi enfoque es resolver problemas combinando Back-end resiliente y Front-end optimizado.",
-                statTech: "Tecnologías", statAge: "Años de Edad", statDedication: "% Clean Code", statCuriosity: "Lógica Absoluta",
-                sectionTagSkills: "Dependencias", skillsTitle: "Herramientas de Dominio", skillsSubtitle: "Los lenguajes y frameworks que componen mi stack principal.",
-                sectionTagProjects: "Implementaciones", projectsTitle: "Sistemas en Producción", projectsSubtitle: "Aplicaciones diseñadas para rendimiento y conversión.",
-                sectionTagContact: "Redes", contactTitle: "Establecer Conexión", contactSubtitle: "Abierto a proyectos de arquitectura y desarrollo full-stack.",
-                contactEmail: "Correo Principal", contactLinkedIn: "Red Profesional", contactGithub: "Repositorios y Código",
-                formTitle: "Petición POST", formBtn: "Ejecutar Fetch()",
-                footerDesc: "Arquitectura de Software Sostenible.", modalSubtitle: "Copie la dirección corporativa a continuación:"
-            }
-        };
-
-        /* ====================================================================
-           2. DATA LAYER (MOCK DATABASE: TECNOLOGIAS E PROJETOS)
-           ==================================================================== */
-        /** Base de Dados centralizada para injetar conteúdo dinamicamente */
-        const MOCK_DB = {
-            /** Stack de Tecnologias com Ícones Oficiais CDN Devicon */
-            techStack: [
-                { id: "js", name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-                { id: "py", name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
-                { id: "cs", name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
-                { id: "jv", name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-                { id: "lx", name: "Linux OS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
-                { id: "nd", name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-                { id: "re", name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-                { id: "ts", name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-                { id: "gt", name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-                { id: "sq", name: "SQL Server", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
-                { id: "pg", name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-                { id: "hc", name: "HTML & CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" }
+        // ==========================================
+        // 1. DATA LAYER (MOCK DATABASE & I18N)
+        // ==========================================
+        const DB = {
+            experience: [
+                {
+                    period: { pt: "Mar 2026 - Set 2026", en: "Mar 2026 - Sep 2026" },
+                    role: { pt: "Fullstack Developer", en: "Fullstack Developer" },
+                    company: "Revisa Pass",
+                    desc: { 
+                        pt: "Construção de plataforma educacional. Frontend em React.js + Tailwind, Backend em Laravel/SQL e integração nativa com API de pagamentos ASAAS.",
+                        en: "Built an educational platform. Frontend in React.js + Tailwind, Backend in Laravel/SQL and native integration with ASAAS payment API."
+                    },
+                    tech: ["React.js", "Laravel", "SQL", "Tailwind", "APIs"]
+                },
+                {
+                    period: { pt: "Jun 2024 - Nov 2025", en: "Jun 2024 - Nov 2025" },
+                    role: { pt: "Game & Web Developer", en: "Game & Web Developer" },
+                    company: "S2 DominozDuels",
+                    desc: { 
+                        pt: "Desenvolvimento de engine de jogos online (Dominó multiplayer em tempo real, Paciência, Campo Minado) com integrações financeiras.",
+                        en: "Development of online game engine (Real-time multiplayer Dominoes, Solitaire, Minesweeper) with financial integrations."
+                    },
+                    tech: ["JavaScript", "PHP", "WebSockets", "SQL", "HTML/CSS"]
+                },
+                {
+                    period: { pt: "Out 2024 - Fev 2025", en: "Oct 2024 - Feb 2025" },
+                    role: { pt: "Node.js Developer", en: "Node.js Developer" },
+                    company: "B7 Desenvolvimento",
+                    desc: { 
+                        pt: "Desenvolvimento de APIs robustas em Node.js integradas com MongoDB, além de arquitetura Frontend utilizando React.js e gestão de Device Farm.",
+                        en: "Development of robust Node.js APIs integrated with MongoDB, plus Frontend architecture using React.js and Device Farm management."
+                    },
+                    tech: ["Node.js", "MongoDB", "React.js", "Appium"]
+                },
+                {
+                    period: { pt: "Jan 2024 - Jul 2024", en: "Jan 2024 - Jul 2024" },
+                    role: { pt: "Mobile Developer", en: "Mobile Developer" },
+                    company: "Captador",
+                    desc: { 
+                        pt: "Engenharia de aplicativo (Dart/Flutter) focado em chat de atendimento corporativo integrado ao WhatsApp Business e gateways de pagamento.",
+                        en: "App engineering (Dart/Flutter) focused on corporate customer service chat integrated with WhatsApp Business and payment gateways."
+                    },
+                    tech: ["Flutter", "Dart", "WhatsApp API"]
+                }
             ],
-            
-            /** Portfólio de Projetos Trilingues */
-            deployments: [
+            tech: [
+                { cat: "Back-end", items: [
+                    { name: "Python", icon: "python-original.svg" },
+                    { name: "C#", icon: "csharp-original.svg" },
+                    { name: "Node.js", icon: "nodejs-original.svg" },
+                    { name: "PHP", icon: "php-original.svg" }
+                ]},
+                { cat: "Front-end", items: [
+                    { name: "JavaScript", icon: "javascript-original.svg" },
+                    { name: "TypeScript", icon: "typescript-original.svg" },
+                    { name: "React", icon: "react-original.svg" },
+                    { name: "HTML/CSS", icon: "html5-original.svg" }
+                ]},
+                { cat: "Database", items: [
+                    { name: "SQL Server", icon: "microsoftsqlserver-original.svg" },
+                    { name: "PostgreSQL", icon: "postgresql-original.svg" },
+                    { name: "MongoDB", icon: "mongodb-original.svg" },
+                    { name: "MySQL", icon: "mysql-original.svg" }
+                ]},
+                { cat: "DevOps & Tools", items: [
+                    { name: "Git", icon: "git-original.svg" },
+                    { name: "Linux", icon: "linux-original.svg" },
+                    { name: "Docker", icon: "docker-original.svg" },
+                    { name: "Flutter", icon: "flutter-original.svg" }
+                ]}
+            ],
+            projects: [
                 {
-                    id: "p1",
-                    title: { pt: "Mercado Bela Esperança", en: "Bela Esperança Market", es: "Mercado Bela Esperança" },
-                    description: {
-                        pt: "Plataforma completa de E-commerce. Arquitetura fluida com foco em conversão de vendas, carregamento ultrarrápido, banco de dados otimizado e catálogo dinâmico.",
-                        en: "Complete E-commerce platform. Fluid architecture focused on sales conversion, ultra-fast loading, optimized database and dynamic catalog.",
-                        es: "Plataforma completa de comercio electrónico. Arquitectura fluida centrada en la conversión de ventas, carga ultrarrápida, base de datos optimizada y catálogo dinámico."
+                    title: { pt: "Mercado Bela Esperança", en: "Bela Esperança Market" },
+                    category: "fullstack",
+                    desc: { 
+                        pt: "Plataforma E-commerce Enterprise. Arquitetura para alto tráfego, banco otimizado e frontend de alta conversão.",
+                        en: "Enterprise E-commerce Platform. High-traffic architecture, optimized database and high-conversion frontend." 
                     },
-                    tags: ["E-commerce", "Node.js", "SQL", "SEO"],
-                    url: "https://mercadobelaesperanca.shop"
+                    tags: ["Node.js", "React", "SQL", "Payment API"],
+                    url: "https://mercadobelaesperanca.shop",
+                    icon: "shopping-cart"
                 },
                 {
-                    id: "p2",
-                    title: { pt: "CyberEdge Gym Platform", en: "CyberEdge Gym Platform", es: "Plataforma CyberEdge Gym" },
-                    description: {
-                        pt: "Landing page e painel avançado para academias baseado no conceito de Edge Computing. Implementa sistema offline-first e partículas dinâmicas no canvas.",
-                        en: "Landing page and advanced dashboard for gyms based on Edge Computing. Implements offline-first system and dynamic canvas particles.",
-                        es: "Página de destino y panel avanzado para gimnasios basados en Edge Computing. Implementa sistema offline-first y partículas dinámicas en canvas."
+                    title: { pt: "CyberEdge Gym", en: "CyberEdge Gym" },
+                    category: "edge",
+                    desc: { 
+                        pt: "Dashboard para academias com Edge Computing. Offline-first, sync background e gráficos de alta performance via Canvas.",
+                        en: "Gym dashboard with Edge Computing. Offline-first, background sync and high-performance Canvas charts." 
                     },
-                    tags: ["Full Stack", "Edge Node", "Canvas API"],
-                    url: "https://cyberedgegym.shop"
+                    tags: ["Edge Node", "JS", "PWA"],
+                    url: "https://cyberedgegym.shop",
+                    icon: "activity"
                 },
                 {
-                    id: "p3",
-                    title: { pt: "Core API Architecture", en: "Core API Architecture", es: "Arquitectura Core API" },
-                    description: {
-                        pt: "Desenvolvimento de lógicas de negócio em Back-end utilizando C# e Python. Foco em RESTful, autenticação, tratamento de dados complexos e web scraping.",
-                        en: "Development of back-end business logic using C# and Python. Focus on RESTful, authentication, complex data processing and web scraping.",
-                        es: "Desarrollo de lógica de negocios en Back-end usando C# y Python. Enfoque en RESTful, autenticación, procesamiento de datos complejos y web scraping."
+                    title: { pt: "Core API Architecture", en: "Core API Architecture" },
+                    category: "backend",
+                    desc: { 
+                        pt: "Conjunto de APIs RESTful escaláveis em C# e Python. Foco em microsserviços, web scraping seguro e autenticação JWT.",
+                        en: "Set of scalable RESTful APIs in C# and Python. Focus on microservices, secure web scraping and JWT auth." 
                     },
-                    tags: ["Python", "C#", "Back-end", "Data Extraction"],
-                    url: "https://github.com/Joaovictoreth1"
+                    tags: ["C#", ".NET", "Python", "Security"],
+                    url: "https://github.com/Joaovictoreth1",
+                    icon: "server-cog"
+                },
+                {
+                    title: { pt: "DominozDuels Engine", en: "DominozDuels Engine" },
+                    category: "fullstack",
+                    desc: { 
+                        pt: "Motor de jogos de tabuleiro em tempo real via WebSockets. Sincronização de estado complexa e latência ultrabaixa.",
+                        en: "Real-time board game engine via WebSockets. Complex state synchronization and ultra-low latency." 
+                    },
+                    tags: ["WebSockets", "JS", "PHP", "Game Engine"],
+                    url: "https://dominozduels.com",
+                    icon: "gamepad-2"
                 }
             ]
         };
 
-        /* ====================================================================
-           3. PHYSICS ENGINE & ANIMATIONS (NÍVEL HARDWARE)
-           ==================================================================== */
-        /** Estado global para as posições do rato para evitar repinturas de DOM */
-        const AppState = {
-            mouseX: window.innerWidth / 2,
-            mouseY: window.innerHeight / 2
-        };
-
-        /** Grava coordenadas apenas na memória */
-        window.addEventListener('mousemove', (e) => {
-            AppState.mouseX = e.clientX;
-            AppState.mouseY = e.clientY;
-        }, { passive: true });
-
-        /**
-         * Inicializa o cursor personalizado usando física de interpolação linear (Lerp).
-         * Garante fluidez cravada aos FPS do monitor utilizando translate3d.
-         */
-        function initCursorPhysics() {
-            if (!window.matchMedia("(pointer: fine)").matches) return; // Cancela em mobile
-            
-            const ring = document.querySelector('.custom-cursor-ring');
-            const dot = document.querySelector('.custom-cursor-dot');
-            if(!ring || !dot) return;
-
-            let ringX = AppState.mouseX, ringY = AppState.mouseY;
-
-            // Fator de suavidade (0.01 = muito lento, 0.9 = imediato)
-            const ease = 0.2; 
-
-            const animateCursor = () => {
-                // Lerp Math: current + (target - current) * ease
-                ringX += (AppState.mouseX - ringX) * ease;
-                ringY += (AppState.mouseY - ringY) * ease;
-                
-                // Mover os elementos na camada GPU
-                ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
-                dot.style.transform  = `translate3d(${AppState.mouseX}px, ${AppState.mouseY}px, 0)`;
-                
-                requestAnimationFrame(animateCursor);
-            };
-            animateCursor();
-
-            // Interatividade de cliques e hovers
-            window.addEventListener('mousedown', () => ring.classList.add('cursor-clicking'));
-            window.addEventListener('mouseup', () => ring.classList.remove('cursor-clicking'));
-            
-            // Hover states delegados ao documento inteiro por performance
-            document.addEventListener('mouseover', (e) => {
-                if(e.target.closest('.hover-target, a, button, input, textarea, select')) {
-                    ring.classList.add('cursor-hovering');
-                }
-            });
-            document.addEventListener('mouseout', (e) => {
-                if(e.target.closest('.hover-target, a, button, input, textarea, select')) {
-                    ring.classList.remove('cursor-hovering');
-                }
-            });
-        }
-
-        /**
-         * Aplica o efeito 3D Tilt aos cartões.
-         * Usa Caching do BoundingRect para evitar destruição de CPU durante o hover.
-         */
-        function init3DTiltCards() {
-            if (!window.matchMedia("(pointer: fine)").matches) return;
-
-            const cards = document.querySelectorAll('.tilt-card');
-            
-            cards.forEach(card => {
-                let rect;
-                
-                // Grava o tamanho do cartão apenas no momento de entrada
-                card.addEventListener('mouseenter', () => {
-                    rect = card.getBoundingClientRect();
-                    card.style.willChange = "transform";
-                }, { passive: true });
-                
-                // Movimenta no eixo X/Y
-                card.addEventListener('mousemove', e => {
-                    if(!rect) rect = card.getBoundingClientRect();
-                    
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    // Cálculo do centro
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    // Graus de rotação (ajustar os multiplicadores altera a intensidade)
-                    const rotateX = ((y - centerY) / centerY) * -5;
-                    const rotateY = ((x - centerX) / centerX) * 5;
-                    
-                    requestAnimationFrame(() => {
-                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                    });
-                }, { passive: true });
-                
-                // Reseta a posição
-                card.addEventListener('mouseleave', () => {
-                    requestAnimationFrame(() => {
-                        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                        card.style.willChange = "auto";
-                    });
-                });
-            });
-        }
-
-        /**
-         * Inicializa as partículas de código Matrix no fundo (Canvas API).
-         * Utiliza o IntersectionObserver para POUPAR o CPU parando a renderização 
-         * sempre que o ecrã não for visível pelo utilizador.
-         */
-        function initMatrixEngine() {
-            const canvas = document.getElementById('particles-canvas');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d', { alpha: false }); // alpha: false desativa cálculos de opacidade no fundo
-            
-            let width, height;
-            let drops = [];
-            let isRunning = false;
-            const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]()<>+-*^%$#@';
-            
-            const handleResize = () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-                const columns = Math.floor(width / 20);
-                drops = Array(columns).fill(0).map(() => Math.random() * -100);
-            };
-            window.addEventListener('resize', handleResize);
-            handleResize();
-
-            const drawFrame = () => {
-                if(!isRunning) return; // Fuga antecipada para performance
-                
-                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                // Cria o efeito de rasto/fading contínuo
-                ctx.fillStyle = isLight ? 'rgba(241, 245, 249, 0.08)' : 'rgba(5, 8, 13, 0.08)';
-                ctx.fillRect(0, 0, width, height);
-                
-                // Puxa a cor de acento diretamente do CSS compilado
-                const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary') || '#f97316';
-                ctx.fillStyle = primaryColor;
-                ctx.font = '14px monospace';
-                ctx.textAlign = 'center';
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    const x = i * 20;
-                    const y = drops[i] * 20;
-                    
-                    ctx.fillText(text, x, y);
-                    
-                    // Reseta gota para o topo com probabilidade aleatória
-                    if (y > height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-                // Limita framerate para 20FPS (50ms) = Extremamente leve
-                setTimeout(() => requestAnimationFrame(drawFrame), 50);
-            };
-
-            // Observer de performance: Pausa completamente o Canvas se saíres da secção!
-            const observer = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) {
-                    isRunning = true;
-                    drawFrame();
-                } else {
-                    isRunning = false;
-                }
-            });
-            observer.observe(canvas);
-        }
-
-        /**
-         * Simula a digitação num terminal de código utilizando <pre> para respeitar tabs.
-         */
-        function initTerminalTyping() {
-            const container = document.getElementById('terminal-content');
-            if(!container) return;
-            
-            const codePayload = `class SoftwareEngineer {
-    constructor() {
-        this.nome = "João Victor Barros";
-        this.idade = 20;
-        this.status = "Open to Work 🚀";
-    }
-
-    getStack() {
-        return {
-            backend: ["Python", "C#", "Node.js"],
-            frontend: ["JS", "HTML/CSS"],
-            infra: ["Linux", "Git", "SQL"]
-        };
-    }
-
-    execute() {
-        console.log("Compilando arquiteturas...");
-        return "System Online.";
-    }
-}
-
-const jvbm = new SoftwareEngineer();
-jvbm.execute();`;
-
-            let i = 0;
-            container.innerHTML = "";
-            
-            const typingEngine = setInterval(() => {
-                if (i < codePayload.length) {
-                    let subStr = codePayload.substring(0, i + 1);
-                    
-                    // Lógica de Highlighting (Básica com Expressões Regulares via Javascript String Replace)
-                    subStr = subStr.replace(/(class|constructor|this|return|new|const)/g, '<span class="term-keyword">$1</span>');
-                    subStr = subStr.replace(/("(?:\\"|[^"])*")/g, '<span class="term-string">$1</span>');
-                    subStr = subStr.replace(/(console\.log)/g, '<span class="term-func">$1</span>');
-                    
-                    container.innerHTML = subStr + '<span class="cursor-blink"></span>';
-                    
-                    // Rolar terminal caso texto saia da vista
-                    container.scrollTop = container.scrollHeight;
-                    i++;
-                } else {
-                    clearInterval(typingEngine);
-                }
-            }, 12); // Speed = 12ms per char
-        }
-
-        /**
-         * Inicia contadores numéricos (Ex: Anos de Experiência, %).
-         * Executa cálculo de frame só uma vez na vida quando entram na viewport.
-         */
-        function initStatCounters() {
-            const counterNodes = document.querySelectorAll('.stat-counter');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const finalNumber = parseInt(element.getAttribute('data-target'));
-                        const durationMs = 2000;
-                        const increment = finalNumber / (durationMs / 16); // assume 60 frames por sec
-                        
-                        let currentNumber = 0;
-                        
-                        const updateValue = () => {
-                            currentNumber += increment;
-                            if (currentNumber < finalNumber) {
-                                element.innerText = Math.ceil(currentNumber) + (finalNumber === 100 ? '%' : '+');
-                                requestAnimationFrame(updateValue);
-                            } else {
-                                element.innerText = finalNumber + (finalNumber === 100 ? '%' : '+');
-                            }
-                        };
-                        updateValue();
-                        observer.unobserve(element); // Garante que anima apenas uma vez
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            counterNodes.forEach(node => observer.observe(node));
-        }
-
-        /* ====================================================================
-           4. APPLICATION CONTROLLER (FRONTEND RENDERER)
-           ==================================================================== */
-        const AppController = {
-            currentLocale: 'pt',
-
-            bootstrap: function() {
-                this.bindThemeAndLang();
-                this.renderComponents();
-                this.bindGlobalEvents();
+        const I18N = {
+            pt: {
+                logo: "JV<span class='text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]'>.</span>Arch",
+                navAbout: "<span>Sobre</span>", navExp: "<span>Jornada</span>", navSkills: "<span>Skills</span>", navProjects: "<span>Projetos</span>", navContact: "Deploy Contact",
+                heroBadge: "System Status: Online | Disponível para Projetos",
+                heroTitle1: "Engenharia", heroTitle2: "Orientada a", heroTitle3: "Soluções.",
+                heroDesc: "Desenvolvedor de Software Especialista. Construindo arquiteturas resilientes e complexas no <strong class='text-slate-200 font-medium'>Back-end</strong> (Python/C#) e interfaces dinâmicas de alta performance no <strong class='text-slate-200 font-medium'>Front-end</strong> (JavaScript).",
+                heroBtn: "Analisar Projetos", scrollDown: "Explorar",
+                aboutTitle: "Mente Analítica.",
+                aboutHeadline: "A lógica por trás do código.",
+                aboutP1: "Com 20 anos, minha jornada na programação não é apenas sobre escrever sintaxe, mas sobre <strong>resolver problemas arquiteturais complexos</strong>. Sou fascinado por entender a engrenagem profunda dos sistemas, otimizando bancos de dados e criando APIs resilientes.",
+                aboutP2: "Estudante de Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). Minha assinatura é combinar o rigor e a segurança do Back-end (C#/Python) com a fluidez do Front-end moderno (JS/React).",
+                statClean: "Foco em Clean Code", locTitle: "São Paulo, Brasil", locStatus: "Remoto / Híbrido Disponível", years: "anos", logicTxt: "Algoritmos & Lógica Pura",
+                expTitle: "Jornada Profissional",
+                skillsTitle: "Arsenal Tecnológico", skillsSub: "Linguagens e infraestrutura utilizadas para construir sistemas robustos e escaláveis.",
+                projectsTitle: "Projetos em Destaque", viewGithub: "Explorar todos os repositórios no GitHub",
+                contactTitle: "Vamos construir algo <span class='text-brand-500'>épico.</span>",
+                contactSub: "Pronto para novos desafios de engenharia. Aberto a propostas para Full-Stack, desenvolvimento Backend e arquitetura de sistemas.",
+                footerStatus: "All Systems Operational"
             },
-
-            /** Constrói o DOM a partir dos dados limpos do JS Object */
-            renderComponents: function() {
-                const lang = this.currentLocale;
-
-                // Render Skills Grid
-                const skillsWrap = document.getElementById('skills-grid');
-                if(skillsWrap) {
-                    let htmlString = "";
-                    MOCK_DB.techStack.forEach((tech, index) => {
-                        htmlString += `
-                        <div class="skill-card hover-target tilt-card gpu-accelerated fade-in-up" style="transition-delay: ${index * 30}ms">
-                            <img src="${tech.icon}" alt="${tech.name} logo" loading="lazy">
-                            <h3 class="text-[var(--text)]">${tech.name}</h3>
-                        </div>`;
-                    });
-                    skillsWrap.innerHTML = htmlString;
-                }
-
-                // Render Projects Grid
-                const projWrap = document.getElementById('projects-grid');
-                if(projWrap) {
-                    let htmlString = "";
-                    MOCK_DB.deployments.forEach((proj, index) => {
-                        const tagsHTML = proj.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
-                        htmlString += `
-                        <div class="project-card hover-target tilt-card gpu-accelerated fade-in-up" style="transition-delay: ${index * 100}ms">
-                            <div class="project-header">
-                                <div class="flex items-center gap-3">
-                                    <div class="project-icon">
-                                        <i data-lucide="server" class="w-6 h-6"></i>
-                                    </div>
-                                    <h3 class="project-title m-0 p-0 line-clamp-1">${proj.title[lang]}</h3>
-                                </div>
-                                <a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visit Project">
-                                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                            <div class="project-body">
-                                <p class="project-desc">${proj.description[lang]}</p>
-                                <div class="project-tags">${tagsHTML}</div>
-                            </div>
-                        </div>`;
-                    });
-                    projWrap.innerHTML = htmlString;
-                }
-
-                // Render Icons
-                lucide.createIcons();
-
-                // Reset intersection observer para novos nós do DOM
-                this.resetRevealObserver();
-                
-                // Re-aplica a física 3D aos novos cartões injetados
-                setTimeout(init3DTiltCards, 200);
-            },
-
-            /** Gestão de Traduções por Dicionário */
-            applyTranslations: function() {
-                const dict = I18N[this.currentLocale];
-                document.querySelectorAll('[data-lang]').forEach(node => {
-                    const key = node.getAttribute('data-lang');
-                    if (dict[key]) {
-                        node.innerHTML = dict[key];
-                    }
-                });
-            },
-
-            /** Lógica de Botões base da Interface */
-            bindThemeAndLang: function() {
-                // Selector de Língua
-                const langSel = document.getElementById('lang-selector');
-                if(langSel) {
-                    langSel.addEventListener('change', (e) => {
-                        this.currentLocale = e.target.value;
-                        this.applyTranslations();
-                        this.renderComponents();
-                    });
-                }
-
-                // Botão Theme Dark/Light
-                const themeBtn = document.getElementById('theme-toggle');
-                if(themeBtn) {
-                    themeBtn.addEventListener('click', () => {
-                        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                        if(isLight) {
-                            document.documentElement.removeAttribute('data-theme');
-                        } else {
-                            document.documentElement.setAttribute('data-theme', 'light');
-                        }
-                    });
-                }
-            },
-
-            /** Eventos Auxiliares (Formulários, Modal, Barras) */
-            bindGlobalEvents: function() {
-                // Modals Mails Copy
-                const emailBtn = document.getElementById('emailButtonBox');
-                const modal = document.getElementById('emailModal');
-                const closeBtn = document.getElementById('closeModalBtn');
-                const copyBtn = document.getElementById('copyEmailBtn');
-                const mailText = document.getElementById('modalEmailText');
-
-                if(emailBtn && modal) {
-                    emailBtn.addEventListener('click', () => {
-                        modal.classList.remove('opacity-0', 'pointer-events-none');
-                        modal.querySelector('div').classList.remove('scale-95');
-                        modal.querySelector('div').classList.add('scale-100');
-                    });
-                    
-                    const closeModal = () => {
-                        modal.classList.add('opacity-0', 'pointer-events-none');
-                        modal.querySelector('div').classList.remove('scale-100');
-                        modal.querySelector('div').classList.add('scale-95');
-                    };
-
-                    closeBtn.addEventListener('click', closeModal);
-                    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-
-                    copyBtn.addEventListener('click', () => {
-                        navigator.clipboard.writeText(mailText.innerText.trim()).then(() => {
-                            const original = copyBtn.innerText;
-                            copyBtn.innerText = "Copiado!";
-                            copyBtn.classList.replace('btn-primary', 'btn-outline');
-                            setTimeout(() => {
-                                copyBtn.innerText = original;
-                                copyBtn.classList.replace('btn-outline', 'btn-primary');
-                            }, 2000);
-                        });
-                    });
-                }
-
-                // Formulário Mocker POST Request
-                const frm = document.getElementById('contactForm');
-                if(frm) {
-                    frm.addEventListener('submit', e => {
-                        e.preventDefault();
-                        const btnText = document.getElementById('submit-btn-text');
-                        const icon = document.getElementById('submit-btn-icon');
-                        const fb = document.getElementById('form-feedback');
-                        
-                        const original = btnText.innerText;
-                        btnText.innerText = "Processando...";
-                        icon.setAttribute('data-lucide', 'loader-2');
-                        icon.classList.add('animate-spin');
-                        lucide.createIcons();
-                        
-                        // Fake Network Delay
-                        setTimeout(() => {
-                            btnText.innerText = original;
-                            icon.setAttribute('data-lucide', 'send');
-                            icon.classList.remove('animate-spin');
-                            lucide.createIcons();
-                            
-                            frm.reset();
-                            fb.classList.remove('hidden');
-                            
-                            setTimeout(() => { fb.classList.add('hidden'); }, 5000);
-                        }, 1200);
-                    });
-                }
-
-                // Navbar Transparency on Scroll & Barra Progresso Linear
-                const nav = document.getElementById('navbar');
-                const prog = document.getElementById('scroll-progress');
-                
-                window.addEventListener('scroll', () => {
-                    // Update Nav
-                    if (window.scrollY > 60) nav.classList.add('scrolled');
-                    else nav.classList.remove('scrolled');
-                    
-                    // Update Progress Bar
-                    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                    prog.style.width = scrollPercent + '%';
-                }, { passive: true });
-                
-                // Menu Mobile Toggle
-                const burger = document.getElementById('hamburger');
-                const navLinks = document.getElementById('nav-links');
-                if(burger && navLinks) {
-                    burger.addEventListener('click', () => {
-                        burger.classList.toggle('active');
-                        navLinks.classList.toggle('hidden');
-                        navLinks.classList.toggle('mobile-open');
-                    });
-                    
-                    // Fecha clicar no link
-                    navLinks.querySelectorAll('a').forEach(a => {
-                        a.addEventListener('click', () => {
-                            burger.classList.remove('active');
-                            navLinks.classList.remove('mobile-open');
-                            navLinks.classList.add('hidden');
-                        });
-                    });
-                }
-            },
-
-            /** Reinicia as animações "Fade In Up" (Scroll Reveal) */
-            resetRevealObserver: function() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if(entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-                document.querySelectorAll('.fade-in-up').forEach(node => observer.observe(node));
+            en: {
+                logo: "JV<span class='text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]'>.</span>Arch",
+                navAbout: "<span>About</span>", navExp: "<span>Journey</span>", navSkills: "<span>Stack</span>", navProjects: "<span>Work</span>", navContact: "Deploy Contact",
+                heroBadge: "System Status: Online | Open to Work",
+                heroTitle1: "Solutions", heroTitle2: "Oriented", heroTitle3: "Engineering.",
+                heroDesc: "Expert Software Developer. Building resilient and complex architectures on the <strong class='text-slate-200 font-medium'>Back-end</strong> (Python/C#) and high-performance dynamic interfaces on the <strong class='text-slate-200 font-medium'>Front-end</strong> (JavaScript).",
+                heroBtn: "Analyze Projects", scrollDown: "Scroll",
+                aboutTitle: "Analytical Mind.",
+                aboutHeadline: "The logic behind the code.",
+                aboutP1: "At 20, my programming journey isn't just about writing syntax, but about <strong>solving complex architectural problems</strong>. I am fascinated by understanding the deep gears of systems, optimizing databases, and creating resilient APIs.",
+                aboutP2: "Systems Analysis and Development student (UNICID) and IT Technician (SENAC). My signature is combining the rigor and security of the Back-end (C#/Python) with the fluidity of modern Front-end (JS/React).",
+                statClean: "Clean Code Focus", locTitle: "São Paulo, Brazil", locStatus: "Remote / Hybrid Available", years: "years old", logicTxt: "Algorithms & Pure Logic",
+                expTitle: "Professional Journey",
+                skillsTitle: "Technological Arsenal", skillsSub: "Languages and infrastructure used to build robust and scalable systems.",
+                projectsTitle: "Featured Deployments", viewGithub: "Explore all repositories on GitHub",
+                contactTitle: "Let's build something <span class='text-brand-500'>epic.</span>",
+                contactSub: "Ready for new engineering challenges. Open to proposals for Full-Stack, Backend development, and systems architecture.",
+                footerStatus: "All Systems Operational"
             }
         };
 
-        // =====================================================================
-        // RUNTIME: EXECUÇÃO DO APLICATIVO APÓS O DOM CARREGAR
-        // =====================================================================
+        // ==========================================
+        // 2. CORE APPLICATION LOGIC
+        // ==========================================
+        class App {
+            constructor() {
+                this.lang = 'pt';
+                this.init();
+            }
+
+            init() {
+                this.renderDynamicContent();
+                this.setupI18N();
+                this.setupUIBindings();
+                lucide.createIcons();
+            }
+
+            renderDynamicContent() {
+                // Render Timeline
+                const tlWrap = document.getElementById('timeline-wrapper');
+                tlWrap.innerHTML = DB.experience.map((job, i) => `
+                    <div class="relative pl-8 mb-12 gs-reveal-up opacity-0 transform translate-y-10 transition-all duration-700 ease-out" style="transition-delay: ${i * 100}ms">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-panel p-6 rounded-2xl group hover:border-brand-500/50">
+                            <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-2">
+                                <h3 class="font-display font-bold text-xl text-white group-hover:text-brand-400 transition-colors">${job.role[this.lang]}</h3>
+                                <span class="font-mono text-xs text-brand-500 bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/20">${job.period[this.lang]}</span>
+                            </div>
+                            <h4 class="text-slate-400 font-medium mb-4">${job.company}</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">${job.desc[this.lang]}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${job.tech.map(t => `<span class="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded border border-slate-700">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Render Skills
+                const skillsWrap = document.getElementById('tech-grid');
+                skillsWrap.innerHTML = DB.tech.map((category, i) => `
+                    <div class="glass-panel p-6 rounded-2xl flex flex-col gs-reveal-up" style="transition-delay: ${i * 100}ms">
+                        <h3 class="font-mono text-sm text-slate-400 mb-6 uppercase tracking-widest border-b border-surface-border pb-2">${category.cat}</h3>
+                        <div class="grid grid-cols-2 gap-4 flex-grow">
+                            ${category.items.map(item => `
+                                <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-white/5 transition-colors group cursor-none">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.icon.split('-')[0]}/${item.icon}" alt="${item.name}" class="w-10 h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
+                                    <span class="text-xs font-medium text-slate-500 group-hover:text-white transition-colors text-center">${item.name}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+
+                // Render Projects (Initial All)
+                this.renderProjects('all');
+                
+                // Re-init manual reveal observer for injected content
+                setTimeout(() => this.initScrollReveal(), 100);
+            }
+
+            renderProjects(filter) {
+                const projWrap = document.getElementById('projects-grid');
+                const filtered = filter === 'all' ? DB.projects : DB.projects.filter(p => p.category === filter);
+                
+                projWrap.innerHTML = filtered.map((p, i) => `
+                    <div class="glass-panel rounded-3xl p-6 flex flex-col h-full group gs-reveal-up opacity-0" style="animation: fadeUp 0.5s ease forwards ${i * 0.1}s">
+                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-500 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(249,115,22,0)] group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
+                            <i data-lucide="${p.icon}"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-3 text-slate-200">${p.title[this.lang]}</h3>
+                        <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed font-light">${p.desc[this.lang]}</p>
+                        <div class="flex items-center justify-between border-t border-surface-border pt-5 mt-auto">
+                            <div class="flex flex-wrap gap-2">
+                                ${p.tags.slice(0,3).map(tag => `<span class="text-[10px] font-mono text-brand-400 bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">${tag}</span>`).join('')}
+                            </div>
+                            <a href="${p.url}" target="_blank" class="w-10 h-10 rounded-full bg-surface border border-surface-border flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500 hover:border-brand-500 transition-all interactive flex-shrink-0">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                `).join('');
+                lucide.createIcons();
+            }
+
+            setupI18N() {
+                const langSel = document.getElementById('lang-selector');
+                langSel.addEventListener('change', (e) => {
+                    this.lang = e.target.value;
+                    const dict = I18N[this.lang];
+                    
+                    document.querySelectorAll('[data-lang]').forEach(el => {
+                        const key = el.getAttribute('data-lang');
+                        if(dict[key]) {
+                            // Check if glitch text
+                            if(el.classList.contains('glitch-text')) {
+                                el.setAttribute('data-text', dict[key]);
+                                el.innerHTML = dict[key];
+                            } else {
+                                el.innerHTML = dict[key];
+                            }
+                        }
+                    });
+                    this.renderDynamicContent(); // Re-render for dynamic parts
+                });
+            }
+
+            setupUIBindings() {
+                // Project Filters
+                const filters = document.querySelectorAll('.filter-btn');
+                filters.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        filters.forEach(f => f.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.renderProjects(e.target.dataset.filter);
+                    });
+                });
+
+                // Form Handle
+                const form = document.getElementById('contactForm');
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const btnText = document.getElementById('btn-text');
+                    const icon = document.getElementById('btn-icon');
+                    const fb = document.getElementById('form-feedback');
+                    const msg = document.getElementById('feedback-msg');
+                    
+                    const ogText = btnText.innerText;
+                    btnText.innerText = "Executing Request...";
+                    icon.setAttribute('data-lucide', 'loader-2');
+                    icon.classList.add('animate-spin');
+                    lucide.createIcons();
+
+                    setTimeout(() => {
+                        form.reset();
+                        btnText.innerText = ogText;
+                        icon.setAttribute('data-lucide', 'send');
+                        icon.classList.remove('animate-spin');
+                        lucide.createIcons();
+                        
+                        fb.style.height = '70px';
+                        fb.style.opacity = '1';
+                        fb.classList.add('p-3', 'mt-4');
+                        
+                        setTimeout(() => {
+                            fb.style.height = '0';
+                            fb.style.opacity = '0';
+                            fb.classList.remove('p-3', 'mt-4');
+                        }, 5000);
+                    }, 1500);
+                });
+
+                // Mobile Menu
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                const nav = document.querySelector('nav');
+                menuBtn.addEventListener('click', () => {
+                    nav.classList.toggle('hidden');
+                    nav.classList.toggle('absolute');
+                    nav.classList.toggle('top-16');
+                    nav.classList.toggle('left-6');
+                    nav.classList.toggle('right-6');
+                    nav.classList.toggle('flex-col');
+                });
+            }
+
+            initScrollReveal() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting) {
+                            entry.target.classList.remove('opacity-0', 'translate-y-10');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.gs-reveal-up').forEach(el => observer.observe(el));
+            }
+        }
+
+        // ==========================================
+        // 3. UX & ANIMATIONS ENGINE
+        // ==========================================
+        class UXManager {
+            constructor() {
+                this.cursorX = window.innerWidth / 2;
+                this.cursorY = window.innerHeight / 2;
+                this.init();
+            }
+
+            init() {
+                this.bootSequence();
+                if(window.matchMedia("(pointer: fine)").matches) {
+                    this.setupCustomCursor();
+                    this.setupMagneticElements();
+                }
+                this.setupScrollEffects();
+                this.initTerminalTyping();
+            }
+
+            bootSequence() {
+                const preloader = document.getElementById('preloader');
+                const lines = [
+                    "INIT SYSTEM: kernel module jvbm_core loaded.",
+                    "MOUNTING: virtual_dom on /dev/ui...",
+                    "STARTING: WebGL Physics Engine...",
+                    "LOADING: Skills matrix [Python, C#, JS, SQL]... OK",
+                    "ESTABLISHING: Secure connection to neural net...",
+                    "STATUS: Architecture stabilized. Ready for deploy."
+                ];
+                
+                let delay = 200;
+                lines.forEach((text, i) => {
+                    setTimeout(() => {
+                        const p = document.createElement('p');
+                        p.className = 'boot-line';
+                        p.innerText = `> ${text}`;
+                        preloader.appendChild(p);
+                        
+                        // Force reflow for transition
+                        void p.offsetWidth;
+                        p.classList.add('visible');
+                    }, delay);
+                    delay += Math.random() * 300 + 100;
+                });
+
+                // Finish Boot
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.remove(), 1000);
+                    // Trigger GSAP Initial Reveal
+                    this.triggerIntroAnimations();
+                }, delay + 500);
+            }
+
+            triggerIntroAnimations() {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.fromTo(".gs-reveal", 
+                    { y: 60, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power4.out" }
+                );
+                gsap.fromTo(".gs-reveal-right", 
+                    { x: 100, opacity: 0 }, 
+                    { x: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.5 }
+                );
+            }
+
+            setupCustomCursor() {
+                window.addEventListener('mousemove', (e) => {
+                    document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
+                    document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
+                    
+                    // Smooth Ring follow
+                    const ring = document.getElementById('cursor-ring');
+                    if(ring) {
+                        ring.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+                    }
+                });
+
+                document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+                document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+
+                // Delegate hover events
+                document.addEventListener('mouseover', (e) => {
+                    if(e.target.closest('.interactive, button, a, input, textarea, select')) {
+                        document.body.classList.add('cursor-hover');
+                    }
+                });
+                document.addEventListener('mouseout', (e) => {
+                    if(e.target.closest('.interactive, button, a, input, textarea, select')) {
+                        document.body.classList.remove('cursor-hover');
+                    }
+                });
+            }
+
+            setupMagneticElements() {
+                document.querySelectorAll('.magnetic-wrap').forEach(el => {
+                    el.addEventListener('mousemove', (e) => {
+                        const rect = el.getBoundingClientRect();
+                        const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+                        const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                        gsap.to(el.children[0], { x: x, y: y, duration: 0.3, ease: "power2.out" });
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        gsap.to(el.children[0], { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
+                    });
+                });
+            }
+
+            setupScrollEffects() {
+                const nav = document.getElementById('navbar');
+                const prog = document.getElementById('progress-bar');
+                
+                window.addEventListener('scroll', () => {
+                    const y = window.scrollY;
+                    // Navbar blur
+                    if (y > 50) nav.classList.add('bg-black/80', 'backdrop-blur-xl', 'border-surface-border');
+                    else nav.classList.remove('bg-black/80', 'backdrop-blur-xl', 'border-surface-border');
+                    
+                    // Progress Bar
+                    const height = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrolled = (y / height) * 100;
+                    prog.style.width = scrolled + '%';
+                }, { passive: true });
+
+                // Section Reveal (Generic)
+                gsap.utils.toArray('section').forEach(sec => {
+                    ScrollTrigger.create({
+                        trigger: sec,
+                        start: "top 80%",
+                        onEnter: () => sec.classList.add('in-view')
+                    });
+                });
+            }
+
+            initTerminalTyping() {
+                const term = document.getElementById('terminal-container');
+                const code = `/**
+ * @class SoftwareArchitect
+ * @extends Developer
+ */
+class SoftwareArchitect {
+  constructor() {
+    this.name = "João Victor Barros";
+    this.role = "Backend & Systems Arch";
+    this.focus = ["Python", "C#", "Node"];
+  }
+
+  async buildInfrastructure() {
+    try {
+      const db = await SQL.optimize();
+      const api = await REST.deploy();
+      const ui = await React.render();
+      
+      return { status: 200, system: "Online" };
+    } catch (err) {
+      return Logger.fatal(err);
+    }
+  }
+}
+
+// Executing boot sequence...
+const jvbm = new SoftwareArchitect();
+jvbm.buildInfrastructure().then(console.log);`;
+                
+                let i = 0;
+                term.innerHTML = '';
+                // Add syntax highlighting dynamically
+                const typeChar = () => {
+                    if (i < code.length) {
+                        let char = code.charAt(i);
+                        if(char === '\n') char = '<br>';
+                        else if(char === ' ') char = '&nbsp;';
+                        
+                        term.innerHTML += char;
+                        
+                        // Scroll to bottom
+                        term.scrollTop = term.scrollHeight;
+                        i++;
+                        setTimeout(typeChar, Math.random() * 20 + 5);
+                    } else {
+                        // Apply basic syntax colors post-typing for performance
+                        let html = term.innerHTML;
+                        html = html.replace(/(class|constructor|async|await|try|catch|return|new|const)/g, '<span class="text-purple-400">$1</span>');
+                        html = html.replace(/("(.*?)")/g, '<span class="text-green-400">$1</span>');
+                        html = html.replace(/(console\.log|Logger\.fatal|SQL\.optimize|REST\.deploy|React\.render)/g, '<span class="text-blue-400">$1</span>');
+                        html = html.replace(/(this)/g, '<span class="text-red-400">$1</span>');
+                        term.innerHTML = html + '<span class="inline-block w-2 h-4 bg-brand-500 ml-1 translate-y-1 animate-pulse"></span>';
+                    }
+                };
+                setTimeout(typeChar, 2500); // Wait for boot screen
+            }
+        }
+
+        // ==========================================
+        // 4. WEBGL 3D ENGINE (THREE.JS GLOBAL NETWORK)
+        // ==========================================
+        class WebGLEngine {
+            constructor() {
+                this.canvas = document.getElementById('webgl-canvas');
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: false });
+                this.particles = null;
+                this.mouseX = 0;
+                this.mouseY = 0;
+                
+                this.init();
+            }
+
+            init() {
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Perf limit
+                
+                this.camera.position.z = 200;
+
+                this.createParticleSphere();
+                this.bindEvents();
+                this.animate();
+            }
+
+            createParticleSphere() {
+                const particleCount = window.innerWidth < 768 ? 400 : 1000;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                const colors = new Float32Array(particleCount * 3);
+
+                const color1 = new THREE.Color('#f97316'); // Orange
+                const color2 = new THREE.Color('#5b21b6'); // Violet
+
+                for(let i = 0; i < particleCount; i++) {
+                    // Spherical distribution
+                    const theta = Math.random() * Math.PI * 2;
+                    const phi = Math.acos((Math.random() * 2) - 1);
+                    const radius = 100 + (Math.random() * 10); // slight variance
+
+                    const x = radius * Math.sin(phi) * Math.cos(theta);
+                    const y = radius * Math.sin(phi) * Math.sin(theta);
+                    const z = radius * Math.cos(phi);
+
+                    positions[i*3] = x;
+                    positions[i*3+1] = y;
+                    positions[i*3+2] = z;
+
+                    // Mix colors based on position
+                    const mixedColor = color1.clone().lerp(color2, (y + 100) / 200);
+                    colors[i*3] = mixedColor.r;
+                    colors[i*3+1] = mixedColor.g;
+                    colors[i*3+2] = mixedColor.b;
+                }
+
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+                const material = new THREE.PointsMaterial({
+                    size: 2,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.6,
+                    blending: THREE.AdditiveBlending
+                });
+
+                this.particles = new THREE.Points(geometry, material);
+                
+                // Position sphere to the right on desktop, center-bottom on mobile
+                if (window.innerWidth > 1024) {
+                    this.particles.position.set(80, 0, 0);
+                } else {
+                    this.particles.position.set(0, -50, 0);
+                }
+
+                this.scene.add(this.particles);
+            }
+
+            bindEvents() {
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                    
+                    // Reposition based on screen
+                    if(this.particles) {
+                        if (window.innerWidth > 1024) this.particles.position.set(80, 0, 0);
+                        else this.particles.position.set(0, -50, 0);
+                    }
+                }, { passive: true });
+
+                window.addEventListener('mousemove', (e) => {
+                    // Normalized mouse coordinates (-1 to 1)
+                    this.mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                    this.mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                }, { passive: true });
+            }
+
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
+
+                if(this.particles) {
+                    // Base Rotation
+                    this.particles.rotation.y += 0.002;
+                    this.particles.rotation.x += 0.001;
+
+                    // Mouse Interaction (Parallax & Tilt)
+                    const targetX = this.mouseX * 0.5;
+                    const targetY = this.mouseY * 0.5;
+
+                    this.particles.rotation.y += (targetX - this.particles.rotation.y) * 0.05;
+                    this.particles.rotation.x += (targetY - this.particles.rotation.x) * 0.05;
+                    
+                    // Camera subtle movement
+                    this.camera.position.x += (this.mouseX * 20 - this.camera.position.x) * 0.05;
+                    this.camera.position.y += (this.mouseY * 20 - this.camera.position.y) * 0.05;
+                    this.camera.lookAt(this.scene.position);
+                }
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // ==========================================
+        // 5. APPLICATION BOOTSTRAP
+        // ==========================================
         document.addEventListener('DOMContentLoaded', () => {
-            // Iniciar o controlador de arquitetura
-            AppController.bootstrap();
+            // Add custom animation styles dynamically
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeUp {
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
 
-            // Iniciar Motores Físicos de Camada de Fundo (Atraso mínimo para priorizar pintura do HTML)
+            // Initialize Modules
+            const app = new App();
+            const ux = new UXManager();
+            
+            // Init heavy WebGL after a slight delay to prioritize DOM rendering
             setTimeout(() => {
-                initCursorPhysics();
-                initMatrixEngine();
-                initTerminalTyping();
-                initStatCounters();
-            }, 300);
+                const webgl = new WebGLEngine();
+            }, 500);
         });
-
     </script>
 </body>
 </html>
