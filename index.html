@@ -1,1410 +1,842 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>João Victor Barros | Software Architect &amp; Engineer</title>
+    <meta
+      name="description"
+      content="Portfólio de João Victor Barros das Merces. Engenharia de Software, Arquiteturas Escaláveis, Edge Computing, Python, C# e JavaScript."
+    />
+    <meta name="author" content="João Victor Barros das Merces" />
+    <meta name="theme-color" content="#ea580c" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://joaovictordevportfolio.online/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="João Victor Barros | Software Architect &amp; Engineer" />
+    <meta
+      property="og:description"
+      content="Engenharia orientada a soluções. Construindo arquiteturas resilientes e interfaces de alta performance."
+    />
+    <meta property="og:url" content="https://joaovictordevportfolio.online/" />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/205098315?v=4" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta name="twitter:card" content="summary" />
 
-<!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- SEO & Identity -->
-    <title>João Victor Barros | Software Architect & Engineer</title>
-    <meta name="description" content="Portfólio de João Victor Barros das Merces. Engenharia de Software, Arquiteturas Escaláveis, Edge Computing, Python, C# e JavaScript.">
-    <meta name="keywords" content="Software Engineer, Backend, Frontend, Fullstack, Python, C#, JavaScript, React, Node.js, Edge Computing, SQL, MongoDB">
-    <meta name="author" content="João Victor Barros das Merces">
-    <meta name="theme-color" content="#ea580c">
-
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="João Victor Barros | Portfolio Ultimate">
-    <meta property="og:description" content="Engenharia orientada a soluções. Construindo arquiteturas resilientes e interfaces de alta performance.">
-    <meta property="og:url" content="https://joaovictor.dev">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/205098315?v=4">
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "João Victor Barros das Merces",
-      "jobTitle": "Software Engineer",
-      "url": "https://joaovictor.dev",
-      "image": "https://avatars.githubusercontent.com/u/205098315?v=4",
-      "alumniOf": [
-        { "@type": "CollegeOrUniversity", "name": "UNICID" },
-        { "@type": "EducationalOrganization", "name": "SENAC" }
-      ],
-      "knowsAbout": ["Software Architecture", "Python", "C#", "JavaScript", "React", "Node.js", "SQL", "Edge Computing"]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "João Victor Barros das Merces",
+        "jobTitle": "Software Engineer",
+        "url": "https://joaovictordevportfolio.online/",
+        "image": "https://avatars.githubusercontent.com/u/205098315?v=4",
+        "email": "mailto:joaovictor.business2005@gmail.com",
+        "sameAs": [
+          "https://github.com/Joaovictoreth1",
+          "https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b"
+        ],
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "UNICID" },
+          { "@type": "EducationalOrganization", "name": "SENAC" }
+        ],
+        "knowsAbout": [
+          "Software Architecture",
+          "Python",
+          "C#",
+          "JavaScript",
+          "React",
+          "Node.js",
+          "SQL",
+          "Edge Computing"
+        ]
+      }
     </script>
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body class="relative selection:bg-brand-500 selection:text-white">
+    <a href="#main-content" class="skip-link" data-i18n="skipLink">Pular para o conteúdo</a>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS Engine -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Vendor Libraries -->
-    <!-- GSAP for Advanced Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Three.js for 3D WebGL Rendering -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <div id="preloader" aria-hidden="true"></div>
+    <div id="progress-bar" aria-hidden="true"></div>
+    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
-    <!-- Tailwind Deep Configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                        brand: ['Syne', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#fff7ed',
-                            100: '#ffedd5',
-                            400: '#fb923c',
-                            500: '#f97316', // Core Orange
-                            600: '#ea580c',
-                            900: '#7c2d12',
-                            accent: '#8b5cf6', // Violet
-                            accentDark: '#5b21b6',
-                            success: '#10b981',
-                            error: '#ef4444',
-                        },
-                        surface: {
-                            DEFAULT: 'rgba(15, 23, 42, 0.6)',
-                            hover: 'rgba(30, 41, 59, 0.8)',
-                            border: 'rgba(255, 255, 255, 0.08)',
-                            light: '#ffffff'
-                        },
-                        base: {
-                            900: '#020617', // Slate 950
-                            950: '#000000',
-                        }
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'blob-reverse': 'blob-reverse 10s infinite',
-                        'scanline': 'scanline 8s linear infinite',
-                        'glitch': 'glitch 2s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'spin-slow': 'spin 15s linear infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        'blob-reverse': {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(-30px, 50px) scale(1.2)' },
-                            '66%': { transform: 'translate(20px, -20px) scale(0.8)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glitch: {
-                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
-                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
-                            '62%': { transform: 'translate(0,0) skew(5deg)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* CSS Custom Properties para controle em tempo real via JS */
-        :root {
-            --cursor-x: 50vw;
-            --cursor-y: 50vh;
-            --scroll-y: 0;
-            --glass-bg: rgba(15, 23, 42, 0.4);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glow-color: rgba(249, 115, 22, 0.15);
-        }
-
-        /* Resets e Otimizações de Renderização */
-        * {
-            cursor: none !important; /* Cursor customizado absoluto */
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        @media (max-width: 1024px) {
-            * { cursor: auto !important; }
-        }
-
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: #475569 #020617;
-        }
-
-        body {
-            background-color: #020617;
-            color: #f8fafc;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Custom Webkit Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; border: 2px solid #020617; }
-        ::-webkit-scrollbar-thumb:hover { background: #f97316; }
-
-        /* Preloader System Boot */
-        #preloader {
-            position: fixed; inset: 0; z-index: 999999;
-            background-color: #000; color: #10b981;
-            font-family: 'Fira Code', monospace;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 2rem; overflow: hidden;
-            transition: opacity 1s ease-in-out;
-        }
-        .boot-line { margin: 2px 0; font-size: 0.9rem; opacity: 0; }
-        .boot-line.visible { opacity: 1; }
-
-        /* Hardware Accelerated Canvas */
-        #webgl-canvas {
-            position: fixed; inset: 0; z-index: -2;
-            pointer-events: none;
-            transform: translateZ(0);
-            will-change: transform;
-        }
-
-        /* Advanced Custom Cursor Physics */
-        .cursor-dot {
-            position: fixed; top: 0; left: 0; width: 6px; height: 6px;
-            background-color: #f97316; border-radius: 50%;
-            pointer-events: none; z-index: 99999;
-            transform: translate3d(calc(var(--cursor-x) - 3px), calc(var(--cursor-y) - 3px), 0);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            mix-blend-mode: difference;
-        }
-        .cursor-ring {
-            position: fixed; top: 0; left: 0; width: 40px; height: 40px;
-            border: 1px solid rgba(249, 115, 22, 0.5); border-radius: 50%;
-            pointer-events: none; z-index: 99998;
-            transition: transform 0.15s cubic-bezier(0.165, 0.84, 0.44, 1), width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        .cursor-hover .cursor-ring {
-            width: 80px; height: 80px;
-            background-color: rgba(249, 115, 22, 0.1);
-            border-color: transparent; backdrop-filter: blur(2px);
-        }
-        .cursor-click .cursor-ring {
-            transform: scale(0.8); background-color: rgba(249, 115, 22, 0.3);
-        }
-
-        /* Enterprise Glassmorphism (Bento Box Elements) */
-        .glass-panel {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative; overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s, box-shadow 0.4s;
-        }
-        .glass-panel::before {
-            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            opacity: 0.5;
-        }
-        .glass-panel:hover {
-            border-color: rgba(249, 115, 22, 0.4);
-            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-            z-index: 10;
-        }
-
-        /* Typography & Gradients */
-        .text-gradient {
-            background: linear-gradient(to right, #f97316, #fb923c, #8b5cf6, #f97316);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-size: 300% auto;
-            animation: textShine 6s linear infinite;
-        }
-        @keyframes textShine { to { background-position: 300% center; } }
-
-        .glitch-text { position: relative; }
-        .glitch-text::before, .glitch-text::after {
-            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #020617;
-        }
-        .glitch-text::before {
-            left: 2px; text-shadow: -1px 0 #ef4444; clip: rect(24px, 550px, 90px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px; text-shadow: -1px 0 #3b82f6; clip: rect(85px, 550px, 140px, 0);
-            animation: glitch-anim 2.5s infinite linear alternate-reverse;
-        }
-        @keyframes glitch-anim {
-            0% { clip: rect(20px, 9999px, 94px, 0); }
-            20% { clip: rect(62px, 9999px, 12px, 0); }
-            40% { clip: rect(10px, 9999px, 54px, 0); }
-            60% { clip: rect(88px, 9999px, 71px, 0); }
-            80% { clip: rect(41px, 9999px, 33px, 0); }
-            100% { clip: rect(9px, 9999px, 86px, 0); }
-        }
-
-        /* Terminal Window Concept */
-        .terminal-header {
-            background: rgba(0,0,0,0.6); padding: 10px 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; gap: 8px; align-items: center;
-        }
-        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; }
-        .dot-yel { background: #ffbd2e; }
-        .dot-grn { background: #27c93f; }
-
-        /* Bento Grid Architecture */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: minmax(120px, auto);
-            gap: 1.5rem;
-        }
-        .bento-col-4 { grid-column: span 4; }
-        .bento-col-6 { grid-column: span 6; }
-        .bento-col-8 { grid-column: span 8; }
-        .bento-col-12 { grid-column: span 12; }
-        .bento-row-2 { grid-row: span 2; }
-        
-        @media (max-width: 1024px) {
-            .bento-col-4, .bento-col-6, .bento-col-8 { grid-column: span 12; }
-            .bento-row-2 { grid-row: span 1; }
-        }
-
-        /* Timeline Specifics */
-        .timeline-container { position: relative; padding-left: 3rem; }
-        .timeline-container::before {
-            content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px;
-            background: linear-gradient(to bottom, var(--glow-color), #f97316, var(--glow-color));
-        }
-        .timeline-dot {
-            position: absolute; left: -3rem; top: 0.5rem; width: 24px; height: 24px;
-            background: #020617; border: 2px solid #f97316; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 0 15px rgba(249,115,22,0.5); z-index: 2;
-        }
-        .timeline-dot::after {
-            content: ''; width: 8px; height: 8px; background: #f97316; border-radius: 50%;
-        }
-
-        /* Filter Buttons */
-        .filter-btn {
-            background: transparent; border: 1px solid var(--glass-border);
-            color: #94a3b8; padding: 0.5rem 1.5rem; border-radius: 9999px;
-            font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 500;
-            transition: all 0.3s;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: #f97316; color: white; border-color: #f97316;
-            box-shadow: 0 4px 15px rgba(249,115,22,0.3);
-        }
-
-        /* Utils */
-        .magnetic-wrap { display: inline-block; position: relative; }
-        .interactive { cursor: none; }
-        
-        /* Progress Bar */
-        #progress-bar {
-            position: fixed; top: 0; left: 0; height: 3px; background: #f97316;
-            width: 0%; z-index: 1000; transition: width 0.1s ease;
-            box-shadow: 0 0 10px #f97316;
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-brand-500 selection:text-white relative">
-
-    <div id="preloader">
-        <!-- JS will inject boot lines here -->
+    <div class="pointer-events-none fixed inset-0 z-[-1] overflow-hidden" aria-hidden="true">
+      <div
+        class="absolute top-[-20%] left-[-10%] h-[50vw] w-[50vw] animate-blob rounded-full bg-brand-600/10 mix-blend-screen blur-[120px]"
+      ></div>
+      <div
+        class="absolute top-[30%] right-[-10%] h-[40vw] w-[40vw] animate-blob-reverse rounded-full bg-brand-accent/10 mix-blend-screen blur-[120px]"
+      ></div>
+      <div
+        class="absolute bottom-[-20%] left-[20%] h-[50vw] w-[50vw] animate-blob rounded-full bg-blue-600/5 mix-blend-screen blur-[120px] [animation-delay:2s]"
+      ></div>
+      <div class="ambient-grid absolute inset-0 opacity-[0.03]"></div>
     </div>
 
-    <!-- ProgressBar -->
-    <div id="progress-bar"></div>
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
-    <!-- 3D Environment (ThreeJS Canvas) -->
-    <canvas id="webgl-canvas"></canvas>
-    
-    <!-- Aesthetic Ambient Blurs (CSS Painted) -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-600/10 mix-blend-screen filter blur-[120px] animate-blob"></div>
-        <div class="absolute top-[30%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-accent/10 mix-blend-screen filter blur-[120px] animate-blob-reverse"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-blue-600/5 mix-blend-screen filter blur-[120px] animate-blob" style="animation-delay: 2s;"></div>
-        <!-- Grid overlay -->
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;"></div>
-    </div>
+    <header class="fixed top-0 z-50 w-full" id="navbar">
+      <div class="mx-auto flex max-w-screen-2xl items-center justify-between px-6 py-4">
+        <a
+          href="#main-content"
+          class="magnetic-wrap group font-brand text-2xl font-extrabold tracking-tighter"
+          aria-label="JV.Arch"
+        >
+          <span class="inline-block transition-transform group-hover:scale-110"
+            >JV<span class="text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]">.</span
+            >Arch</span
+          >
+        </a>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot hidden lg:block" id="cursor-dot"></div>
-    <div class="cursor-ring hidden lg:block" id="cursor-ring"></div>
+        <nav
+          class="hidden items-center gap-8 rounded-full border border-surface-border bg-surface px-8 py-3 shadow-lg backdrop-blur-md md:flex"
+          data-i18n-attr="aria-label:navLabel"
+          aria-label="Navegação principal"
+        >
+          <a
+            href="#about"
+            class="text-sm font-semibold text-slate-300 transition-colors hover:text-white"
+            data-i18n="navAbout"
+            >Sobre</a
+          >
+          <a
+            href="#experience"
+            class="text-sm font-semibold text-slate-300 transition-colors hover:text-white"
+            data-i18n="navExp"
+            >Jornada</a
+          >
+          <a
+            href="#skills"
+            class="text-sm font-semibold text-slate-300 transition-colors hover:text-white"
+            data-i18n="navSkills"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="text-sm font-semibold text-slate-300 transition-colors hover:text-white"
+            data-i18n="navProjects"
+            >Projetos</a
+          >
+        </nav>
 
-    <header class="fixed top-0 w-full z-50 transition-all duration-500 border-b border-transparent" id="navbar">
-        <div class="max-w-screen-2xl mx-auto px-6 py-4 flex justify-between items-center">
-            
-            <!-- Logo -->
-            <a href="#" class="font-brand font-extrabold text-2xl tracking-tighter interactive magnetic-wrap group" data-lang="logo">
-                <div class="transition-transform group-hover:scale-110">
-                    JV<span class="text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]">.</span>Arch
-                </div>
-            </a>
-            
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex gap-8 items-center bg-surface border border-surface-border px-8 py-3 rounded-full backdrop-blur-md shadow-lg">
-                <a href="#about" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navAbout">
-                    <span>Sobre</span>
-                </a>
-                <a href="#experience" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navExp">
-                    <span>Jornada</span>
-                </a>
-                <a href="#skills" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navSkills">
-                    <span>Skills</span>
-                </a>
-                <a href="#projects" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navProjects">
-                    <span>Projetos</span>
-                </a>
-            </nav>
+        <div class="flex items-center gap-4">
+          <a
+            href="#contact"
+            class="magnetic-wrap hidden items-center gap-2 rounded-full bg-brand-700 px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_15px_rgba(249,115,22,0.3)] transition-colors hover:bg-brand-800 lg:flex"
+          >
+            <span data-i18n="navContact">Deploy Contact</span>
+            <i data-lucide="terminal" class="h-4 w-4"></i>
+          </a>
 
-            <!-- Controls -->
-            <div class="flex items-center gap-4">
-                <a href="#contact" class="hidden lg:flex interactive bg-brand-600 hover:bg-brand-500 text-white px-5 py-2.5 rounded-full font-medium transition-colors items-center gap-2 text-sm shadow-[0_0_15px_rgba(249,115,22,0.3)] magnetic-wrap">
-                    <span data-lang="navContact">Deploy Contact</span>
-                    <i data-lucide="terminal" class="w-4 h-4"></i>
-                </a>
+          <div class="relative">
+            <label for="lang-selector" class="sr-only" data-i18n="langLabel">Idioma</label>
+            <select
+              id="lang-selector"
+              class="appearance-none rounded-lg border border-surface-border bg-surface py-2 pr-7 pl-3 font-mono text-xs font-bold text-slate-300 transition-colors hover:text-white"
+            >
+              <option value="pt" class="bg-slate-900">PT-BR</option>
+              <option value="en" class="bg-slate-900">EN-US</option>
+            </select>
+            <i
+              data-lucide="globe"
+              class="pointer-events-none absolute top-1/2 right-2 h-3 w-3 -translate-y-1/2 text-slate-400"
+            ></i>
+          </div>
 
-                <!-- Language Selector -->
-                <div class="relative group interactive">
-                    <select id="lang-selector" class="bg-surface border border-surface-border text-xs font-mono font-bold text-slate-300 hover:text-white rounded-lg px-3 py-2 cursor-none outline-none appearance-none transition-colors">
-                        <option value="pt" class="bg-slate-900">PT-BR</option>
-                        <option value="en" class="bg-slate-900">EN-US</option>
-                    </select>
-                    <i data-lucide="globe" class="w-3 h-3 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"></i>
-                </div>
-
-                <!-- Mobile Menu Btn -->
-                <button class="md:hidden interactive text-slate-300 bg-surface p-2 rounded-lg border border-surface-border" id="mobile-menu-btn">
-                    <i data-lucide="menu"></i>
-                </button>
-            </div>
+          <button
+            type="button"
+            class="rounded-lg border border-surface-border bg-surface p-2 text-slate-300 md:hidden"
+            id="mobile-menu-btn"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+            aria-label="Abrir menu"
+          >
+            <i data-lucide="menu" class="h-6 w-6"></i>
+          </button>
         </div>
+      </div>
+
+      <nav
+        id="mobile-nav"
+        class="mx-6 mb-4 flex flex-col gap-1 rounded-2xl border border-surface-border bg-base-900/95 p-4 shadow-2xl backdrop-blur-xl md:hidden"
+        data-i18n-attr="aria-label:navMobileLabel"
+        aria-label="Navegação móvel"
+        hidden
+      >
+        <a
+          href="#about"
+          class="rounded-lg px-4 py-3 font-semibold text-slate-200 hover:bg-white/5"
+          data-i18n="navAbout"
+          >Sobre</a
+        >
+        <a
+          href="#experience"
+          class="rounded-lg px-4 py-3 font-semibold text-slate-200 hover:bg-white/5"
+          data-i18n="navExp"
+          >Jornada</a
+        >
+        <a
+          href="#skills"
+          class="rounded-lg px-4 py-3 font-semibold text-slate-200 hover:bg-white/5"
+          data-i18n="navSkills"
+          >Skills</a
+        >
+        <a
+          href="#projects"
+          class="rounded-lg px-4 py-3 font-semibold text-slate-200 hover:bg-white/5"
+          data-i18n="navProjects"
+          >Projetos</a
+        >
+        <a
+          href="#contact"
+          class="mt-2 rounded-lg bg-brand-700 px-4 py-3 font-semibold text-white"
+          data-i18n="navContact"
+          >Deploy Contact</a
+        >
+      </nav>
     </header>
 
-    <main id="main-content">
-        <section class="min-h-screen flex items-center relative pt-20 px-6 overflow-hidden">
-            <div class="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left: Typography & CTA (Spans 7 cols) -->
-                <div class="lg:col-span-7 z-10 gs-reveal mt-10 lg:mt-0">
-                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-brand-500/30 bg-brand-500/10 text-xs font-mono text-brand-400 mb-8 backdrop-blur-sm">
-                        <span class="relative flex h-3 w-3">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
-                        </span>
-                        <span data-lang="heroBadge">System Status: Online | Available for Work</span>
-                    </div>
-                    
-                    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
-                        <span class="block text-slate-100" data-lang="heroTitle1">Engenharia</span>
-                        <span class="block text-slate-300" data-lang="heroTitle2">Orientada a</span>
-                        <span class="text-gradient block glitch-text" data-text="Soluções." data-lang="heroTitle3">Soluções.</span>
-                    </h1>
-                    
-                    <p class="text-slate-400 text-lg sm:text-xl max-w-2xl mb-10 font-light leading-relaxed" data-lang="heroDesc">
-                        Desenvolvedor de Software Especialista. Construindo arquiteturas resilientes e complexas no <strong class="text-slate-200 font-medium">Back-end</strong> (Python/C#) e interfaces dinâmicas de alta performance no <strong class="text-slate-200 font-medium">Front-end</strong> (JavaScript).
-                    </p>
-                    
-                    <div class="flex flex-wrap gap-5">
-                        <div class="magnetic-wrap">
-                            <a href="#projects" class="interactive bg-white hover:bg-slate-200 text-slate-950 px-8 py-4 rounded-xl font-bold transition-colors flex items-center gap-2">
-                                <span data-lang="heroBtn">Analisar Projetos</span>
-                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                        <div class="magnetic-wrap">
-                            <a href="https://github.com/Joaovictoreth1" target="_blank" class="interactive bg-surface border border-surface-border hover:border-brand-500 text-slate-200 px-8 py-4 rounded-xl font-medium transition-all flex items-center gap-3 group">
-                                <i data-lucide="github" class="w-5 h-5 group-hover:text-brand-500 transition-colors"></i>
-                                <span>GitHub Repos</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <main id="main-content" tabindex="-1">
+      <section
+        class="relative flex min-h-screen items-center overflow-hidden px-6 pt-20"
+        aria-labelledby="hero-title"
+      >
+        <div
+          class="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 lg:grid-cols-12"
+        >
+          <div class="gs-reveal z-10 mt-10 lg:col-span-7 lg:mt-0">
+            <p
+              class="mb-8 inline-flex items-center gap-3 rounded-full border border-brand-500/30 bg-brand-500/10 px-4 py-2 font-mono text-xs text-brand-400 backdrop-blur-sm"
+            >
+              <span class="relative flex h-3 w-3" aria-hidden="true">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-75"
+                ></span>
+                <span class="relative inline-flex h-3 w-3 rounded-full bg-brand-500"></span>
+              </span>
+              <span data-i18n="heroBadge">System Status: Online | Disponível para Projetos</span>
+            </p>
 
-                <!-- Right: Advanced Terminal Emulator (Spans 5 cols) -->
-                <div class="lg:col-span-5 z-10 w-full mx-auto gs-reveal-right hidden md:block">
-                    <div class="glass-panel rounded-2xl border-t border-t-slate-500/30 shadow-2xl shadow-brand-500/10 transform perspective-1000 rotate-y-[-10deg] rotate-x-[5deg] transition-transform duration-700 hover:rotate-0">
-                        <div class="terminal-header">
-                            <div class="terminal-dot dot-red"></div>
-                            <div class="terminal-dot dot-yel"></div>
-                            <div class="terminal-dot dot-grn"></div>
-                            <div class="ml-4 font-mono text-xs text-slate-400 flex-1 text-center pr-12">~/workspace/jvbm_core.js</div>
-                        </div>
-                        <div class="p-6 font-mono text-sm leading-relaxed text-slate-300 h-[400px] overflow-hidden bg-[#0d1117]" id="terminal-container">
-                            <!-- JS Inject -->
-                        </div>
-                    </div>
-                </div>
+            <h1
+              id="hero-title"
+              class="mb-6 font-display text-5xl leading-[1.1] font-extrabold tracking-tighter sm:text-7xl lg:text-8xl"
+            >
+              <span class="block text-slate-100" data-i18n="heroTitle1">Engenharia</span>
+              <span class="block text-slate-300" data-i18n="heroTitle2">Orientada a</span>
+              <span
+                class="text-gradient glitch-text block"
+                data-text="Soluções."
+                data-i18n="heroTitle3"
+                data-i18n-attr="data-text:heroTitle3"
+                >Soluções.</span
+              >
+            </h1>
 
+            <p
+              class="mb-10 max-w-2xl text-lg leading-relaxed font-light text-slate-400 sm:text-xl"
+              data-i18n-html="heroDesc"
+            >
+              Desenvolvedor de Software Especialista. Construindo arquiteturas resilientes e
+              complexas no
+              <strong class="font-medium text-slate-200">Back-end</strong> (Python/C#) e interfaces
+              dinâmicas de alta performance no
+              <strong class="font-medium text-slate-200">Front-end</strong> (JavaScript).
+            </p>
+
+            <div class="flex flex-wrap gap-5">
+              <div class="magnetic-wrap">
+                <a
+                  href="#projects"
+                  class="flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-slate-950 transition-colors hover:bg-slate-200"
+                >
+                  <span data-i18n="heroBtn">Analisar Projetos</span>
+                  <i data-lucide="arrow-right" class="h-5 w-5"></i>
+                </a>
+              </div>
+              <div class="magnetic-wrap">
+                <a
+                  href="https://github.com/Joaovictoreth1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center gap-3 rounded-xl border border-surface-border bg-surface px-8 py-4 font-medium text-slate-200 transition-all hover:border-brand-500"
+                >
+                  <svg
+                    class="h-5 w-5 fill-current transition-colors group-hover:text-brand-500"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                    />
+                  </svg>
+                  <span>GitHub Repos</span>
+                </a>
+              </div>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-float pointer-events-none">
-                <span class="text-xs font-mono text-slate-400 tracking-widest uppercase" data-lang="scrollDown">Scroll</span>
-                <div class="w-[1px] h-12 bg-gradient-to-b from-brand-500 to-transparent"></div>
+          </div>
+
+          <div class="gs-reveal-right z-10 mx-auto hidden w-full md:block lg:col-span-5">
+            <figure
+              class="glass-panel terminal-tilt rounded-2xl border-t border-t-slate-500/30 shadow-2xl shadow-brand-500/10"
+            >
+              <div class="terminal-header" aria-hidden="true">
+                <span class="terminal-dot bg-[#ff5f56]"></span>
+                <span class="terminal-dot bg-[#ffbd2e]"></span>
+                <span class="terminal-dot bg-[#27c93f]"></span>
+                <span class="ml-4 flex-1 pr-12 text-center font-mono text-xs text-slate-400"
+                  >~/workspace/jvbm_core.js</span
+                >
+              </div>
+              <pre
+                class="h-[400px] overflow-hidden bg-[#0d1117] p-6 font-mono text-sm leading-relaxed whitespace-pre-wrap text-slate-300"
+                id="terminal-container"
+              ></pre>
+            </figure>
+          </div>
+        </div>
+
+        <div
+          class="pointer-events-none absolute bottom-10 left-1/2 flex -translate-x-1/2 animate-float flex-col items-center gap-2 opacity-50"
+          aria-hidden="true"
+        >
+          <span
+            class="font-mono text-xs tracking-widest text-slate-400 uppercase"
+            data-i18n="scrollDown"
+            >Explorar</span
+          >
+          <span class="h-12 w-px bg-gradient-to-b from-brand-500 to-transparent"></span>
+        </div>
+      </section>
+
+      <section id="about" class="relative z-10 px-6 py-32" aria-labelledby="about-title">
+        <div class="mx-auto max-w-screen-2xl">
+          <div class="reveal mb-20 text-center md:text-left">
+            <p class="mb-3 font-mono text-sm tracking-widest text-brand-500 uppercase">
+              System.Identity()
+            </p>
+            <h2
+              id="about-title"
+              class="font-display text-4xl font-extrabold md:text-6xl"
+              data-i18n="aboutTitle"
+            >
+              Mente Analítica.
+            </h2>
+          </div>
+
+          <div class="bento-grid">
+            <div
+              class="glass-panel bento-col-8 bento-row-2 reveal group flex flex-col justify-center rounded-[2rem] p-10"
+            >
+              <div
+                class="absolute top-0 right-0 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/10 blur-3xl transition-colors duration-700 group-hover:bg-brand-500/20"
+                aria-hidden="true"
+              ></div>
+              <i data-lucide="cpu" class="mb-8 h-12 w-12 text-brand-500"></i>
+              <h3
+                class="mb-6 font-display text-3xl font-bold text-white md:text-4xl"
+                data-i18n="aboutHeadline"
+              >
+                A lógica por trás do código.
+              </h3>
+              <p
+                class="mb-6 text-lg leading-relaxed font-light text-slate-300"
+                data-i18n-html="aboutP1"
+              >
+                Com 20 anos, minha jornada na programação não é apenas sobre escrever sintaxe, mas
+                sobre
+                <strong>resolver problemas arquiteturais complexos</strong>. Sou fascinado por
+                entender a engrenagem profunda dos sistemas, otimizando bancos de dados e criando
+                APIs resilientes.
+              </p>
+              <p class="text-base leading-relaxed font-light text-slate-400" data-i18n="aboutP2">
+                Estudante de Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática
+                (SENAC). Minha assinatura é combinar o rigor e a segurança do Back-end (C#/Python)
+                com a fluidez do Front-end moderno (JS/React).
+              </p>
             </div>
-        </section>
 
-        <section id="about" class="py-32 px-6 relative z-10">
-            <div class="max-w-screen-2xl mx-auto">
-                <div class="mb-20 gs-reveal text-center md:text-left">
-                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">System.Identity()</div>
-                    <h2 class="font-display text-4xl md:text-6xl font-extrabold" data-lang="aboutTitle">Mente Analítica.</h2>
-                </div>
-
-                <div class="bento-grid">
-                    
-                    <!-- Main Bio (Col 8, Row 2) -->
-                    <div class="glass-panel rounded-[2rem] p-10 bento-col-8 bento-row-2 gs-reveal flex flex-col justify-center relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand-500/20 transition-colors duration-700"></div>
-                        <i data-lucide="cpu" class="w-12 h-12 text-brand-500 mb-8"></i>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white" data-lang="aboutHeadline">A lógica por trás do código.</h3>
-                        <p class="text-slate-300 text-lg leading-relaxed mb-6 font-light" data-lang="aboutP1">
-                            Com 20 anos, minha jornada na programação não é apenas sobre escrever sintaxe, mas sobre <strong>resolver problemas arquiteturais complexos</strong>. Sou fascinado por entender a engrenagem profunda dos sistemas, otimizando bancos de dados e criando APIs resilientes.
-                        </p>
-                        <p class="text-slate-400 text-base leading-relaxed font-light" data-lang="aboutP2">
-                            Estudante de Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). Minha assinatura é combinar o rigor e a segurança do Back-end (C#/Python) com a fluidez do Front-end moderno (JS/React).
-                        </p>
-                    </div>
-
-                    <!-- Profile Avatar (Col 4, Row 1) -->
-                    <div class="glass-panel rounded-[2rem] p-2 bento-col-4 gs-reveal flex items-center justify-center overflow-hidden group relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-brand-500/30 to-brand-accent/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                        <img src="https://avatars.githubusercontent.com/u/205098315?v=4" alt="João Victor" class="w-full h-full object-cover rounded-[1.5rem] filter grayscale-[50%] contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
-                    </div>
-
-                    <!-- Clean Code Stat (Col 4, Row 1) -->
-                    <div class="glass-panel rounded-[2rem] p-8 bento-col-4 gs-reveal flex flex-col justify-between items-center text-center group">
-                        <div class="w-full flex justify-between items-start text-slate-500 group-hover:text-brand-500 transition-colors">
-                            <i data-lucide="code-2"></i>
-                            <i data-lucide="shield-check"></i>
-                        </div>
-                        <div class="my-4">
-                            <div class="font-display text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-500 tracking-tighter">100<span class="text-3xl text-brand-500">%</span></div>
-                        </div>
-                        <div class="text-sm font-mono text-slate-400 uppercase tracking-widest" data-lang="statClean">Foco em Clean Code</div>
-                    </div>
-
-                    <!-- Location & Availability (Col 6, Row 1) -->
-                    <div class="glass-panel rounded-[2rem] p-8 bento-col-6 gs-reveal flex gap-6 items-center bg-gradient-to-r from-surface to-slate-900/50">
-                        <div class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center flex-shrink-0">
-                            <i data-lucide="map-pin" class="text-brand-500"></i>
-                        </div>
-                        <div>
-                            <div class="font-bold text-xl text-white mb-1" data-lang="locTitle">São Paulo, Brasil</div>
-                            <div class="flex items-center gap-2 text-sm text-green-400 font-mono">
-                                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                                <span data-lang="locStatus">Remote / Híbrido Available</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Age & Logic (Col 6, Row 1) -->
-                    <div class="glass-panel rounded-[2rem] p-8 bento-col-6 gs-reveal flex flex-col justify-center">
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <div class="text-5xl font-display font-bold text-white mb-2">20 <span class="text-2xl text-slate-500 font-normal" data-lang="years">anos</span></div>
-                                <div class="text-sm text-slate-400 font-mono" data-lang="logicTxt">Algoritmos & Lógica Pura</div>
-                            </div>
-                            <i data-lucide="brain-circuit" class="w-12 h-12 text-slate-700"></i>
-                        </div>
-                    </div>
-
-                </div>
+            <div
+              class="glass-panel bento-col-4 reveal group relative flex items-center justify-center overflow-hidden rounded-[2rem] p-2"
+            >
+              <div
+                class="absolute inset-0 z-10 bg-gradient-to-br from-brand-500/30 to-brand-accent/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              ></div>
+              <img
+                src="https://avatars.githubusercontent.com/u/205098315?v=4"
+                alt="Foto de João Victor Barros"
+                data-i18n-attr="alt:avatarAlt"
+                width="460"
+                height="460"
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full rounded-[1.5rem] object-cover contrast-125 grayscale-[50%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+              />
             </div>
-        </section>
 
-        <section id="experience" class="py-32 px-6 relative z-10 bg-black/20 backdrop-blur-sm border-y border-surface-border">
-            <div class="max-w-screen-xl mx-auto">
-                <div class="mb-20 gs-reveal text-center">
-                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">Career.History</div>
-                    <h2 class="font-display text-4xl md:text-5xl font-bold" data-lang="expTitle">Jornada Profissional</h2>
-                </div>
-
-                <div class="timeline-container ml-4 md:ml-12" id="timeline-wrapper">
-                    <!-- Injected via JS based on MOCK_DB -->
-                </div>
+            <div
+              class="glass-panel bento-col-4 reveal group flex flex-col items-center justify-between rounded-[2rem] p-8 text-center"
+            >
+              <div
+                class="flex w-full items-start justify-between text-slate-500 transition-colors group-hover:text-brand-500"
+              >
+                <i data-lucide="code-xml"></i>
+                <i data-lucide="shield-check"></i>
+              </div>
+              <p
+                class="my-4 bg-gradient-to-br from-white to-slate-500 bg-clip-text font-display text-6xl font-black tracking-tighter text-transparent"
+              >
+                100<span class="text-3xl text-brand-500">%</span>
+              </p>
+              <p
+                class="font-mono text-sm tracking-widest text-slate-400 uppercase"
+                data-i18n="statClean"
+              >
+                Foco em Clean Code
+              </p>
             </div>
-        </section>
 
-        <section id="skills" class="py-32 px-6 relative z-10 overflow-hidden">
-            <div class="max-w-screen-2xl mx-auto">
-                <div class="mb-16 gs-reveal flex flex-col md:flex-row justify-between items-end gap-6">
-                    <div>
-                        <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">Tech_Stack.json</div>
-                        <h2 class="font-display text-4xl md:text-5xl font-bold" data-lang="skillsTitle">Arsenal Tecnológico</h2>
-                    </div>
-                    <p class="text-slate-400 max-w-md text-right hidden md:block" data-lang="skillsSub">Linguagens e infraestrutura utilizadas para construir sistemas robustos e escaláveis.</p>
-                </div>
-
-                <!-- Categorized Skills via CSS Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 gs-reveal" id="tech-grid">
-                    <!-- Injected via JS -->
-                </div>
-                
-                <!-- Continuous Marquee for smaller tools -->
-                <div class="mt-16 overflow-hidden relative border-y border-surface-border py-6 bg-surface/30">
-                    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10"></div>
-                    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10"></div>
-                    <div class="flex whitespace-nowrap animate-[scroll_30s_linear_infinite] gap-12 items-center opacity-50 hover:opacity-100 transition-opacity">
-                        <!-- Cloned content for smooth loop -->
-                        <div class="flex gap-12 font-mono text-xl font-bold text-slate-300">
-                            <span>DOCKER</span> <span>*</span> <span>AWS</span> <span>*</span> <span>LINUX</span> <span>*</span> <span>GIT</span> <span>*</span> <span>RESTful APIs</span> <span>*</span> <span>WEB SCRAPING</span> <span>*</span> <span>SOLID</span> <span>*</span> <span>CLEAN ARCHITECTURE</span> <span>*</span>
-                            <span>DOCKER</span> <span>*</span> <span>AWS</span> <span>*</span> <span>LINUX</span> <span>*</span> <span>GIT</span> <span>*</span> <span>RESTful APIs</span> <span>*</span> <span>WEB SCRAPING</span> <span>*</span> <span>SOLID</span> <span>*</span> <span>CLEAN ARCHITECTURE</span> <span>*</span>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="glass-panel bento-col-6 reveal flex items-center gap-6 rounded-[2rem] bg-gradient-to-r from-surface to-slate-900/50 p-8"
+            >
+              <div
+                class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border border-slate-700 bg-slate-800"
+              >
+                <i data-lucide="map-pin" class="text-brand-500"></i>
+              </div>
+              <div>
+                <p class="mb-1 text-xl font-bold text-white" data-i18n="locTitle">
+                  São Paulo, Brasil
+                </p>
+                <p class="flex items-center gap-2 font-mono text-sm text-green-400">
+                  <span
+                    class="h-2 w-2 animate-pulse rounded-full bg-green-400"
+                    aria-hidden="true"
+                  ></span>
+                  <span data-i18n="locStatus">Remoto / Híbrido Disponível</span>
+                </p>
+              </div>
             </div>
-            <style>
-                @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-            </style>
-        </section>
 
-        <section id="projects" class="py-32 px-6 relative z-10">
-            <div class="max-w-screen-2xl mx-auto">
-                <div class="mb-16 gs-reveal text-center">
-                    <div class="text-brand-500 font-mono text-sm mb-3 tracking-widest uppercase">System.Outputs</div>
-                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-8" data-lang="projectsTitle">Projetos em Destaque</h2>
-                    
-                    <!-- Filters -->
-                    <div class="flex flex-wrap justify-center gap-4" id="project-filters">
-                        <button class="filter-btn interactive active" data-filter="all">All Systems</button>
-                        <button class="filter-btn interactive" data-filter="backend">Back-end</button>
-                        <button class="filter-btn interactive" data-filter="fullstack">Full-Stack</button>
-                        <button class="filter-btn interactive" data-filter="edge">Edge Computing</button>
-                    </div>
+            <div
+              class="glass-panel bento-col-6 reveal flex flex-col justify-center rounded-[2rem] p-8"
+            >
+              <div class="flex items-end justify-between">
+                <div>
+                  <p class="mb-2 font-display text-5xl font-bold text-white">
+                    20
+                    <span class="text-2xl font-normal text-slate-400" data-i18n="years">anos</span>
+                  </p>
+                  <p class="font-mono text-sm text-slate-400" data-i18n="logicTxt">
+                    Algoritmos &amp; Lógica Pura
+                  </p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                    <!-- Injected via JS -->
-                </div>
-                
-                <div class="mt-16 text-center gs-reveal">
-                    <a href="https://github.com/Joaovictoreth1" target="_blank" class="interactive inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 transition-colors font-mono text-sm border-b border-brand-500/50 pb-1">
-                        <span data-lang="viewGithub">Explorar todos os repositórios no GitHub</span> <i data-lucide="external-link" class="w-4 h-4"></i>
-                    </a>
-                </div>
+                <i data-lucide="brain-circuit" class="h-12 w-12 text-slate-600"></i>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section id="contact" class="py-32 px-6 relative z-10">
-            <div class="max-w-screen-xl mx-auto">
-                <div class="glass-panel rounded-[3rem] p-8 md:p-16 border border-brand-500/20 shadow-[0_0_80px_rgba(249,115,22,0.05)] gs-reveal">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        
-                        <!-- Contact Info -->
-                        <div>
-                            <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 text-white" data-lang="contactTitle">Vamos construir algo <span class="text-brand-500">épico.</span></h2>
-                            <p class="text-slate-400 text-lg mb-12 font-light leading-relaxed" data-lang="contactSub">
-                                Pronto para novos desafios de engenharia. Aberto a propostas para Full-Stack, desenvolvimento Backend e arquitetura de sistemas.
-                            </p>
-                            
-                            <div class="space-y-6">
-                                <a href="mailto:joaovictor.business2005@gmail.com" class="interactive flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface border border-transparent hover:border-surface-border transition-all">
-                                    <div class="w-14 h-14 rounded-full bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(249,115,22,0.2)]">
-                                        <i data-lucide="mail"></i>
-                                    </div>
-                                    <div>
-                                        <div class="text-xs text-slate-500 font-mono mb-1 uppercase tracking-wider">Email Direct</div>
-                                        <div class="text-slate-200 group-hover:text-brand-400 transition-colors font-medium break-all text-lg">joaovictor.business2005@gmail.com</div>
-                                    </div>
-                                </a>
-                                <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" class="interactive flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface border border-transparent hover:border-surface-border transition-all">
-                                    <div class="w-14 h-14 rounded-full bg-[#0a66c2]/10 border border-[#0a66c2]/30 flex items-center justify-center text-[#0a66c2] group-hover:bg-[#0a66c2] group-hover:text-white transition-all shadow-[0_0_15px_rgba(10,102,194,0.2)]">
-                                        <!-- Replaced Lucide icon with image -->
-                                        <img src="watermarked_img_18003946814113796823.jpg" alt="LinkedIn Logo" class="w-10 h-10 object-cover rounded-full mix-blend-screen group-hover:brightness-0 group-hover:invert transition-all">
-                                    </div>
-                                    <div>
-                                        <div class="text-xs text-slate-500 font-mono mb-1 uppercase tracking-wider">Network</div>
-                                        <div class="text-slate-200 group-hover:text-[#0a66c2] transition-colors font-medium text-lg">João Victor Barros</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+      <section
+        id="experience"
+        class="relative z-10 border-y border-surface-border bg-black/20 px-6 py-32 backdrop-blur-sm"
+        aria-labelledby="experience-title"
+      >
+        <div class="mx-auto max-w-screen-xl">
+          <div class="reveal mb-20 text-center">
+            <p class="mb-3 font-mono text-sm tracking-widest text-brand-500 uppercase">
+              Career.History
+            </p>
+            <h2
+              id="experience-title"
+              class="font-display text-4xl font-bold md:text-5xl"
+              data-i18n="expTitle"
+            >
+              Jornada Profissional
+            </h2>
+          </div>
+          <div class="timeline-container ml-4 md:ml-12" id="timeline-wrapper"></div>
+        </div>
+      </section>
 
-                        <!-- RESTful Styled Form UI -->
-                        <div class="bg-[#050914] rounded-3xl p-8 md:p-10 border border-surface-border relative overflow-hidden group shadow-2xl shadow-black">
-                            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                            
-                            <div class="flex items-center justify-between mb-8 pb-4 border-b border-surface-border/50">
-                                <div class="flex items-center gap-3 font-mono text-sm text-slate-400">
-                                    <span class="text-green-400 font-bold bg-green-400/10 px-2 py-0.5 rounded">POST</span> 
-                                    <span>/api/v1/contact</span>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                                    <div class="w-3 h-3 rounded-full bg-slate-700"></div>
-                                </div>
-                            </div>
-                            
-                            <form id="contactForm" class="space-y-6">
-                                <div class="space-y-2">
-                                    <label class="text-xs font-mono text-slate-500">payload.name</label>
-                                    <input type="text" id="frmName" required placeholder="String" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600">
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-mono text-slate-500">payload.email</label>
-                                    <input type="email" id="frmEmail" required placeholder="String (Format: Email)" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600">
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="text-xs font-mono text-slate-500">payload.message</label>
-                                    <textarea required id="frmMsg" rows="4" placeholder="String (Max: 1000 chars)" class="interactive w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 font-sans text-base focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all placeholder:text-slate-600 resize-none"></textarea>
-                                </div>
-                                <button type="submit" class="interactive magnetic-wrap w-full mt-4">
-                                    <div class="w-full bg-white hover:bg-slate-200 text-slate-950 font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 group">
-                                        <span id="btn-text">await sendRequest()</span>
-                                        <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform" id="btn-icon"></i>
-                                    </div>
-                                </button>
-                                <!-- Form Feedback Terminal -->
-                                <div id="form-feedback" class="h-0 overflow-hidden opacity-0 transition-all duration-300 rounded-xl bg-[#0d1117] border border-green-500/30 p-0 font-mono text-xs">
-                                    <div class="p-3 text-green-400">
-                                        > <span class="text-slate-400">Status 200 OK</span><br>
-                                        > <span id="feedback-msg">Response: Mensagem recebida. Retornarei em breve.</span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
+      <section
+        id="skills"
+        class="relative z-10 overflow-hidden px-6 py-32"
+        aria-labelledby="skills-title"
+      >
+        <div class="mx-auto max-w-screen-2xl">
+          <div class="reveal mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
+            <div class="w-full md:w-auto">
+              <p class="mb-3 font-mono text-sm tracking-widest text-brand-500 uppercase">
+                Tech_Stack.json
+              </p>
+              <h2
+                id="skills-title"
+                class="font-display text-4xl font-bold md:text-5xl"
+                data-i18n="skillsTitle"
+              >
+                Arsenal Tecnológico
+              </h2>
             </div>
-        </section>
+            <p class="hidden max-w-md text-right text-slate-400 md:block" data-i18n="skillsSub">
+              Linguagens e infraestrutura utilizadas para construir sistemas robustos e escaláveis.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4" id="tech-grid"></div>
+
+          <div
+            class="relative mt-16 overflow-hidden border-y border-surface-border bg-surface/30 py-6"
+            aria-label="Docker, AWS, Linux, Git, RESTful APIs, Web Scraping, SOLID, Clean Architecture"
+            role="img"
+          >
+            <div
+              class="absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-base-900 to-transparent"
+            ></div>
+            <div
+              class="absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-base-900 to-transparent"
+            ></div>
+            <div
+              class="flex w-max animate-marquee gap-12 font-mono text-xl font-bold whitespace-nowrap text-slate-300 opacity-50 transition-opacity hover:opacity-100"
+              aria-hidden="true"
+            >
+              <span>DOCKER</span><span>*</span><span>AWS</span><span>*</span><span>LINUX</span
+              ><span>*</span><span>GIT</span><span>*</span><span>RESTful APIs</span><span>*</span
+              ><span>WEB SCRAPING</span><span>*</span><span>SOLID</span><span>*</span
+              ><span>CLEAN ARCHITECTURE</span><span>*</span> <span>DOCKER</span><span>*</span
+              ><span>AWS</span><span>*</span><span>LINUX</span><span>*</span><span>GIT</span
+              ><span>*</span><span>RESTful APIs</span><span>*</span><span>WEB SCRAPING</span
+              ><span>*</span><span>SOLID</span><span>*</span><span>CLEAN ARCHITECTURE</span
+              ><span>*</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="relative z-10 px-6 py-32" aria-labelledby="projects-title">
+        <div class="mx-auto max-w-screen-2xl">
+          <div class="reveal mb-16 text-center">
+            <p class="mb-3 font-mono text-sm tracking-widest text-brand-500 uppercase">
+              System.Outputs
+            </p>
+            <h2
+              id="projects-title"
+              class="mb-8 font-display text-4xl font-bold md:text-5xl"
+              data-i18n="projectsTitle"
+            >
+              Projetos em Destaque
+            </h2>
+            <div
+              class="flex flex-wrap justify-center gap-4"
+              id="project-filters"
+              role="group"
+              data-i18n-attr="aria-label:filtersLabel"
+              aria-label="Filtrar projetos por categoria"
+            >
+              <button
+                type="button"
+                class="filter-btn active"
+                data-filter="all"
+                aria-pressed="true"
+                data-i18n="filterAll"
+              >
+                Todos os Sistemas
+              </button>
+              <button
+                type="button"
+                class="filter-btn"
+                data-filter="backend"
+                aria-pressed="false"
+                data-i18n="filterBackend"
+              >
+                Back-end
+              </button>
+              <button
+                type="button"
+                class="filter-btn"
+                data-filter="fullstack"
+                aria-pressed="false"
+                data-i18n="filterFullstack"
+              >
+                Full-Stack
+              </button>
+              <button
+                type="button"
+                class="filter-btn"
+                data-filter="edge"
+                aria-pressed="false"
+                data-i18n="filterEdge"
+              >
+                Edge Computing
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+            id="projects-grid"
+            aria-live="polite"
+          ></div>
+
+          <div class="reveal mt-16 text-center">
+            <a
+              href="https://github.com/Joaovictoreth1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 border-b border-brand-500/50 pb-1 font-mono text-sm text-brand-400 transition-colors hover:text-brand-100"
+            >
+              <span data-i18n="viewGithub">Explorar todos os repositórios no GitHub</span>
+              <i data-lucide="external-link" class="h-4 w-4"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="relative z-10 px-6 py-32" aria-labelledby="contact-title">
+        <div class="mx-auto max-w-screen-xl">
+          <div
+            class="glass-panel reveal rounded-[3rem] border border-brand-500/20 p-8 shadow-[0_0_80px_rgba(249,115,22,0.05)] md:p-16"
+          >
+            <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+              <div>
+                <h2
+                  id="contact-title"
+                  class="mb-6 font-display text-4xl font-bold text-white md:text-6xl"
+                  data-i18n-html="contactTitle"
+                >
+                  Vamos construir algo <span class="text-brand-500">épico.</span>
+                </h2>
+                <p
+                  class="mb-12 text-lg leading-relaxed font-light text-slate-400"
+                  data-i18n="contactSub"
+                >
+                  Pronto para novos desafios de engenharia. Aberto a propostas para Full-Stack,
+                  desenvolvimento Backend e arquitetura de sistemas.
+                </p>
+
+                <div class="space-y-6">
+                  <a
+                    href="mailto:joaovictor.business2005@gmail.com"
+                    class="group flex items-center gap-6 rounded-2xl border border-transparent p-4 transition-all hover:border-surface-border hover:bg-surface"
+                  >
+                    <span
+                      class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-500 shadow-[0_0_15px_rgba(249,115,22,0.2)] transition-all group-hover:bg-brand-500 group-hover:text-white"
+                    >
+                      <i data-lucide="mail"></i>
+                    </span>
+                    <span class="min-w-0">
+                      <span
+                        class="mb-1 block font-mono text-xs tracking-wider text-slate-400 uppercase"
+                        data-i18n="emailDirect"
+                        >Email Direto</span
+                      >
+                      <span
+                        class="block text-lg font-medium break-all text-slate-200 transition-colors group-hover:text-brand-400"
+                        >joaovictor.business2005@gmail.com</span
+                      >
+                    </span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/jo%C3%A3o-victor-68847733b"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group flex items-center gap-6 rounded-2xl border border-transparent p-4 transition-all hover:border-surface-border hover:bg-surface"
+                  >
+                    <span
+                      class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-[#0a66c2]/30 bg-[#0a66c2]/10 text-[#3b8fe0] shadow-[0_0_15px_rgba(10,102,194,0.2)] transition-all group-hover:bg-[#0a66c2] group-hover:text-white"
+                    >
+                      <svg
+                        class="h-6 w-6 fill-current"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                        />
+                      </svg>
+                    </span>
+                    <span>
+                      <span
+                        class="mb-1 block font-mono text-xs tracking-wider text-slate-400 uppercase"
+                        >LinkedIn</span
+                      >
+                      <span
+                        class="block text-lg font-medium text-slate-200 transition-colors group-hover:text-[#3b8fe0]"
+                        >João Victor Barros</span
+                      >
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="group relative overflow-hidden rounded-3xl border border-surface-border bg-[#050914] p-8 shadow-2xl shadow-black md:p-10"
+              >
+                <div
+                  class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-transparent via-brand-500 to-transparent opacity-50 transition-opacity group-hover:opacity-100"
+                  aria-hidden="true"
+                ></div>
+
+                <div
+                  class="mb-8 flex items-center justify-between border-b border-surface-border/50 pb-4"
+                  aria-hidden="true"
+                >
+                  <div class="flex items-center gap-3 font-mono text-sm text-slate-400">
+                    <span class="rounded bg-green-400/10 px-2 py-0.5 font-bold text-green-400"
+                      >POST</span
+                    >
+                    <span>/api/v1/contact</span>
+                  </div>
+                  <div class="flex gap-1.5">
+                    <span class="h-3 w-3 rounded-full bg-slate-700"></span>
+                    <span class="h-3 w-3 rounded-full bg-slate-700"></span>
+                  </div>
+                </div>
+
+                <form
+                  id="contact-form"
+                  name="contact"
+                  method="POST"
+                  action="/"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  class="space-y-6"
+                  data-i18n-attr="aria-label:formTitle"
+                  aria-label="Formulário de contato"
+                  novalidate
+                >
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p class="hidden">
+                    <label
+                      >Leave this field empty
+                      <input type="text" name="bot-field" tabindex="-1" autocomplete="off"
+                    /></label>
+                  </p>
+                  <div class="space-y-2">
+                    <label for="contact-name" class="font-mono text-xs text-slate-400"
+                      >payload.<span class="lowercase" data-i18n="formName">Nome</span></label
+                    >
+                    <input
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      required
+                      maxlength="120"
+                      autocomplete="name"
+                      placeholder="Seu nome"
+                      data-i18n-attr="placeholder:formNamePlaceholder"
+                      class="form-input"
+                    />
+                  </div>
+                  <div class="space-y-2">
+                    <label for="contact-email" class="font-mono text-xs text-slate-400"
+                      >payload.<span class="lowercase" data-i18n="formEmail">Email</span></label
+                    >
+                    <input
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      required
+                      maxlength="254"
+                      autocomplete="email"
+                      placeholder="voce@empresa.com"
+                      data-i18n-attr="placeholder:formEmailPlaceholder"
+                      class="form-input"
+                    />
+                  </div>
+                  <div class="space-y-2">
+                    <label for="contact-message" class="font-mono text-xs text-slate-400"
+                      >payload.<span class="lowercase" data-i18n="formMessage"
+                        >Mensagem</span
+                      ></label
+                    >
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows="4"
+                      maxlength="1000"
+                      placeholder="Conte sobre o projeto (máx. 1000 caracteres)"
+                      data-i18n-attr="placeholder:formMessagePlaceholder"
+                      class="form-input resize-none"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="group mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white py-4 font-bold text-slate-950 transition-colors hover:bg-slate-200 disabled:cursor-wait disabled:opacity-70"
+                  >
+                    <span data-submit-label>await sendRequest()</span>
+                    <span
+                      data-submit-icon
+                      class="transition-transform group-hover:translate-x-1"
+                    ></span>
+                  </button>
+                  <p
+                    class="form-feedback"
+                    data-form-feedback
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                  ></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="border-t border-surface-border py-12 px-6 relative z-10 bg-[#020617]">
-        <div class="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start">
-                <div class="font-brand font-bold text-2xl tracking-tighter text-white">JV<span class="text-brand-500">.</span>Arch</div>
-                <div class="text-sm font-mono text-slate-500 mt-2">© 2026 João Victor Barros.</div>
-            </div>
-            
-            <div class="flex gap-4">
-                <a href="#about" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Sobre</a>
-                <a href="#projects" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Projetos</a>
-                <a href="#contact" class="text-slate-400 hover:text-brand-500 text-sm transition-colors interactive">Contato</a>
-            </div>
-
-            <div class="flex items-center gap-2 text-xs font-mono text-green-400 bg-green-400/10 px-3 py-1.5 rounded-full border border-green-400/20">
-                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> 
-                <span data-lang="footerStatus">All Systems Operational</span>
-            </div>
+    <footer class="relative z-10 border-t border-surface-border bg-base-900 px-6 py-12">
+      <div
+        class="mx-auto flex max-w-screen-2xl flex-col items-center justify-between gap-6 md:flex-row"
+      >
+        <div class="flex flex-col items-center md:items-start">
+          <p class="font-brand text-2xl font-bold tracking-tighter text-white">
+            JV<span class="text-brand-500">.</span>Arch
+          </p>
+          <p class="mt-2 font-mono text-sm text-slate-400" data-i18n="footerRights">
+            © 2026 João Victor Barros.
+          </p>
         </div>
+        <nav
+          class="flex gap-4"
+          data-i18n-attr="aria-label:navFooterLabel"
+          aria-label="Navegação do rodapé"
+        >
+          <a
+            href="#about"
+            class="text-sm text-slate-400 transition-colors hover:text-brand-500"
+            data-i18n="navAbout"
+            >Sobre</a
+          >
+          <a
+            href="#projects"
+            class="text-sm text-slate-400 transition-colors hover:text-brand-500"
+            data-i18n="navProjects"
+            >Projetos</a
+          >
+          <a
+            href="#contact"
+            class="text-sm text-slate-400 transition-colors hover:text-brand-500"
+            data-i18n="footerContact"
+            >Contato</a
+          >
+        </nav>
+        <p
+          class="flex items-center gap-2 rounded-full border border-green-400/20 bg-green-400/10 px-3 py-1.5 font-mono text-xs text-green-400"
+        >
+          <span class="h-2 w-2 animate-pulse rounded-full bg-green-400" aria-hidden="true"></span>
+          <span data-i18n="footerStatus">All Systems Operational</span>
+        </p>
+      </div>
     </footer>
-
-    <script>
-        /**
-         * @fileoverview Enterprise Portfolio Core Engine
-         * @author João Victor Barros
-         * @description Modular, object-oriented JavaScript driving the portfolio. Includes custom WebGL, GSAP integrations, and state management.
-         */
-
-        // ==========================================
-        // 1. DATA LAYER (MOCK DATABASE & I18N)
-        // ==========================================
-        const DB = {
-            experience: [
-                {
-                    period: { pt: "Mar 2026 - Set 2026", en: "Mar 2026 - Sep 2026" },
-                    role: { pt: "Fullstack Developer", en: "Fullstack Developer" },
-                    company: "Revisa Pass",
-                    desc: { 
-                        pt: "Construção de plataforma educacional. Frontend em React.js + Tailwind, Backend em Laravel/SQL e integração nativa com API de pagamentos ASAAS.",
-                        en: "Built an educational platform. Frontend in React.js + Tailwind, Backend in Laravel/SQL and native integration with ASAAS payment API."
-                    },
-                    tech: ["React.js", "Laravel", "SQL", "Tailwind", "APIs"]
-                },
-                {
-                    period: { pt: "Jun 2024 - Nov 2025", en: "Jun 2024 - Nov 2025" },
-                    role: { pt: "Game & Web Developer", en: "Game & Web Developer" },
-                    company: "S2 DominozDuels",
-                    desc: { 
-                        pt: "Desenvolvimento de engine de jogos online (Dominó multiplayer em tempo real, Paciência, Campo Minado) com integrações financeiras.",
-                        en: "Development of online game engine (Real-time multiplayer Dominoes, Solitaire, Minesweeper) with financial integrations."
-                    },
-                    tech: ["JavaScript", "PHP", "WebSockets", "SQL", "HTML/CSS"]
-                },
-                {
-                    period: { pt: "Out 2024 - Fev 2025", en: "Oct 2024 - Feb 2025" },
-                    role: { pt: "Node.js Developer", en: "Node.js Developer" },
-                    company: "B7 Desenvolvimento",
-                    desc: { 
-                        pt: "Desenvolvimento de APIs robustas em Node.js integradas com MongoDB, além de arquitetura Frontend utilizando React.js e gestão de Device Farm.",
-                        en: "Development of robust Node.js APIs integrated with MongoDB, plus Frontend architecture using React.js and Device Farm management."
-                    },
-                    tech: ["Node.js", "MongoDB", "React.js", "Appium"]
-                },
-                {
-                    period: { pt: "Jan 2024 - Jul 2024", en: "Jan 2024 - Jul 2024" },
-                    role: { pt: "Mobile Developer", en: "Mobile Developer" },
-                    company: "Captador",
-                    desc: { 
-                        pt: "Engenharia de aplicativo (Dart/Flutter) focado em chat de atendimento corporativo integrado ao WhatsApp Business e gateways de pagamento.",
-                        en: "App engineering (Dart/Flutter) focused on corporate customer service chat integrated with WhatsApp Business and payment gateways."
-                    },
-                    tech: ["Flutter", "Dart", "WhatsApp API"]
-                }
-            ],
-            tech: [
-                { cat: "Back-end", items: [
-                    { name: "Python", icon: "python-original.svg" },
-                    { name: "C#", icon: "csharp-original.svg" },
-                    { name: "Node.js", icon: "nodejs-original.svg" },
-                    { name: "PHP", icon: "php-original.svg" }
-                ]},
-                { cat: "Front-end", items: [
-                    { name: "JavaScript", icon: "javascript-original.svg" },
-                    { name: "TypeScript", icon: "typescript-original.svg" },
-                    { name: "React", icon: "react-original.svg" },
-                    { name: "HTML/CSS", icon: "html5-original.svg" }
-                ]},
-                { cat: "Database", items: [
-                    { name: "SQL Server", icon: "microsoftsqlserver-original.svg" },
-                    { name: "PostgreSQL", icon: "postgresql-original.svg" },
-                    { name: "MongoDB", icon: "mongodb-original.svg" },
-                    { name: "MySQL", icon: "mysql-original.svg" }
-                ]},
-                { cat: "DevOps & Tools", items: [
-                    { name: "Git", icon: "git-original.svg" },
-                    { name: "Linux", icon: "linux-original.svg" },
-                    { name: "Docker", icon: "docker-original.svg" },
-                    { name: "Flutter", icon: "flutter-original.svg" }
-                ]}
-            ],
-            projects: [
-                {
-                    title: { pt: "Mercado Bela Esperança", en: "Bela Esperança Market" },
-                    category: "fullstack",
-                    desc: { 
-                        pt: "Plataforma E-commerce Enterprise. Arquitetura para alto tráfego, banco otimizado e frontend de alta conversão.",
-                        en: "Enterprise E-commerce Platform. High-traffic architecture, optimized database and high-conversion frontend." 
-                    },
-                    tags: ["Node.js", "React", "SQL", "Payment API"],
-                    url: "https://mercadobelaesperanca.shop",
-                    icon: "shopping-cart"
-                },
-                {
-                    title: { pt: "CyberEdge Gym", en: "CyberEdge Gym" },
-                    category: "edge",
-                    desc: { 
-                        pt: "Dashboard para academias com Edge Computing. Offline-first, sync background e gráficos de alta performance via Canvas.",
-                        en: "Gym dashboard with Edge Computing. Offline-first, background sync and high-performance Canvas charts." 
-                    },
-                    tags: ["Edge Node", "JS", "PWA"],
-                    url: "https://cyberedgegym.shop",
-                    icon: "activity"
-                },
-                {
-                    title: { pt: "Core API Architecture", en: "Core API Architecture" },
-                    category: "backend",
-                    desc: { 
-                        pt: "Conjunto de APIs RESTful escaláveis em C# e Python. Foco em microsserviços, web scraping seguro e autenticação JWT.",
-                        en: "Set of scalable RESTful APIs in C# and Python. Focus on microservices, secure web scraping and JWT auth." 
-                    },
-                    tags: ["C#", ".NET", "Python", "Security"],
-                    url: "https://github.com/Joaovictoreth1",
-                    icon: "server-cog"
-                },
-                {
-                    title: { pt: "DominozDuels Engine", en: "DominozDuels Engine" },
-                    category: "fullstack",
-                    desc: { 
-                        pt: "Motor de jogos de tabuleiro em tempo real via WebSockets. Sincronização de estado complexa e latência ultrabaixa.",
-                        en: "Real-time board game engine via WebSockets. Complex state synchronization and ultra-low latency." 
-                    },
-                    tags: ["WebSockets", "JS", "PHP", "Game Engine"],
-                    url: "https://dominozduels.com",
-                    icon: "gamepad-2"
-                }
-            ]
-        };
-
-        const I18N = {
-            pt: {
-                logo: "JV<span class='text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]'>.</span>Arch",
-                navAbout: "<span>Sobre</span>", navExp: "<span>Jornada</span>", navSkills: "<span>Skills</span>", navProjects: "<span>Projetos</span>", navContact: "Deploy Contact",
-                heroBadge: "System Status: Online | Disponível para Projetos",
-                heroTitle1: "Engenharia", heroTitle2: "Orientada a", heroTitle3: "Soluções.",
-                heroDesc: "Desenvolvedor de Software Especialista. Construindo arquiteturas resilientes e complexas no <strong class='text-slate-200 font-medium'>Back-end</strong> (Python/C#) e interfaces dinâmicas de alta performance no <strong class='text-slate-200 font-medium'>Front-end</strong> (JavaScript).",
-                heroBtn: "Analisar Projetos", scrollDown: "Explorar",
-                aboutTitle: "Mente Analítica.",
-                aboutHeadline: "A lógica por trás do código.",
-                aboutP1: "Com 20 anos, minha jornada na programação não é apenas sobre escrever sintaxe, mas sobre <strong>resolver problemas arquiteturais complexos</strong>. Sou fascinado por entender a engrenagem profunda dos sistemas, otimizando bancos de dados e criando APIs resilientes.",
-                aboutP2: "Estudante de Análise e Desenvolvimento de Sistemas (UNICID) e Técnico em Informática (SENAC). Minha assinatura é combinar o rigor e a segurança do Back-end (C#/Python) com a fluidez do Front-end moderno (JS/React).",
-                statClean: "Foco em Clean Code", locTitle: "São Paulo, Brasil", locStatus: "Remoto / Híbrido Disponível", years: "anos", logicTxt: "Algoritmos & Lógica Pura",
-                expTitle: "Jornada Profissional",
-                skillsTitle: "Arsenal Tecnológico", skillsSub: "Linguagens e infraestrutura utilizadas para construir sistemas robustos e escaláveis.",
-                projectsTitle: "Projetos em Destaque", viewGithub: "Explorar todos os repositórios no GitHub",
-                contactTitle: "Vamos construir algo <span class='text-brand-500'>épico.</span>",
-                contactSub: "Pronto para novos desafios de engenharia. Aberto a propostas para Full-Stack, desenvolvimento Backend e arquitetura de sistemas.",
-                footerStatus: "All Systems Operational"
-            },
-            en: {
-                logo: "JV<span class='text-brand-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]'>.</span>Arch",
-                navAbout: "<span>About</span>", navExp: "<span>Journey</span>", navSkills: "<span>Stack</span>", navProjects: "<span>Work</span>", navContact: "Deploy Contact",
-                heroBadge: "System Status: Online | Open to Work",
-                heroTitle1: "Solutions", heroTitle2: "Oriented", heroTitle3: "Engineering.",
-                heroDesc: "Expert Software Developer. Building resilient and complex architectures on the <strong class='text-slate-200 font-medium'>Back-end</strong> (Python/C#) and high-performance dynamic interfaces on the <strong class='text-slate-200 font-medium'>Front-end</strong> (JavaScript).",
-                heroBtn: "Analyze Projects", scrollDown: "Scroll",
-                aboutTitle: "Analytical Mind.",
-                aboutHeadline: "The logic behind the code.",
-                aboutP1: "At 20, my programming journey isn't just about writing syntax, but about <strong>solving complex architectural problems</strong>. I am fascinated by understanding the deep gears of systems, optimizing databases, and creating resilient APIs.",
-                aboutP2: "Systems Analysis and Development student (UNICID) and IT Technician (SENAC). My signature is combining the rigor and security of the Back-end (C#/Python) with the fluidity of modern Front-end (JS/React).",
-                statClean: "Clean Code Focus", locTitle: "São Paulo, Brazil", locStatus: "Remote / Hybrid Available", years: "years old", logicTxt: "Algorithms & Pure Logic",
-                expTitle: "Professional Journey",
-                skillsTitle: "Technological Arsenal", skillsSub: "Languages and infrastructure used to build robust and scalable systems.",
-                projectsTitle: "Featured Deployments", viewGithub: "Explore all repositories on GitHub",
-                contactTitle: "Let's build something <span class='text-brand-500'>epic.</span>",
-                contactSub: "Ready for new engineering challenges. Open to proposals for Full-Stack, Backend development, and systems architecture.",
-                footerStatus: "All Systems Operational"
-            }
-        };
-
-        // ==========================================
-        // 2. CORE APPLICATION LOGIC
-        // ==========================================
-        class App {
-            constructor() {
-                this.lang = 'pt';
-                this.init();
-            }
-
-            init() {
-                this.renderDynamicContent();
-                this.setupI18N();
-                this.setupUIBindings();
-                lucide.createIcons();
-            }
-
-            renderDynamicContent() {
-                // Render Timeline
-                const tlWrap = document.getElementById('timeline-wrapper');
-                tlWrap.innerHTML = DB.experience.map((job, i) => `
-                    <div class="relative pl-8 mb-12 gs-reveal-up opacity-0 transform translate-y-10 transition-all duration-700 ease-out" style="transition-delay: ${i * 100}ms">
-                        <div class="timeline-dot"></div>
-                        <div class="glass-panel p-6 rounded-2xl group hover:border-brand-500/50">
-                            <div class="flex flex-col md:flex-row justify-between md:items-center mb-4 gap-2">
-                                <h3 class="font-display font-bold text-xl text-white group-hover:text-brand-400 transition-colors">${job.role[this.lang]}</h3>
-                                <span class="font-mono text-xs text-brand-500 bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/20">${job.period[this.lang]}</span>
-                            </div>
-                            <h4 class="text-slate-400 font-medium mb-4">${job.company}</h4>
-                            <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">${job.desc[this.lang]}</p>
-                            <div class="flex flex-wrap gap-2">
-                                ${job.tech.map(t => `<span class="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded border border-slate-700">${t}</span>`).join('')}
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Render Skills
-                const skillsWrap = document.getElementById('tech-grid');
-                skillsWrap.innerHTML = DB.tech.map((category, i) => `
-                    <div class="glass-panel p-6 rounded-2xl flex flex-col gs-reveal-up" style="transition-delay: ${i * 100}ms">
-                        <h3 class="font-mono text-sm text-slate-400 mb-6 uppercase tracking-widest border-b border-surface-border pb-2">${category.cat}</h3>
-                        <div class="grid grid-cols-2 gap-4 flex-grow">
-                            ${category.items.map(item => `
-                                <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-white/5 transition-colors group cursor-none">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${item.icon.split('-')[0]}/${item.icon}" alt="${item.name}" class="w-10 h-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110">
-                                    <span class="text-xs font-medium text-slate-500 group-hover:text-white transition-colors text-center">${item.name}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `).join('');
-
-                // Render Projects (Initial All)
-                this.renderProjects('all');
-                
-                // Re-init manual reveal observer for injected content
-                setTimeout(() => this.initScrollReveal(), 100);
-            }
-
-            renderProjects(filter) {
-                const projWrap = document.getElementById('projects-grid');
-                const filtered = filter === 'all' ? DB.projects : DB.projects.filter(p => p.category === filter);
-                
-                projWrap.innerHTML = filtered.map((p, i) => `
-                    <div class="glass-panel rounded-3xl p-6 flex flex-col h-full group gs-reveal-up opacity-0" style="animation: fadeUp 0.5s ease forwards ${i * 0.1}s">
-                        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-500 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 relative z-10 shadow-[0_0_15px_rgba(249,115,22,0)] group-hover:shadow-[0_0_15px_rgba(249,115,22,0.5)]">
-                            <i data-lucide="${p.icon}"></i>
-                        </div>
-                        <h3 class="font-display text-xl font-bold mb-3 text-slate-200">${p.title[this.lang]}</h3>
-                        <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed font-light">${p.desc[this.lang]}</p>
-                        <div class="flex items-center justify-between border-t border-surface-border pt-5 mt-auto">
-                            <div class="flex flex-wrap gap-2">
-                                ${p.tags.slice(0,3).map(tag => `<span class="text-[10px] font-mono text-brand-400 bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">${tag}</span>`).join('')}
-                            </div>
-                            <a href="${p.url}" target="_blank" class="w-10 h-10 rounded-full bg-surface border border-surface-border flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500 hover:border-brand-500 transition-all interactive flex-shrink-0">
-                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                `).join('');
-                lucide.createIcons();
-            }
-
-            setupI18N() {
-                const langSel = document.getElementById('lang-selector');
-                langSel.addEventListener('change', (e) => {
-                    this.lang = e.target.value;
-                    const dict = I18N[this.lang];
-                    
-                    document.querySelectorAll('[data-lang]').forEach(el => {
-                        const key = el.getAttribute('data-lang');
-                        if(dict[key]) {
-                            // Check if glitch text
-                            if(el.classList.contains('glitch-text')) {
-                                el.setAttribute('data-text', dict[key]);
-                                el.innerHTML = dict[key];
-                            } else {
-                                el.innerHTML = dict[key];
-                            }
-                        }
-                    });
-                    this.renderDynamicContent(); // Re-render for dynamic parts
-                });
-            }
-
-            setupUIBindings() {
-                // Project Filters
-                const filters = document.querySelectorAll('.filter-btn');
-                filters.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        filters.forEach(f => f.classList.remove('active'));
-                        e.target.classList.add('active');
-                        this.renderProjects(e.target.dataset.filter);
-                    });
-                });
-
-                // Form Handle
-                const form = document.getElementById('contactForm');
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btnText = document.getElementById('btn-text');
-                    const icon = document.getElementById('btn-icon');
-                    const fb = document.getElementById('form-feedback');
-                    const msg = document.getElementById('feedback-msg');
-                    
-                    const ogText = btnText.innerText;
-                    btnText.innerText = "Executing Request...";
-                    icon.setAttribute('data-lucide', 'loader-2');
-                    icon.classList.add('animate-spin');
-                    lucide.createIcons();
-
-                    setTimeout(() => {
-                        form.reset();
-                        btnText.innerText = ogText;
-                        icon.setAttribute('data-lucide', 'send');
-                        icon.classList.remove('animate-spin');
-                        lucide.createIcons();
-                        
-                        fb.style.height = '70px';
-                        fb.style.opacity = '1';
-                        fb.classList.add('p-3', 'mt-4');
-                        
-                        setTimeout(() => {
-                            fb.style.height = '0';
-                            fb.style.opacity = '0';
-                            fb.classList.remove('p-3', 'mt-4');
-                        }, 5000);
-                    }, 1500);
-                });
-
-                // Mobile Menu
-                const menuBtn = document.getElementById('mobile-menu-btn');
-                const nav = document.querySelector('nav');
-                menuBtn.addEventListener('click', () => {
-                    nav.classList.toggle('hidden');
-                    nav.classList.toggle('absolute');
-                    nav.classList.toggle('top-16');
-                    nav.classList.toggle('left-6');
-                    nav.classList.toggle('right-6');
-                    nav.classList.toggle('flex-col');
-                });
-            }
-
-            initScrollReveal() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if(entry.isIntersecting) {
-                            entry.target.classList.remove('opacity-0', 'translate-y-10');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
-
-                document.querySelectorAll('.gs-reveal-up').forEach(el => observer.observe(el));
-            }
-        }
-
-        // ==========================================
-        // 3. UX & ANIMATIONS ENGINE
-        // ==========================================
-        class UXManager {
-            constructor() {
-                this.cursorX = window.innerWidth / 2;
-                this.cursorY = window.innerHeight / 2;
-                this.init();
-            }
-
-            init() {
-                this.bootSequence();
-                if(window.matchMedia("(pointer: fine)").matches) {
-                    this.setupCustomCursor();
-                    this.setupMagneticElements();
-                }
-                this.setupScrollEffects();
-                this.initTerminalTyping();
-            }
-
-            bootSequence() {
-                const preloader = document.getElementById('preloader');
-                const lines = [
-                    "INIT SYSTEM: kernel module jvbm_core loaded.",
-                    "MOUNTING: virtual_dom on /dev/ui...",
-                    "STARTING: WebGL Physics Engine...",
-                    "LOADING: Skills matrix [Python, C#, JS, SQL]... OK",
-                    "ESTABLISHING: Secure connection to neural net...",
-                    "STATUS: Architecture stabilized. Ready for deploy."
-                ];
-                
-                let delay = 200;
-                lines.forEach((text, i) => {
-                    setTimeout(() => {
-                        const p = document.createElement('p');
-                        p.className = 'boot-line';
-                        p.innerText = `> ${text}`;
-                        preloader.appendChild(p);
-                        
-                        // Force reflow for transition
-                        void p.offsetWidth;
-                        p.classList.add('visible');
-                    }, delay);
-                    delay += Math.random() * 300 + 100;
-                });
-
-                // Finish Boot
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.remove(), 1000);
-                    // Trigger GSAP Initial Reveal
-                    this.triggerIntroAnimations();
-                }, delay + 500);
-            }
-
-            triggerIntroAnimations() {
-                gsap.registerPlugin(ScrollTrigger);
-                gsap.fromTo(".gs-reveal", 
-                    { y: 60, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power4.out" }
-                );
-                gsap.fromTo(".gs-reveal-right", 
-                    { x: 100, opacity: 0 }, 
-                    { x: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.5 }
-                );
-            }
-
-            setupCustomCursor() {
-                window.addEventListener('mousemove', (e) => {
-                    document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
-                    document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
-                    
-                    // Smooth Ring follow
-                    const ring = document.getElementById('cursor-ring');
-                    if(ring) {
-                        ring.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
-                    }
-                });
-
-                document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
-                document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
-
-                // Delegate hover events
-                document.addEventListener('mouseover', (e) => {
-                    if(e.target.closest('.interactive, button, a, input, textarea, select')) {
-                        document.body.classList.add('cursor-hover');
-                    }
-                });
-                document.addEventListener('mouseout', (e) => {
-                    if(e.target.closest('.interactive, button, a, input, textarea, select')) {
-                        document.body.classList.remove('cursor-hover');
-                    }
-                });
-            }
-
-            setupMagneticElements() {
-                document.querySelectorAll('.magnetic-wrap').forEach(el => {
-                    el.addEventListener('mousemove', (e) => {
-                        const rect = el.getBoundingClientRect();
-                        const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-                        const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                        gsap.to(el.children[0], { x: x, y: y, duration: 0.3, ease: "power2.out" });
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        gsap.to(el.children[0], { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-                    });
-                });
-            }
-
-            setupScrollEffects() {
-                const nav = document.getElementById('navbar');
-                const prog = document.getElementById('progress-bar');
-                
-                window.addEventListener('scroll', () => {
-                    const y = window.scrollY;
-                    // Navbar blur
-                    if (y > 50) nav.classList.add('bg-black/80', 'backdrop-blur-xl', 'border-surface-border');
-                    else nav.classList.remove('bg-black/80', 'backdrop-blur-xl', 'border-surface-border');
-                    
-                    // Progress Bar
-                    const height = document.documentElement.scrollHeight - window.innerHeight;
-                    const scrolled = (y / height) * 100;
-                    prog.style.width = scrolled + '%';
-                }, { passive: true });
-
-                // Section Reveal (Generic)
-                gsap.utils.toArray('section').forEach(sec => {
-                    ScrollTrigger.create({
-                        trigger: sec,
-                        start: "top 80%",
-                        onEnter: () => sec.classList.add('in-view')
-                    });
-                });
-            }
-
-            initTerminalTyping() {
-                const term = document.getElementById('terminal-container');
-                const code = `/**
- * @class SoftwareArchitect
- * @extends Developer
- */
-class SoftwareArchitect {
-  constructor() {
-    this.name = "João Victor Barros";
-    this.role = "Backend & Systems Arch";
-    this.focus = ["Python", "C#", "Node"];
-  }
-
-  async buildInfrastructure() {
-    try {
-      const db = await SQL.optimize();
-      const api = await REST.deploy();
-      const ui = await React.render();
-      
-      return { status: 200, system: "Online" };
-    } catch (err) {
-      return Logger.fatal(err);
-    }
-  }
-}
-
-// Executing boot sequence...
-const jvbm = new SoftwareArchitect();
-jvbm.buildInfrastructure().then(console.log);`;
-                
-                let i = 0;
-                term.innerHTML = '';
-                // Add syntax highlighting dynamically
-                const typeChar = () => {
-                    if (i < code.length) {
-                        let char = code.charAt(i);
-                        if(char === '\n') char = '<br>';
-                        else if(char === ' ') char = '&nbsp;';
-                        
-                        term.innerHTML += char;
-                        
-                        // Scroll to bottom
-                        term.scrollTop = term.scrollHeight;
-                        i++;
-                        setTimeout(typeChar, Math.random() * 20 + 5);
-                    } else {
-                        // Apply basic syntax colors post-typing for performance
-                        let html = term.innerHTML;
-                        html = html.replace(/(class|constructor|async|await|try|catch|return|new|const)/g, '<span class="text-purple-400">$1</span>');
-                        html = html.replace(/("(.*?)")/g, '<span class="text-green-400">$1</span>');
-                        html = html.replace(/(console\.log|Logger\.fatal|SQL\.optimize|REST\.deploy|React\.render)/g, '<span class="text-blue-400">$1</span>');
-                        html = html.replace(/(this)/g, '<span class="text-red-400">$1</span>');
-                        term.innerHTML = html + '<span class="inline-block w-2 h-4 bg-brand-500 ml-1 translate-y-1 animate-pulse"></span>';
-                    }
-                };
-                setTimeout(typeChar, 2500); // Wait for boot screen
-            }
-        }
-
-        // ==========================================
-        // 4. WEBGL 3D ENGINE (THREE.JS GLOBAL NETWORK)
-        // ==========================================
-        class WebGLEngine {
-            constructor() {
-                this.canvas = document.getElementById('webgl-canvas');
-                this.scene = new THREE.Scene();
-                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-                this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true, antialias: false });
-                this.particles = null;
-                this.mouseX = 0;
-                this.mouseY = 0;
-                
-                this.init();
-            }
-
-            init() {
-                this.renderer.setSize(window.innerWidth, window.innerHeight);
-                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Perf limit
-                
-                this.camera.position.z = 200;
-
-                this.createParticleSphere();
-                this.bindEvents();
-                this.animate();
-            }
-
-            createParticleSphere() {
-                const particleCount = window.innerWidth < 768 ? 400 : 1000;
-                const geometry = new THREE.BufferGeometry();
-                const positions = new Float32Array(particleCount * 3);
-                const colors = new Float32Array(particleCount * 3);
-
-                const color1 = new THREE.Color('#f97316'); // Orange
-                const color2 = new THREE.Color('#5b21b6'); // Violet
-
-                for(let i = 0; i < particleCount; i++) {
-                    // Spherical distribution
-                    const theta = Math.random() * Math.PI * 2;
-                    const phi = Math.acos((Math.random() * 2) - 1);
-                    const radius = 100 + (Math.random() * 10); // slight variance
-
-                    const x = radius * Math.sin(phi) * Math.cos(theta);
-                    const y = radius * Math.sin(phi) * Math.sin(theta);
-                    const z = radius * Math.cos(phi);
-
-                    positions[i*3] = x;
-                    positions[i*3+1] = y;
-                    positions[i*3+2] = z;
-
-                    // Mix colors based on position
-                    const mixedColor = color1.clone().lerp(color2, (y + 100) / 200);
-                    colors[i*3] = mixedColor.r;
-                    colors[i*3+1] = mixedColor.g;
-                    colors[i*3+2] = mixedColor.b;
-                }
-
-                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-                const material = new THREE.PointsMaterial({
-                    size: 2,
-                    vertexColors: true,
-                    transparent: true,
-                    opacity: 0.6,
-                    blending: THREE.AdditiveBlending
-                });
-
-                this.particles = new THREE.Points(geometry, material);
-                
-                // Position sphere to the right on desktop, center-bottom on mobile
-                if (window.innerWidth > 1024) {
-                    this.particles.position.set(80, 0, 0);
-                } else {
-                    this.particles.position.set(0, -50, 0);
-                }
-
-                this.scene.add(this.particles);
-            }
-
-            bindEvents() {
-                window.addEventListener('resize', () => {
-                    this.camera.aspect = window.innerWidth / window.innerHeight;
-                    this.camera.updateProjectionMatrix();
-                    this.renderer.setSize(window.innerWidth, window.innerHeight);
-                    
-                    // Reposition based on screen
-                    if(this.particles) {
-                        if (window.innerWidth > 1024) this.particles.position.set(80, 0, 0);
-                        else this.particles.position.set(0, -50, 0);
-                    }
-                }, { passive: true });
-
-                window.addEventListener('mousemove', (e) => {
-                    // Normalized mouse coordinates (-1 to 1)
-                    this.mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-                    this.mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-                }, { passive: true });
-            }
-
-            animate() {
-                requestAnimationFrame(this.animate.bind(this));
-
-                if(this.particles) {
-                    // Base Rotation
-                    this.particles.rotation.y += 0.002;
-                    this.particles.rotation.x += 0.001;
-
-                    // Mouse Interaction (Parallax & Tilt)
-                    const targetX = this.mouseX * 0.5;
-                    const targetY = this.mouseY * 0.5;
-
-                    this.particles.rotation.y += (targetX - this.particles.rotation.y) * 0.05;
-                    this.particles.rotation.x += (targetY - this.particles.rotation.x) * 0.05;
-                    
-                    // Camera subtle movement
-                    this.camera.position.x += (this.mouseX * 20 - this.camera.position.x) * 0.05;
-                    this.camera.position.y += (this.mouseY * 20 - this.camera.position.y) * 0.05;
-                    this.camera.lookAt(this.scene.position);
-                }
-
-                this.renderer.render(this.scene, this.camera);
-            }
-        }
-
-        // ==========================================
-        // 5. APPLICATION BOOTSTRAP
-        // ==========================================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add custom animation styles dynamically
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes fadeUp {
-                    to { opacity: 1; transform: translateY(0); }
-                }
-            `;
-            document.head.appendChild(style);
-
-            // Initialize Modules
-            const app = new App();
-            const ux = new UXManager();
-            
-            // Init heavy WebGL after a slight delay to prioritize DOM rendering
-            setTimeout(() => {
-                const webgl = new WebGLEngine();
-            }, 500);
-        });
-    </script>
-</body>
+  </body>
 </html>

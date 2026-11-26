@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 | Página não encontrada</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#ea580c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script type="module" src="/src/not-found.ts"></script>
+  </head>
+  <body class="flex min-h-screen items-center justify-center px-6">
+    <main class="glass-panel max-w-lg rounded-[2rem] p-10 text-center">
+      <p class="mb-4 font-mono text-sm tracking-widest text-brand-500 uppercase">HTTP 404</p>
+      <h1 class="mb-4 font-display text-4xl font-bold text-white" data-i18n="notFoundTitle">
+        Página não encontrada
+      </h1>
+      <p class="mb-8 text-slate-400" data-i18n="notFoundBody">
+        A rota solicitada não existe ou foi movida.
+      </p>
+      <a
+        href="/"
+        class="inline-flex rounded-xl bg-white px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-slate-200"
+        data-i18n="notFoundBack"
+        >Voltar para o início</a
+      >
+    </main>
+  </body>
+</html>
