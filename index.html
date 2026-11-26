@@ -605,14 +605,24 @@
                     <h2 class="font-display text-4xl md:text-5xl font-bold mb-8" data-lang="projectsTitle">Projetos em Destaque</h2>
                     
                     <!-- Filters -->
-                    <div class="flex flex-wrap justify-center gap-4" id="project-filters">
-                        <button class="filter-btn interactive active" data-filter="all">All Systems</button>
-                        <button class="filter-btn interactive" data-filter="backend">Back-end</button>
-                        <button class="filter-btn interactive" data-filter="fullstack">Full-Stack</button>
-                        <button class="filter-btn interactive" data-filter="edge">Edge Computing</button>
+                    <div class="flex flex-wrap justify-center gap-4" id="project-filters" role="group" aria-label="Categorias de projetos">
+                        <button type="button" class="filter-btn interactive active" data-filter="all" aria-pressed="true">Todos</button>
+                        <button type="button" class="filter-btn interactive" data-filter="backend" aria-pressed="false">Back-end</button>
+                        <button type="button" class="filter-btn interactive" data-filter="fullstack" aria-pressed="false">Full-Stack</button>
+                        <button type="button" class="filter-btn interactive" data-filter="edge" aria-pressed="false">Edge Computing</button>
+                    </div>
+                    <div class="mx-auto mt-5 max-w-md space-y-2 text-left">
+                        <label for="project-search" id="project-search-label" class="block text-sm font-semibold">Buscar projetos por nome ou tecnologia</label>
+                        <input type="search" id="project-search" autocomplete="off"
+                               class="w-full rounded-xl border border-slate-600 bg-slate-900 px-4 py-3 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-400">
+                        <p id="project-count" role="status" class="min-h-5 text-sm text-slate-300"></p>
                     </div>
                 </div>
 
+                <div id="projects-empty" class="mx-auto mb-5 max-w-md rounded-xl border border-slate-700 p-4" hidden>
+                    <p id="projects-empty-text">Nenhum projeto encontrado.</p>
+                    <button type="button" id="project-reset" class="mt-2 rounded-lg border border-slate-500 px-3 py-2">Limpar filtros</button>
+                </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                     <!-- Injected via JS -->
                 </div>
@@ -729,7 +739,9 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import { filterProjects, projectLabels } from './project-search.mjs';
+
         /**
          * @fileoverview Enterprise Portfolio Core Engine
          * @author João Victor Barros
@@ -903,6 +915,7 @@
         class App {
             constructor() {
                 this.lang = 'pt';
+                this.projectCategory = 'all';
                 this.init();
             }
 
@@ -949,16 +962,30 @@
                     </div>
                 `).join('');
 
-                // Render Projects (Initial All)
-                this.renderProjects('all');
+                this.renderProjects();
                 
                 // Re-init manual reveal observer for injected content
                 setTimeout(() => this.initScrollReveal(), 100);
             }
 
-            renderProjects(filter) {
+            renderProjects() {
                 const projWrap = document.getElementById('projects-grid');
-                const filtered = filter === 'all' ? DB.projects : DB.projects.filter(p => p.category === filter);
+                const query = document.getElementById('project-search').value;
+                const labels = projectLabels[this.lang];
+                const filtered = filterProjects(DB.projects, this.projectCategory, query, this.lang);
+                const filters = document.getElementById('project-filters');
+                filters.setAttribute('aria-label', labels.categories);
+                for (const button of filters.querySelectorAll('button')) {
+                    const active = button.dataset.filter === this.projectCategory;
+                    button.classList.toggle('active', active);
+                    button.setAttribute('aria-pressed', String(active));
+                    if (button.dataset.filter === 'all') button.textContent = labels.all;
+                }
+                document.getElementById('project-search-label').textContent = labels.search;
+                document.getElementById('project-count').textContent = labels.count(filtered.length);
+                document.getElementById('projects-empty').hidden = filtered.length > 0;
+                document.getElementById('projects-empty-text').textContent = labels.empty;
+                document.getElementById('project-reset').textContent = labels.reset;
                 
                 projWrap.innerHTML = filtered.map((p, i) => `
                     <div class="glass-panel rounded-3xl p-6 flex flex-col h-full group gs-reveal-up opacity-0" style="animation: fadeUp 0.5s ease forwards ${i * 0.1}s">
@@ -971,7 +998,7 @@
                             <div class="flex flex-wrap gap-2">
                                 ${p.tags.slice(0,3).map(tag => `<span class="text-[10px] font-mono text-brand-400 bg-brand-500/10 px-2 py-1 rounded border border-brand-500/20">${tag}</span>`).join('')}
                             </div>
-                            <a href="${p.url}" target="_blank" class="w-10 h-10 rounded-full bg-surface border border-surface-border flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500 hover:border-brand-500 transition-all interactive flex-shrink-0">
+                            <a href="${p.url}" target="_blank" rel="noopener noreferrer" aria-label="${labels.open}: ${p.title[this.lang]}" class="w-10 h-10 rounded-full bg-surface border border-surface-border flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500 hover:border-brand-500 transition-all interactive flex-shrink-0">
                                 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                             </a>
                         </div>
@@ -984,6 +1011,7 @@
                 const langSel = document.getElementById('lang-selector');
                 langSel.addEventListener('change', (e) => {
                     this.lang = e.target.value;
+                    document.documentElement.lang = this.lang === 'pt' ? 'pt-BR' : 'en';
                     const dict = I18N[this.lang];
                     
                     document.querySelectorAll('[data-lang]').forEach(el => {
@@ -1006,11 +1034,18 @@
                 // Project Filters
                 const filters = document.querySelectorAll('.filter-btn');
                 filters.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        filters.forEach(f => f.classList.remove('active'));
-                        e.target.classList.add('active');
-                        this.renderProjects(e.target.dataset.filter);
+                    btn.addEventListener('click', () => {
+                        this.projectCategory = btn.dataset.filter;
+                        this.renderProjects();
                     });
+                });
+                const search = document.getElementById('project-search');
+                search.addEventListener('input', () => this.renderProjects());
+                document.getElementById('project-reset').addEventListener('click', () => {
+                    this.projectCategory = 'all';
+                    search.value = '';
+                    this.renderProjects();
+                    search.focus();
                 });
 
                 // Form Handle
