@@ -44,7 +44,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS Engine -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     
     <!-- Vendor Libraries -->
     <!-- GSAP for Advanced Animations -->
@@ -324,6 +324,17 @@
         /* Utils */
         .magnetic-wrap { display: inline-block; position: relative; }
         .interactive { cursor: none; }
+        :focus-visible { outline: 2px solid #fb923c; outline-offset: 4px; }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+                cursor: auto !important;
+            }
+            #preloader, #webgl-canvas { display: none; }
+            .gs-reveal, .gs-reveal-right, .gs-reveal-up { opacity: 1 !important; transform: none !important; }
+        }
         
         /* Progress Bar */
         #progress-bar {
@@ -369,7 +380,7 @@
             </a>
             
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex gap-8 items-center bg-surface border border-surface-border px-8 py-3 rounded-full backdrop-blur-md shadow-lg">
+            <nav id="primary-nav" class="hidden md:flex gap-8 items-center bg-surface border border-surface-border px-8 py-3 rounded-full backdrop-blur-md shadow-lg">
                 <a href="#about" class="text-sm font-semibold text-slate-300 hover:text-white transition-colors interactive nav-link relative" data-lang="navAbout">
                     <span>Sobre</span>
                 </a>
@@ -401,7 +412,7 @@
                 </div>
 
                 <!-- Mobile Menu Btn -->
-                <button class="md:hidden interactive text-slate-300 bg-surface p-2 rounded-lg border border-surface-border" id="mobile-menu-btn">
+                <button type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav" class="md:hidden interactive text-slate-300 bg-surface p-2 rounded-lg border border-surface-border" id="mobile-menu-btn">
                     <i data-lucide="menu"></i>
                 </button>
             </div>
@@ -638,8 +649,7 @@
                                 </a>
                                 <a href="https://www.linkedin.com/in/joão-victor-68847733b" target="_blank" class="interactive flex items-center gap-6 group p-4 rounded-2xl hover:bg-surface border border-transparent hover:border-surface-border transition-all">
                                     <div class="w-14 h-14 rounded-full bg-[#0a66c2]/10 border border-[#0a66c2]/30 flex items-center justify-center text-[#0a66c2] group-hover:bg-[#0a66c2] group-hover:text-white transition-all shadow-[0_0_15px_rgba(10,102,194,0.2)]">
-                                        <!-- Replaced Lucide icon with image -->
-                                        <img src="watermarked_img_18003946814113796823.jpg" alt="LinkedIn Logo" class="w-10 h-10 object-cover rounded-full mix-blend-screen group-hover:brightness-0 group-hover:invert transition-all">
+                                        <span aria-hidden="true" class="font-bold text-xl">in</span>
                                     </div>
                                     <div>
                                         <div class="text-xs text-slate-500 font-mono mb-1 uppercase tracking-wider">Network</div>
@@ -1039,14 +1049,21 @@
 
                 // Mobile Menu
                 const menuBtn = document.getElementById('mobile-menu-btn');
-                const nav = document.querySelector('nav');
+                const nav = document.getElementById('primary-nav');
                 menuBtn.addEventListener('click', () => {
-                    nav.classList.toggle('hidden');
+                    const open = !nav.classList.toggle('hidden');
+                    menuBtn.setAttribute('aria-expanded', String(open));
                     nav.classList.toggle('absolute');
                     nav.classList.toggle('top-16');
                     nav.classList.toggle('left-6');
                     nav.classList.toggle('right-6');
                     nav.classList.toggle('flex-col');
+                });
+                document.addEventListener('keydown', event => {
+                    if (event.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') {
+                        menuBtn.click();
+                        menuBtn.focus();
+                    }
                 });
             }
 
@@ -1398,6 +1415,7 @@ jvbm.buildInfrastructure().then(console.log);`;
 
             // Initialize Modules
             const app = new App();
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             const ux = new UXManager();
             
             // Init heavy WebGL after a slight delay to prioritize DOM rendering
