@@ -1,0 +1,7 @@
+# Security and cache headers are generated into dist/_headers from config/security-headers.ts.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
