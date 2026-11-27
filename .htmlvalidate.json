@@ -1,0 +1,24 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "attribute-boolean-style": "off",
+    "doctype-style": "off",
+    "no-inline-style": "error",
+    "void-style": "off",
+    "no-unknown-elements": "error",
+    "attribute-allowed-values": "error",
+    "valid-id": "off",
+    "long-title": "off",
+    "no-trailing-whitespace": "error"
+  },
+  "elements": [
+    "html5",
+    {
+      "form": {
+        "attributes": {
+          "netlify-honeypot": { "enum": ["/.+/"] }
+        }
+      }
+    }
+  ]
+}
